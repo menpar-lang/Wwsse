@@ -1,949 +1,315 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#70d1f5">
-<meta name="description" content="منبر التحصيلي - جداول التأسيس والتدريب ومساحة المذاكرة وحساب الموزونة">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07182f">
+<meta name="description" content="منبر التحصيلي | خطتك للتأسيس والتدريب والمذاكرة وحساب الموزونة">
 <title>منبر التحصيلي</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --sky:#83dcfa;
-  --blue:#238bc5;
-  --navy:#071a36;
-  --white:#fff;
-  --muted:#64748b;
-  --glass:rgba(255,255,255,.12);
-  --border:rgba(255,255,255,.2);
-  --dark:#102746;
-  --green:#30c58b;
-  --shadow:0 15px 45px rgba(0,25,60,.18);
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body {
-  font-family:'Alexandria',sans-serif;
-  min-height:100vh;
-  color:white;
-  background:
-    radial-gradient(circle at 85% 5%,rgba(255,255,255,.35),transparent 25%),
-    linear-gradient(160deg,#9ce8ff 0%,#48b7e8 28%,#17649d 58%,#071a36 100%);
-  background-attachment:fixed;
-}
-
-button,input,select {
-  font:inherit;
-}
-
-button {
-  cursor:pointer;
-  border:0;
-}
-
-a {
-  color:inherit;
-  text-decoration:none;
-}
-
-.container {
-  width:min(1100px,92%);
-  margin:auto;
-}
-
-header {
-  padding:27px 0 16px;
-}
-
-.topbar {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo {
-  width:48px;
-  height:48px;
-  display:grid;
-  place-items:center;
-  border-radius:16px;
-  color:#0b4770;
-  background:rgba(255,255,255,.8);
-  font-size:27px;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.brand h1 {
-  font-size:22px;
-  font-weight:800;
-}
-
-.brand p {
-  font-size:10px;
-  margin-top:4px;
-  opacity:.85;
-}
-
-.free {
-  padding:9px 15px;
-  border-radius:30px;
-  background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.4);
-  font-size:12px;
-  font-weight:700;
-  backdrop-filter:blur(10px);
-}
-
-.hero {
-  padding:38px 0 25px;
-  text-align:center;
-}
-
-.hero h2 {
-  font-size:clamp(25px,5vw,42px);
-  font-weight:800;
-  line-height:1.5;
-}
-
-.hero h2 span {
-  color:#e2f8ff;
-}
-
-.hero p {
-  margin-top:12px;
-  font-size:13px;
-  opacity:.85;
-  line-height:2;
-}
-
-.countdown {
-  margin:25px auto 30px;
-  max-width:680px;
-  padding:20px;
-  border:1px solid rgba(255,255,255,.3);
-  border-radius:22px;
-  background:rgba(4,28,58,.32);
-  backdrop-filter:blur(15px);
-  box-shadow:var(--shadow);
-}
-
-.countdown h3 {
-  font-size:14px;
-  margin-bottom:16px;
-}
-
-.count-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.count-item {
-  padding:13px 5px;
-  background:rgba(255,255,255,.12);
-  border-radius:14px;
-}
-
-.count-item strong {
-  display:block;
-  font-size:27px;
-  font-weight:800;
-}
-
-.count-item span {
-  font-size:10px;
-  opacity:.8;
-}
-
-.count-note {
-  margin-top:12px;
-  font-size:9px;
-  opacity:.65;
-}
-
-.main-tabs {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:25px 0 18px;
-}
-
-.main-tab {
-  padding:15px 8px;
-  border-radius:15px;
-  color:white;
-  background:rgba(255,255,255,.13);
-  border:1px solid rgba(255,255,255,.2);
-  font-size:13px;
-  font-weight:700;
-  transition:.2s;
-}
-
-.main-tab.active {
-  background:white;
-  color:#12527e;
-  box-shadow:0 8px 25px rgba(0,0,0,.12);
-}
-
-.panel {
-  display:none;
-  animation:show .3s ease;
-}
-
-.panel.active {
-  display:block;
-}
-
-@keyframes show {
-  from {opacity:0;transform:translateY(8px)}
-  to {opacity:1;transform:translateY(0)}
-}
-
-.section-title {
-  font-size:21px;
-  font-weight:800;
-  margin:24px 0 8px;
-}
-
-.section-desc {
-  font-size:12px;
-  opacity:.75;
-  line-height:2;
-  margin-bottom:20px;
-}
-
-.sub-tabs {
-  display:flex;
-  gap:10px;
-  margin:20px 0;
-}
-
-.sub-tab {
-  flex:1;
-  padding:13px;
-  border-radius:13px;
-  color:white;
-  background:rgba(255,255,255,.13);
-  border:1px solid var(--border);
-  font-size:13px;
-  font-weight:700;
-}
-
-.sub-tab.active {
-  background:#fff;
-  color:#12527e;
-}
-
-.sub-panel {
-  display:none;
-}
-
-.sub-panel.active {
-  display:block;
-  animation:show .25s ease;
-}
-
-.card {
-  background:rgba(255,255,255,.94);
-  color:var(--dark);
-  border-radius:22px;
-  padding:23px;
-  margin:15px 0;
-  box-shadow:var(--shadow);
-}
-
-.card h3 {
-  font-size:16px;
-  margin-bottom:9px;
-}
-
-.card p {
-  font-size:11px;
-  color:var(--muted);
-  line-height:2;
-}
-
-.subjects {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  margin:18px 0;
-}
-
-.subject {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  border:1px solid #dbe7f0;
-  padding:13px;
-  border-radius:13px;
-  font-size:12px;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.subject:has(input:checked) {
-  background:#e6f6ff;
-  border-color:#35a8df;
-  color:#12618d;
-  font-weight:700;
-}
-
-.subject input {
-  accent-color:#168bc5;
-  width:16px;
-  height:16px;
-}
-
-.field {
-  margin:15px 0;
-}
-
-.field label {
-  display:block;
-  font-size:12px;
-  font-weight:700;
-  margin-bottom:9px;
-}
-
-.field input {
-  width:100%;
-  border:1px solid #dce6ef;
-  background:#f8fbff;
-  color:#142c45;
-  border-radius:12px;
-  padding:14px;
-  outline:none;
-  font-size:14px;
-}
-
-.field input:focus {
-  border-color:#239bd4;
-  box-shadow:0 0 0 3px rgba(35,155,212,.12);
-}
-
-.primary-btn {
-  width:100%;
-  padding:15px;
-  color:white;
-  border-radius:13px;
-  background:linear-gradient(110deg,#229ed6,#12609b);
-  font-size:13px;
-  font-weight:700;
-  margin-top:8px;
-  transition:.2s;
-}
-
-.primary-btn:hover {
-  filter:brightness(1.08);
-  transform:translateY(-1px);
-}
-
-.secondary-btn {
-  padding:10px 15px;
-  border-radius:10px;
-  background:#e8f4fb;
-  color:#12618d;
-  font-size:11px;
-  font-weight:700;
-}
-
-.result-area {
-  margin-top:20px;
-}
-
-.progress-wrap {
-  background:#e7edf3;
-  border-radius:30px;
-  height:9px;
-  overflow:hidden;
-  margin:12px 0;
-}
-
-.progress-bar {
-  height:100%;
-  width:0;
-  background:linear-gradient(90deg,#37c89a,#168bc5);
-  border-radius:30px;
-  transition:width .3s;
-}
-
-.progress-info {
-  display:flex;
-  justify-content:space-between;
-  font-size:11px;
-  color:#64748b;
-}
-
-.day-card {
-  padding:16px;
-  border:1px solid #e3ebf2;
-  border-radius:15px;
-  margin:11px 0;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-
-.day-card.done {
-  background:#edfbf5;
-  border-color:#a9e8ce;
-}
-
-.day-content {
-  flex:1;
-}
-
-.day-content strong {
-  display:block;
-  font-size:13px;
-  margin-bottom:6px;
-}
-
-.day-content span {
-  color:#64748b;
-  font-size:11px;
-  line-height:2;
-}
-
-.day-check {
-  accent-color:#20ad7c;
-  width:20px;
-  height:20px;
-  flex-shrink:0;
-}
-
-.empty {
-  text-align:center;
-  padding:25px 10px;
-  color:#75869a;
-  font-size:12px;
-  line-height:2.2;
-}
-
-.timer-card {
-  text-align:center;
-  padding:30px 20px;
-}
-
-.timer-mode {
-  display:inline-block;
-  background:#e7f5ff;
-  color:#1675a8;
-  padding:8px 15px;
-  border-radius:30px;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:20px;
-}
-
-.timer {
-  font-size:clamp(48px,12vw,75px);
-  color:#123c60;
-  font-weight:800;
-  direction:ltr;
-  letter-spacing:2px;
-}
-
-.rounds {
-  font-size:12px;
-  color:#64748b;
-  margin:12px 0 22px;
-}
-
-.timer-actions {
-  display:flex;
-  gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-
-.timer-actions button {
-  padding:12px 20px;
-  border-radius:12px;
-  font-size:12px;
-  font-weight:700;
-}
-
-.start-btn {
-  color:white;
-  background:#168bc5;
-  min-width:120px;
-}
-
-.reset-btn,.skip-btn {
-  color:#17618e;
-  background:#e8f4fb;
-}
-
-.calc-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-
-.calc-result {
-  text-align:center;
-  padding:23px;
-  background:linear-gradient(130deg,#e5f7ff,#f3faff);
-  border-radius:16px;
-  margin-top:18px;
-}
-
-.calc-result span {
-  display:block;
-  color:#64748b;
-  font-size:12px;
-}
-
-.calc-result strong {
-  display:block;
-  color:#12618d;
-  font-size:38px;
-  margin-top:8px;
-}
-
-.notice {
-  background:#fff7e7;
-  color:#8a6424;
-  padding:12px;
-  border-radius:12px;
-  font-size:10px;
-  line-height:2;
-  margin-top:12px;
-}
-
-footer {
-  margin-top:55px;
-  padding:35px 0 25px;
-  background:rgba(3,17,39,.38);
-  border-top:1px solid rgba(255,255,255,.13);
-}
-
-.dua-card {
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.17);
-  padding:20px;
-  border-radius:18px;
-  margin-bottom:13px;
-  text-align:center;
-}
-
-.dua-card h3 {
-  font-size:13px;
-  margin-bottom:10px;
-}
-
-.dua-card p {
-  font-size:12px;
-  line-height:2.4;
-  opacity:.9;
-}
-
-.links-title {
-  text-align:center;
-  font-size:14px;
-  margin:25px 0 15px;
-}
-
-.telegram-links {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-}
-
-.telegram-links a {
-  text-align:center;
-  padding:13px 5px;
-  border-radius:12px;
-  background:rgba(255,255,255,.12);
-  border:1px solid rgba(255,255,255,.15);
-  font-size:10px;
-  transition:.2s;
-}
-
-.telegram-links a:hover {
-  background:rgba(255,255,255,.22);
-}
-
-.copyright {
-  text-align:center;
-  font-size:10px;
-  opacity:.6;
-  margin-top:25px;
-  line-height:2;
-}
-
-@media(max-width:650px) {
-  .brand h1 {font-size:17px}
-  .brand p {font-size:9px}
-  .logo {width:42px;height:42px}
-  .free {font-size:10px;padding:8px 10px}
-  .hero {padding-top:28px}
-  .main-tab {font-size:11px;padding:13px 4px}
-  .card {padding:18px}
-  .telegram-links {grid-template-columns:repeat(2,1fr)}
-  .calc-grid {grid-template-columns:1fr}
-}
-
-@media(max-width:380px) {
-  .count-grid {gap:5px}
-  .count-item strong {font-size:22px}
-  .count-item span {font-size:9px}
-  .subjects {gap:7px}
-  .subject {font-size:10px;padding:11px 7px}
-}
+:root{
+ --ink:#07182f;--navy:#0a2343;--blue:#123e68;--cyan:#79d8f5;--ice:#dff7ff;
+ --gold:#e9c987;--white:#f7fbff;--muted:#a9bfd2;--line:rgba(208,237,255,.15);
+ --glass:rgba(10,34,62,.72);--glass2:rgba(255,255,255,.075);
+ --mint:#64d6b1;--danger:#ff9a9a;--shadow:0 24px 70px rgba(0,8,25,.32)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--white);font-family:"Alexandria",sans-serif;background:
+ radial-gradient(ellipse at 12% 0%,rgba(96,207,245,.25),transparent 32%),
+ radial-gradient(ellipse at 92% 18%,rgba(46,117,174,.24),transparent 30%),
+ linear-gradient(155deg,#174b72 0%,#0c2b4d 32%,#081d38 66%,#050f20 100%);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.15;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 75%)}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,92%);margin:auto;position:relative}
+header{padding:24px 0 8px}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:12px}
+.brandmark{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;color:#092440;font-size:26px;font-weight:800;background:linear-gradient(145deg,#d9f7ff,#6ec9ed);box-shadow:0 8px 30px #4cbce944,inset 0 1px 0 #fff}
+.brand h1{font-size:19px;letter-spacing:-.6px;margin:0;font-weight:800}
+.brand p{font-size:9px;color:#b9d9eb;margin:5px 0 0}
+.free-tag{border:1px solid rgba(233,201,135,.45);background:rgba(233,201,135,.09);color:#f1d9a8;border-radius:99px;padding:9px 14px;font-size:10px;font-weight:700;white-space:nowrap}
+.hero{padding:54px 0 26px;max-width:760px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#a9e9fb;font-size:10px;font-weight:600;letter-spacing:.3px;margin-bottom:16px}
+.eyebrow:before{content:"";width:24px;height:1px;background:var(--gold)}
+.hero h2{font-size:clamp(29px,5.3vw,51px);line-height:1.5;margin:0;font-weight:800;letter-spacing:-1.7px}
+.hero h2 span{color:var(--cyan)}
+.hero p{font-size:12px;line-height:2.2;color:#b4c9da;max-width:580px;margin:13px 0 0}
+.countdown{margin:14px 0 26px;padding:19px 21px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(115deg,rgba(111,202,235,.13),rgba(255,255,255,.035));box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+.count-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.count-head h3{font-size:12px;margin:0;font-weight:700}
+.count-head span{font-size:9px;color:#9bb9ce}
+.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.count-unit{background:rgba(2,18,38,.45);border:1px solid rgba(255,255,255,.07);border-radius:14px;text-align:center;padding:12px 5px}
+.count-unit strong{display:block;font-size:clamp(22px,4vw,31px);font-weight:800;color:#e9faff;direction:ltr;font-variant-numeric:tabular-nums}
+.count-unit small{font-size:9px;color:#91b2c9}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0 18px;padding:7px;background:rgba(1,14,31,.45);border:1px solid var(--line);border-radius:18px}
+.tab{border:1px solid transparent;border-radius:12px;padding:14px 8px;background:transparent;color:#a9bfd2;font-size:12px;font-weight:700;transition:.2s}
+.tab.active{background:linear-gradient(135deg,#d9f6ff,#8bd8f2);color:#082643;box-shadow:0 8px 24px #42b8e52a}
+.tab:hover:not(.active){background:rgba(255,255,255,.06);color:#fff}
+.panel{display:none;animation:rise .28s ease}
+.panel.active{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.section-top{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:31px 0 17px}
+.section-top h2{font-size:22px;margin:0;font-weight:800}
+.section-top p{font-size:10px;color:#9fb8cb;margin:8px 0 0;line-height:2}
+.section-mark{font-size:9px;color:#b7d6e8;border:1px solid var(--line);padding:8px 11px;border-radius:99px;white-space:nowrap}
+.subtabs{display:flex;gap:9px;margin:18px 0}
+.subtab{flex:1;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.045);color:#b4c8d8;padding:13px;font-size:11px;font-weight:700}
+.subtab.active{background:rgba(117,214,244,.15);border-color:rgba(121,216,245,.55);color:#dff8ff;box-shadow:inset 0 0 18px rgba(91,195,231,.08)}
+.subpanel{display:none}.subpanel.active{display:block;animation:rise .25s ease}
+.card{background:linear-gradient(145deg,rgba(17,49,79,.92),rgba(8,27,50,.94));border:1px solid var(--line);border-radius:21px;padding:22px;margin:13px 0;box-shadow:0 16px 45px rgba(0,8,25,.16)}
+.card h3{font-size:14px;margin:0 0 8px;color:#edf9ff}
+.card .desc{font-size:10px;line-height:2.1;color:#9eb8ca;margin:0 0 17px}
+.subjects{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:17px 0}
+.subject{display:flex;align-items:center;gap:10px;border:1px solid rgba(188,222,242,.14);border-radius:13px;padding:13px;background:rgba(255,255,255,.035);font-size:11px;color:#d7e8f3;cursor:pointer;transition:.2s}
+.subject:has(input:checked){background:rgba(96,198,232,.13);border-color:rgba(121,216,245,.55);color:#e5faff}
+.subject input{accent-color:#66cbe9;width:16px;height:16px}
+.field{margin:14px 0}
+.field label{display:block;font-size:10px;color:#c6d9e7;font-weight:600;margin-bottom:8px}
+.field input{width:100%;background:rgba(1,15,32,.52);border:1px solid rgba(187,219,239,.17);border-radius:12px;padding:13px 14px;color:#f5fbff;outline:none;font-size:12px;transition:.2s}
+.field input:focus{border-color:#71cde9;box-shadow:0 0 0 3px rgba(113,205,233,.1)}
+.field input::placeholder{color:#68849a}
+.primary{width:100%;border:0;border-radius:13px;padding:14px;background:linear-gradient(105deg,#7ad8f4,#3d9fce);color:#06213b;font-size:11px;font-weight:800;box-shadow:0 8px 24px rgba(50,159,205,.18);transition:.2s}
+.primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.ghost{border:1px solid rgba(121,216,245,.28);border-radius:10px;padding:9px 12px;background:rgba(121,216,245,.08);color:#bdeeff;font-size:9px;font-weight:700}
+.result{margin-top:14px}
+.empty{padding:27px 12px;text-align:center;color:#819db2;font-size:10px;line-height:2.3;border:1px dashed rgba(183,219,239,.16);border-radius:15px}
+.progress-line{height:7px;background:rgba(0,10,25,.65);border-radius:99px;overflow:hidden;margin:10px 0 8px}
+.progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#53cba7,#75d8f2);transition:width .25s}
+.progress-meta{display:flex;justify-content:space-between;color:#9eb8ca;font-size:9px}
+.day{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid rgba(193,222,240,.12);border-radius:14px;margin:9px 0;background:rgba(255,255,255,.025)}
+.day.done{background:rgba(63,186,143,.09);border-color:rgba(100,214,177,.35)}
+.day-main{flex:1;min-width:0}
+.day-main b{display:block;font-size:11px;color:#eaf7ff;margin-bottom:5px}
+.day-main span{display:block;font-size:9px;color:#9bb4c7;line-height:2}
+.day input{width:18px;height:18px;accent-color:#62d3ad;flex-shrink:0}
+.result-head{margin-bottom:13px}
+.result-head h3{margin-bottom:12px}
+.timer-card{text-align:center;padding:30px 18px}
+.mode-pill{display:inline-block;border:1px solid rgba(121,216,245,.28);background:rgba(121,216,245,.09);border-radius:99px;padding:8px 14px;color:#bcefff;font-size:9px;margin-bottom:17px}
+.clock{font-size:clamp(53px,13vw,83px);font-weight:800;letter-spacing:1px;direction:ltr;font-variant-numeric:tabular-nums;color:#e4f9ff;text-shadow:0 0 35px rgba(102,208,240,.16)}
+.rounds{font-size:10px;color:#91aec3;margin:9px 0 23px}
+.actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.actions button{border-radius:11px;padding:11px 18px;font-size:10px;font-weight:700}
+.start{background:linear-gradient(110deg,#83def5,#4aa9d5);color:#08243d;min-width:112px}
+.soft{background:rgba(255,255,255,.07);border:1px solid var(--line);color:#d4e8f5}
+.tip{border-right:2px solid var(--gold);padding:3px 13px;color:#a9c0d1;font-size:10px;line-height:2.4}
+.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.calc-result{border:1px solid rgba(121,216,245,.22);border-radius:17px;text-align:center;padding:22px;background:linear-gradient(140deg,rgba(96,190,224,.12),rgba(255,255,255,.025));margin-top:16px}
+.calc-result small{display:block;color:#9db7ca;font-size:10px}
+.calc-result strong{display:block;font-size:39px;color:#c9f3ff;margin-top:7px;font-variant-numeric:tabular-nums}
+.warning{font-size:9px;color:#e7cb94;line-height:2;background:rgba(233,201,135,.07);border:1px solid rgba(233,201,135,.15);padding:11px 13px;border-radius:12px;margin-top:14px}
+footer{margin-top:55px;padding:34px 0 23px;border-top:1px solid var(--line);background:rgba(2,12,27,.28)}
+.footer-title{text-align:center;font-size:15px;margin:0 0 17px}
+.dua{border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:17px;padding:18px;margin:10px 0;text-align:center}
+.dua h3{font-size:11px;color:#d5f3ff;margin:0 0 9px}
+.dua p{font-size:10px;color:#a9c0d1;line-height:2.5;margin:0}
+.links{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:16px}
+.links a{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.045);padding:13px 5px;text-align:center;font-size:9px;color:#c7e2f1;transition:.2s}
+.links a:hover{background:rgba(121,216,245,.12);border-color:rgba(121,216,245,.4)}
+.copy{text-align:center;color:#6f8ba2;font-size:9px;line-height:2.2;margin-top:23px}
+@media(max-width:650px){
+ header{padding-top:18px}.brand h1{font-size:16px}.brandmark{width:42px;height:42px;border-radius:14px}
+ .hero{padding-top:42px}.hero h2{letter-spacing:-1px}
+ .section-top{align-items:start;flex-direction:column}.section-mark{display:none}
+ .card{padding:17px}.calc-grid{grid-template-columns:1fr}
+ .links{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:390px){.tabs{gap:5px;padding:5px}.tab{font-size:10px;padding:12px 4px}.count-grid{gap:5px}.count-unit{padding:10px 3px}.count-unit small{font-size:8px}}
 </style>
 </head>
-
 <body>
-
-<header>
-  <div class="container topbar">
-    <div class="brand">
-      <div class="logo">✦</div>
-      <div>
-        <h1>منبر التحصيلي</h1>
-        <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
-      </div>
-    </div>
-    <div class="free">مجاني 100٪</div>
+<header class="wrap">
+ <div class="topline">
+  <div class="brand">
+   <div class="brandmark">✦</div>
+   <div><h1>منبر التحصيلي</h1><p>علمٌ يُتقن، وهدفٌ يُدرك</p></div>
   </div>
+  <div class="free-tag">مجاني 100٪</div>
+ </div>
 </header>
 
-<main class="container">
+<main class="wrap">
+ <section class="hero">
+  <div class="eyebrow">وجهتك لتنظيم رحلة التحصيلي</div>
+  <h2>كل يوم يقرّبك من <span>هدفك.</span></h2>
+  <p>خطّط لتأسيسك، نظّم تدريبك، وراقب تقدمك في مكان واحد. ابدأ بخطوة واضحة، ودع الاستمرار يصنع الفرق.</p>
+ </section>
 
-  <section class="hero">
-    <h2>رحلتك نحو <span>الدرجة التي تطمح لها</span></h2>
-    <p>نظّم مذاكرتك، تابع إنجازك، وقرّب هدفك خطوة بعد خطوة.</p>
-  </section>
+ <section class="countdown" aria-label="العد التنازلي للتحصيلي">
+  <div class="count-head"><h3>الوقت المتبقي على التحصيلي</h3><span>رحلتك مستمرة</span></div>
+  <div class="count-grid">
+   <div class="count-unit"><strong id="cdDays">--</strong><small>يوم</small></div>
+   <div class="count-unit"><strong id="cdHours">--</strong><small>ساعة</small></div>
+   <div class="count-unit"><strong id="cdMinutes">--</strong><small>دقيقة</small></div>
+   <div class="count-unit"><strong id="cdSeconds">--</strong><small>ثانية</small></div>
+  </div>
+ </section>
 
-  <section class="countdown">
-    <h3>الوقت المتبقي على التحصيلي</h3>
-    <div class="count-grid">
-      <div class="count-item">
-        <strong id="days">--</strong>
-        <span>يوم</span>
-      </div>
-      <div class="count-item">
-        <strong id="hours">--</strong>
-        <span>ساعة</span>
-      </div>
-      <div class="count-item">
-        <strong id="minutes">--</strong>
-        <span>دقيقة</span>
-      </div>
-      <div class="count-item">
-        <strong id="seconds">--</strong>
-        <span>ثانية</span>
-      </div>
+ <nav class="tabs" aria-label="الأقسام الرئيسية">
+  <button class="tab active" data-panel="schedules">الجداول</button>
+  <button class="tab" data-panel="workspace">مساحة المذاكرة</button>
+  <button class="tab" data-panel="weighted">حساب الموزونة</button>
+ </nav>
+
+ <section class="panel active" id="schedules">
+  <div class="section-top">
+   <div><h2>خطتك الدراسية</h2><p>حوّل هدفك إلى مهام واضحة يمكنك متابعتها.</p></div>
+   <span class="section-mark">خطّط · أنجز · تقدّم</span>
+  </div>
+  <div class="subtabs">
+   <button class="subtab active" data-sub="foundation">التأسيس</button>
+   <button class="subtab" data-sub="practice">التدريب</button>
+  </div>
+
+  <div class="subpanel active" id="foundation">
+   <div class="card">
+    <h3>بناء جدول التأسيس</h3>
+    <p class="desc">اختر المواد التي تريد العمل عليها، واكتب عدد الأيام. ستُوزّع المواد على الأيام بالتناوب وبشكل متوازن.</p>
+    <div class="subjects">
+     <label class="subject"><input type="checkbox" value="الرياضيات"> الرياضيات</label>
+     <label class="subject"><input type="checkbox" value="الفيزياء"> الفيزياء</label>
+     <label class="subject"><input type="checkbox" value="الكيمياء"> الكيمياء</label>
+     <label class="subject"><input type="checkbox" value="الأحياء"> الأحياء</label>
     </div>
-    <div class="count-note">موعد مبدئي قابل للتغيير عند اعتماد الموعد الرسمي.</div>
-  </section>
+    <div class="field"><label for="foundationDays">عدد أيام التأسيس</label><input id="foundationDays" type="number" min="1" max="365" step="1" placeholder="اكتب عدد الأيام"></div>
+    <button class="primary" id="buildFoundation">إنشاء جدول التأسيس</button>
+   </div>
+   <div class="card result" id="foundationResult"><div class="empty">بعد اختيار المواد وعدد الأيام سيظهر جدولك هنا.</div></div>
+  </div>
 
-  <nav class="main-tabs">
-    <button class="main-tab active" data-panel="tables">الجداول</button>
-    <button class="main-tab" data-panel="study">مساحة المذاكرة</button>
-    <button class="main-tab" data-panel="calculator">حساب الموزونة</button>
-  </nav>
+  <div class="subpanel" id="practice">
+   <div class="card">
+    <h3>خطة التدريب على الأسئلة</h3>
+    <p class="desc">اكتب إجمالي الأسئلة وعدد الأيام المتاحة، وسيتم توزيع الأسئلة تلقائيًا مع مراعاة الفارق البسيط بين الأيام.</p>
+    <div class="field"><label for="questionTotal">عدد الأسئلة</label><input id="questionTotal" type="number" min="1" step="1" placeholder="مثال: 1200"></div>
+    <div class="field"><label for="practiceDays">عدد الأيام</label><input id="practiceDays" type="number" min="1" max="365" step="1" placeholder="مثال: 40"></div>
+    <button class="primary" id="buildPractice">إنشاء جدول التدريب</button>
+   </div>
+   <div class="card result" id="practiceResult"><div class="empty">أدخل عدد الأسئلة والأيام ليظهر توزيع التدريب هنا.</div></div>
+  </div>
+ </section>
 
-  <!-- الجداول -->
-  <section class="panel active" id="tables">
+ <section class="panel" id="workspace">
+  <div class="section-top">
+   <div><h2>مساحة المذاكرة</h2><p>مساحة هادئة تساعدك على التركيز وإدارة وقتك.</p></div>
+   <span class="section-mark">تركيزك أولويتك</span>
+  </div>
+  <div class="card timer-card">
+   <div class="mode-pill" id="timerMode">وقت التركيز</div>
+   <div class="clock" id="clock">25:00</div>
+   <div class="rounds" id="rounds">الجولات المكتملة: 0 من 4</div>
+   <div class="actions">
+    <button class="start" id="startTimer">ابدأ التركيز</button>
+    <button class="soft" id="resetTimer">إعادة ضبط</button>
+    <button class="soft" id="skipTimer">تخطي المرحلة</button>
+   </div>
+  </div>
+  <div class="card">
+   <h3>نظام بومودورو</h3>
+   <p class="tip">25 دقيقة تركيز، ثم 5 دقائق استراحة قصيرة. بعد إكمال أربع جولات تركيز، تحصل على استراحة طويلة مدتها 30 دقيقة. يمكنك الإيقاف أو إعادة الضبط أو الانتقال للمرحلة التالية متى احتجت.</p>
+  </div>
+ </section>
 
-    <h2 class="section-title">جداول المذاكرة</h2>
-    <p class="section-desc">رتّب خطتك بالطريقة التي تناسب وقتك، وتابع إنجازك يومًا بيوم.</p>
-
-    <div class="sub-tabs">
-      <button class="sub-tab active" data-sub="foundation">التأسيس</button>
-      <button class="sub-tab" data-sub="training">التدريب</button>
-    </div>
-
-    <!-- التأسيس -->
-    <div class="sub-panel active" id="foundation">
-      <div class="card">
-        <h3>جدول التأسيس</h3>
-        <p>اختر المواد التي تريد تأسيسها، ثم حدّد عدد الأيام. سيُقسّم الجدول خطتك تلقائيًا.</p>
-
-        <div class="subjects">
-          <label class="subject"><input type="checkbox" value="الرياضيات"> الرياضيات</label>
-          <label class="subject"><input type="checkbox" value="الفيزياء"> الفيزياء</label>
-          <label class="subject"><input type="checkbox" value="الكيمياء"> الكيمياء</label>
-          <label class="subject"><input type="checkbox" value="الأحياء"> الأحياء</label>
-        </div>
-
-        <div class="field">
-          <label for="foundationDays">عدد أيام التأسيس</label>
-          <input id="foundationDays" type="number" min="1" max="365" placeholder="اكتب عدد الأيام">
-        </div>
-
-        <button class="primary-btn" id="makeFoundation">إنشاء جدول التأسيس</button>
-      </div>
-
-      <div class="card result-area" id="foundationResult">
-        <div class="empty">اختر موادك وعدد الأيام، ثم أنشئ جدولك ليظهر هنا.</div>
-      </div>
-    </div>
-
-    <!-- التدريب -->
-    <div class="sub-panel" id="training">
-      <div class="card">
-        <h3>جدول التدريب</h3>
-        <p>أدخل عدد الأسئلة التي تريد حلها وعدد الأيام المتاحة، وسنوزعها لك بالتساوي قدر الإمكان.</p>
-
-        <div class="field">
-          <label for="questionCount">عدد الأسئلة</label>
-          <input id="questionCount" type="number" min="1" placeholder="مثال: 1000">
-        </div>
-
-        <div class="field">
-          <label for="trainingDays">عدد الأيام</label>
-          <input id="trainingDays" type="number" min="1" max="365" placeholder="مثال: 30">
-        </div>
-
-        <button class="primary-btn" id="makeTraining">إنشاء جدول التدريب</button>
-      </div>
-
-      <div class="card result-area" id="trainingResult">
-        <div class="empty">أدخل عدد الأسئلة والأيام، وسيظهر جدول التدريب هنا.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- مساحة المذاكرة -->
-  <section class="panel" id="study">
-    <h2 class="section-title">مساحة المذاكرة</h2>
-    <p class="section-desc">ركّز في مهمتك، وخذ استراحتك في وقتها. خطوة صغيرة كل يوم تصنع فرقًا.</p>
-
-    <div class="card timer-card">
-      <div class="timer-mode" id="timerMode">وقت التركيز</div>
-      <div class="timer" id="timerDisplay">25:00</div>
-      <div class="rounds" id="roundDisplay">الجولات المكتملة: 0 من 4</div>
-
-      <div class="timer-actions">
-        <button class="start-btn" id="timerStart">ابدأ</button>
-        <button class="reset-btn" id="timerReset">إعادة</button>
-        <button class="skip-btn" id="timerSkip">تخطي</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>طريقة استخدام المؤقت</h3>
-      <p>
-        • 25 دقيقة تركيز.<br>
-        • 5 دقائق استراحة قصيرة.<br>
-        • بعد أربع جولات تركيز، خذ استراحة طويلة لمدة 30 دقيقة.<br>
-        • يمكنك إيقاف المؤقت أو إعادة ضبطه في أي وقت.
-      </p>
-    </div>
-  </section>
-
-  <!-- حساب الموزونة -->
-  <section class="panel" id="calculator">
-    <h2 class="section-title">حساب الموزونة</h2>
-    <p class="section-desc">احسب موزونتك بإدخال درجاتك ونسب القبول المعتمدة لدى الجهة التي تستهدفها.</p>
-
-    <div class="card">
-      <h3>درجاتك</h3>
-
-      <div class="field">
-        <label for="schoolGrade">معدل الثانوية</label>
-        <input id="schoolGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100">
-      </div>
-
-      <div class="field">
-        <label for="qudratGrade">درجة القدرات</label>
-        <input id="qudratGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100">
-      </div>
-
-      <div class="field">
-        <label for="tahsiliGrade">درجة التحصيلي</label>
-        <input id="tahsiliGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100">
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>أوزان النسب</h3>
-      <p>يمكنك تغيير الأوزان حسب متطلبات الجامعة.</p>
-
-      <div class="calc-grid">
-        <div class="field">
-          <label for="schoolWeight">وزن الثانوية ٪</label>
-          <input id="schoolWeight" type="number" min="0" max="100" value="30">
-        </div>
-
-        <div class="field">
-          <label for="qudratWeight">وزن القدرات ٪</label>
-          <input id="qudratWeight" type="number" min="0" max="100" value="30">
-        </div>
-
-        <div class="field">
-          <label for="tahsiliWeight">وزن التحصيلي ٪</label>
-          <input id="tahsiliWeight" type="number" min="0" max="100" value="40">
-        </div>
-      </div>
-
-      <div class="progress-info">
-        <span>مجموع الأوزان</span>
-        <strong id="weightTotal">100٪</strong>
-      </div>
-
-      <div class="progress-wrap">
-        <div class="progress-bar" id="weightBar" style="width:100%"></div>
-      </div>
-
-      <button class="primary-btn" id="calculate">احسب الموزونة</button>
-
-      <div class="calc-result">
-        <span>موزونتك المتوقعة</span>
-        <strong id="weightedResult">--</strong>
-      </div>
-
-      <div class="notice">تنبيه: النتيجة تقديرية، وتختلف معايير القبول والأوزان من جامعة إلى أخرى.</div>
-    </div>
-  </section>
-
+ <section class="panel" id="weighted">
+  <div class="section-top">
+   <div><h2>حساب الموزونة</h2><p>أدخل درجاتك وأوزانها لمعرفة النتيجة التقديرية.</p></div>
+   <span class="section-mark">حاسبة الموزونة</span>
+  </div>
+  <div class="card">
+   <h3>درجاتك</h3>
+   <div class="field"><label for="schoolGrade">معدل الثانوية</label><input id="schoolGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100"></div>
+   <div class="field"><label for="qudratGrade">درجة القدرات</label><input id="qudratGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100"></div>
+   <div class="field"><label for="tahsiliGrade">درجة التحصيلي</label><input id="tahsiliGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100"></div>
+  </div>
+  <div class="card">
+   <h3>أوزان النسب</h3>
+   <p class="desc">الأوزان الافتراضية 30٪ للثانوية، 30٪ للقدرات، و40٪ للتحصيلي. يمكنك تعديلها وفق متطلبات الجامعة.</p>
+   <div class="calc-grid">
+    <div class="field"><label for="schoolWeight">وزن الثانوية ٪</label><input id="schoolWeight" type="number" min="0" max="100" value="30"></div>
+    <div class="field"><label for="qudratWeight">وزن القدرات ٪</label><input id="qudratWeight" type="number" min="0" max="100" value="30"></div>
+    <div class="field"><label for="tahsiliWeight">وزن التحصيلي ٪</label><input id="tahsiliWeight" type="number" min="0" max="100" value="40"></div>
+   </div>
+   <div class="progress-meta"><span>مجموع الأوزان</span><strong id="weightSum">100٪</strong></div>
+   <div class="progress-line"><div class="progress-fill" id="weightFill" style="width:100%"></div></div>
+   <button class="primary" id="calculate">احسب الموزونة</button>
+   <div class="calc-result"><small>موزونتك التقديرية</small><strong id="weightedResult">--</strong></div>
+   <div class="warning">تأكد من إدخال أوزان الجامعة المستهدفة؛ تختلف معايير القبول من جامعة إلى أخرى، وهذه الحاسبة تقديرية.</div>
+  </div>
+ </section>
 </main>
 
 <footer>
-  <div class="container">
-
-    <div class="dua-card">
-      <h3>دعاء للطلاب والطالبات</h3>
-      <p>
-        اللهم افتح عليهم فتوح العارفين، ويسّر لهم دروب العلم،
-        وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد،
-        واجعل النجاح حليفهم والتميز نصيبهم.
-      </p>
-    </div>
-
-    <div class="dua-card">
-      <h3>دعاء لصاحب منبر التحصيلي والأدمن معه</h3>
-      <p>
-        اللهم بارك في سعيهم وعملهم، واجعل ما يقدمونه علمًا نافعًا
-        وأجرًا باقيًا، واكتب لهم التوفيق والقبول،
-        واجعل هذا المنبر باب خير ونفع لكل طالب وطالبة.
-      </p>
-    </div>
-
-    <h3 class="links-title">قنوات منبر التحصيلي</h3>
-
-    <div class="telegram-links">
-      <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
-      <a href="https://t.me/w_9lr" target="_blank" rel="noopener">قناة الكويزات</a>
-      <a href="https://t.me/w_1lr" target="_blank" rel="noopener">قناة الملفات</a>
-      <a href="https://t.me/w_2lr" target="_blank" rel="noopener">المناقشة</a>
-    </div>
-
-    <div class="copyright">
-      منبر التحصيلي © 2026<br>
-      علمٌ يُتقن، وهدفٌ يُدرك
-    </div>
-
+ <div class="wrap">
+  <h2 class="footer-title">منبر التحصيلي</h2>
+  <div class="dua"><h3>دعاء للطلاب والطالبات</h3><p>اللهم افتح عليهم فتوح العارفين، ويسّر لهم دروب العلم، وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد، واجعل النجاح حليفهم والتميز نصيبهم.</p></div>
+  <div class="dua"><h3>دعاء لصاحب منبر التحصيلي والأدمن معه</h3><p>اللهم بارك في سعيهم وعملهم، واجعل ما يقدمونه علمًا نافعًا وأجرًا باقيًا، واكتب لهم التوفيق والقبول، واجعل هذا المنبر باب خير ونفع لكل طالب وطالبة.</p></div>
+  <h3 class="footer-title" style="font-size:12px;margin-top:24px">انضم إلى مجتمع منبر التحصيلي</h3>
+  <div class="links">
+   <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
+   <a href="https://t.me/w_9lr" target="_blank" rel="noopener">قناة الكويزات</a>
+   <a href="https://t.me/w_1lr" target="_blank" rel="noopener">قناة الملفات</a>
+   <a href="https://t.me/w_2lr" target="_blank" rel="noopener">مجموعة المناقشة</a>
   </div>
+  <div class="copy">علمٌ يُتقن، وهدفٌ يُدرك<br>منبر التحصيلي © 2026</div>
+ </div>
 </footer>
 
 <script>
 "use strict";
 
-/* =========================================
-   إعدادات عامة
-========================================= */
-
-// غيّر التاريخ عند اعتماد الموعد الرسمي.
-const EXAM_DATE = "2027-05-27T08:00:00+03:00";
-
 const $ = id => document.getElementById(id);
+const EXAM_DATE = "2027-05-27T08:00:00+03:00"; // موعد مبدئي قابل للتعديل
 
-function safeSave(key, value) {
+function save(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); }
+  catch (e) { console.warn("تعذر حفظ التقدم محليًا", e); }
+}
+function load(key, fallback) {
   try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.warn("تعذر حفظ البيانات محليًا", error);
-  }
+    const raw = localStorage.getItem(key);
+    return raw === null ? fallback : JSON.parse(raw);
+  } catch (e) { return fallback; }
+}
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  })[c]);
+}
+function validWhole(value, min, max) {
+  return Number.isSafeInteger(value) && value >= min && value <= max;
 }
 
-function safeLoad(key, fallback) {
-  try {
-    const value = localStorage.getItem(key);
-    return value ? JSON.parse(value) : fallback;
-  } catch (error) {
-    return fallback;
-  }
-}
-
-/* =========================================
-   التنقل بين الأقسام الرئيسية
-========================================= */
-
-document.querySelectorAll(".main-tab").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".main-tab").forEach(item => {
-      item.classList.remove("active");
-    });
-
-    document.querySelectorAll(".panel").forEach(panel => {
-      panel.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    $(button.dataset.panel).classList.add("active");
+/* التنقل الرئيسي */
+document.querySelectorAll(".tab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    document.querySelectorAll(".panel").forEach(x => x.classList.remove("active"));
+    btn.classList.add("active");
+    $(btn.dataset.panel).classList.add("active");
   });
 });
 
-/* =========================================
-   التنقل بين التأسيس والتدريب
-========================================= */
-
-document.querySelectorAll(".sub-tab").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".sub-tab").forEach(item => {
-      item.classList.remove("active");
-    });
-
-    document.querySelectorAll(".sub-panel").forEach(panel => {
-      panel.classList.remove("active");
-    });
-
-    button.classList.add("active");
-    $(button.dataset.sub).classList.add("active");
+/* التنقل الفرعي */
+document.querySelectorAll(".subtab").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".subtab").forEach(x => x.classList.remove("active"));
+    document.querySelectorAll(".subpanel").forEach(x => x.classList.remove("active"));
+    btn.classList.add("active");
+    $(btn.dataset.sub).classList.add("active");
   });
 });
 
-/* =========================================
-   العد التنازلي
-========================================= */
-
-function updateCountdown() {
+/* العد التنازلي */
+function countdown() {
   const target = new Date(EXAM_DATE).getTime();
-  const now = Date.now();
-  const difference = target - now;
-
-  if (!Number.isFinite(target) || difference <= 0) {
-    $("days").textContent = "0";
-    $("hours").textContent = "0";
-    $("minutes").textContent = "0";
-    $("seconds").textContent = "0";
-    return;
-  }
-
-  const days = Math.floor(difference / 86400000);
-  const hours = Math.floor((difference % 86400000) / 3600000);
-  const minutes = Math.floor((difference % 3600000) / 60000);
-  const seconds = Math.floor((difference % 6000
+  const diff = target - Date.now();
+  const ids = ["cdDays","cdHours","cdMinutes","cdSeconds"];
+  if (!Number.isFinite(target) || diff <= 0) {
+    ids.forEach(id => $(id).text
