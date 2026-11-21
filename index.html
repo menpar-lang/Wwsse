@@ -37,7 +37,11 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 .stat span{font-size:12px;color:#c3d7ec}
 .bar{height:9px;background:#ffffff20;border-radius:99px;overflow:hidden;margin-top:9px}
 .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#67d6f4,#5ee0b0);border-radius:99px;transition:width .25s}
-.form-grid{display:grid;grid-template-columns:1.3fr .7fr auto;gap:9px;align-items:end}
+.form-grid{display:grid;grid-template-columns:1fr auto;gap:9px;align-items:end}
+.subject-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+.subject-choice{display:flex;align-items:center;gap:8px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:var(--panel);font-size:13px;color:#f2f8ff}
+.subject-choice input{width:17px;height:17px;accent-color:#5ee0b0;flex:none}
+.countdown-global{margin-bottom:17px}
 .field label{display:block;font-size:12px;color:#c7dbef;margin-bottom:6px}
 .field input,.field select{width:100%;min-width:0;border:1px solid #ffffff24;border-radius:12px;background:#102d50;color:#fff;padding:11px 12px;outline:none}
 .field input:focus,.field select:focus{border-color:var(--sky);box-shadow:0 0 0 3px #70d1f522}
@@ -79,7 +83,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:12px;ma
 .links a{text-decoration:none;text-align:center;color:#eaf8ff;border:1px solid var(--line);background:#ffffff0d;padding:12px 7px;border-radius:13px;font-size:13px;font-weight:600}
 .links a:hover{background:#ffffff20}
 footer{text-align:center;color:#9db6d0;font-size:12px;margin-top:18px}
-@media(max-width:650px){.shell{width:min(100% - 20px,1050px);padding-top:15px}.hero{padding:18px}.panel{padding:15px}.form-grid{grid-template-columns:1fr 1fr}.form-grid .btn{grid-column:1/-1}.calc-grid{grid-template-columns:1fr}.links{grid-template-columns:repeat(2,1fr)}.stats{gap:7px}.stat{padding:11px 5px}.stat strong{font-size:20px}.tab{font-size:13px;padding:12px 5px}}
+@media(max-width:650px){.shell{width:min(100% - 20px,1050px);padding-top:15px}.hero{padding:18px}.panel{padding:15px}.form-grid{grid-template-columns:1fr auto}.subject-options{grid-template-columns:repeat(2,minmax(0,1fr))}.calc-grid{grid-template-columns:1fr}.links{grid-template-columns:repeat(2,1fr)}.stats{gap:7px}.stat{padding:11px 5px}.stat strong{font-size:20px}.tab{font-size:13px;padding:12px 5px}}
 </style>
 </head>
 <body>
@@ -92,6 +96,17 @@ footer{text-align:center;color:#9db6d0;font-size:12px;margin-top:18px}
  <h2>طريقك نحو درجة تفتخر بها</h2>
  <p>نظّم مذاكرتك، تابع إنجازك، واستفد من أدوات منبر التحصيلي في مكان واحد.</p>
 </section>
+<section class="panel countdown-global" id="countdownPanel">
+ <h3>⏳ العد التنازلي للتحصيلي</h3>
+ <div class="stats" style="margin-bottom:0">
+  <div class="stat"><strong id="cdDays">—</strong><span>يوم</span></div>
+  <div class="stat"><strong id="cdHours">—</strong><span>ساعة</span></div>
+  <div class="stat"><strong id="cdMinutes">—</strong><span>دقيقة</span></div>
+ </div>
+ <p class="muted" id="countdownSeconds" style="text-align:center">جارٍ حساب الوقت...</p>
+ <p class="muted">الموعد المحدد حاليًا في العداد: 27 مايو 2027، ويمكن تغييره عند اعتماد الموعد الرسمي.</p>
+</section>
+
 <nav class="tabs" aria-label="أقسام الموقع">
  <button class="tab active" data-view="planner">الجداول</button>
  <button class="tab" data-view="studySpace">مساحة المذاكرة</button>
@@ -108,28 +123,25 @@ footer{text-align:center;color:#9db6d0;font-size:12px;margin-top:18px}
  <section class="panel">
   <h3>جدولك الدراسي</h3>
   <p class="muted">أضف المواد وعدد الأيام، وسنرتب لك جدولًا تتابع إنجازه يومًا بيوم. يتم حفظ تقدمك على هذا الجهاز.</p>
-  <div class="form-grid">
-   <div class="field"><label for="subjects">المواد (افصل بينها بفاصلة)</label><input id="subjects" placeholder="رياضيات، فيزياء، كيمياء، أحياء"></div>
+  <div class="subject-options" aria-label="اختر المواد">
+   <label class="subject-choice"><input type="checkbox" name="subject" value="الرياضيات" checked> الرياضيات</label>
+   <label class="subject-choice"><input type="checkbox" name="subject" value="الفيزياء" checked> الفيزياء</label>
+   <label class="subject-choice"><input type="checkbox" name="subject" value="الكيمياء" checked> الكيمياء</label>
+   <label class="subject-choice"><input type="checkbox" name="subject" value="الأحياء" checked> الأحياء</label>
+  </div>
+  <div class="form-grid" style="margin-top:12px">
    <div class="field"><label for="daysNumber">عدد الأيام</label><input id="daysNumber" type="number" min="1" max="120" value="14"></div>
    <button class="btn" id="createSchedule">إنشاء الجدول</button>
   </div>
   <div class="bar"><i id="progressBar"></i></div>
   <p class="muted" id="progressText">نسبة الإنجاز: 0٪</p>
-  <div id="scheduleList" class="schedule-list"><div class="empty">ابدأ بإدخال المواد لإنشاء جدولك الدراسي.</div></div>
-  <div style="margin-top:13px"><button class="btn secondary" id="clearSchedule">مسح الجدول</button></div>
- </section>
- <section class="panel" id="countdownPanel">
-  <h3>⏳ العد التنازلي للتحصيلي</h3>
-  <div class="stats" style="margin-bottom:0">
-   <div class="stat"><strong id="cdDays">—</strong><span>يوم</span></div>
-   <div class="stat"><strong id="cdHours">—</strong><span>ساعة</span></div>
-   <div class="stat"><strong id="cdMinutes">—</strong><span>دقيقة</span></div>
+  <div id="scheduleList" class="schedule-list"><div class="empty">اختر المواد التي تدرسها، ثم أنشئ جدولك الدراسي.</div></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:12px">
+   <button class="btn secondary" id="clearSchedule">مسح الجدول</button>
   </div>
-  <p class="muted" id="countdownSeconds" style="text-align:center">جارٍ حساب الوقت...</p>
-  <p class="muted">الموعد المعتمد في العداد حاليًا: 27 مايو 2027، ويمكن تغييره عند اعتماد الموعد الرسمي.</p>
  </section>
  <div class="extras">
-  <section class="panel"><h3>دعاء لطلاب التحصيلي</h3><p class="dua">اللهم افتح على طلاب التحصيلي فتوح العارفين، ويسّر لهم الفهم والحفظ، وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد والدرجات التي تسرّ خواطرهم.</p></section>
+  <section class="panel"><h3>دعاء للطلاب والطالبات</h3><p class="dua">اللهم افتح علينا فتوح العارفين، وارزقنا فهم النبيين وحفظ المرسلين، ويسّر لنا العلم والعمل، وبارك لنا في أوقاتنا وجهودنا، واكتب لنا التوفيق والسداد.</p></section>
   <section class="panel"><h3>دعاء لصاحب منبر التحصيلي والأدمن معه</h3><p class="dua">اللهم بارك لصاحب منبر التحصيلي والأدمن معه في أوقاتهم وجهودهم، واكتب لهم الأجر والتوفيق، واجعل ما يقدمونه علمًا نافعًا وأثرًا طيبًا، وافتح لهم أبواب الخير والنجاح.</p></section>
   <section class="panel"><h3>قنوات منبر التحصيلي</h3><div class="links">
    <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
@@ -184,120 +196,3 @@ footer{text-align:center;color:#9db6d0;font-size:12px;margin-top:18px}
 </main>
 <footer>منبر التحصيلي · بالتوفيق في رحلتكم</footer>
 </div>
-<script>
-"use strict";
-(() => {
- const $ = id => document.getElementById(id);
- const STORE_KEY = "minbar_new_schedule_v1";
- const colors = ["#70d1f5","#ffd66b","#a995ff","#5ee0b0","#ff9bba","#ffb86b"];
- let schedule = [];
- let timerId = null;
- let phase = "work";
- let seconds = 25 * 60;
- let round = 0;
- const WORK = 25*60, SHORT = 5*60, LONG = 30*60;
-
- function showView(name){
-  document.querySelectorAll(".main-view").forEach(el=>el.classList.add("view-hidden"));
-  const target = $(name==="planner" ? "view-planner" : name);
-  if(target) target.classList.remove("view-hidden");
-  document.querySelectorAll(".tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.view===name));
- }
- document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>showView(btn.dataset.view)));
-
- function loadSchedule(){
-  try{const saved=JSON.parse(localStorage.getItem(STORE_KEY)||"[]");schedule=Array.isArray(saved)?saved:[];}catch(e){schedule=[];}
-  renderSchedule();
- }
- function saveSchedule(){try{localStorage.setItem(STORE_KEY,JSON.stringify(schedule));}catch(e){}}
- function renderSchedule(){
-  const list=$("scheduleList");list.innerHTML="";
-  if(!schedule.length){list.innerHTML='<div class="empty">لا يوجد جدول حاليًا. أدخل المواد وأنشئ جدولك.</div>';}
-  schedule.forEach((item,index)=>{
-   const row=document.createElement("label");row.className="day"+(item.done?" done":"");
-   const check=document.createElement("input");check.type="checkbox";check.checked=!!item.done;check.setAttribute("aria-label","إنجاز "+item.day);
-   check.addEventListener("change",()=>{schedule[index].done=check.checked;saveSchedule();renderSchedule();});
-   const text=document.createElement("span");text.className="day-text";
-   const title=document.createElement("strong");title.textContent=item.day;
-   const detail=document.createElement("small");detail.innerHTML='<span class="subject-dot" style="background:'+colors[item.color%colors.length]+'"></span>';detail.appendChild(document.createTextNode(item.subject));
-   text.append(title,detail);row.append(check,text);list.appendChild(row);
-  });
-  const done=schedule.filter(x=>x.done).length,total=schedule.length,pct=total?Math.round(done/total*100):0;
-  $("doneCount").textContent=done;$("totalCount").textContent=total;$("progressBar").style.width=pct+"%";$("progressText").textContent="نسبة الإنجاز: "+pct+"٪";
-  $("streakCount").textContent=calculateStreak();
- }
- function calculateStreak(){
-  if(!schedule.length)return 0;
-  let count=0;
-  for(let i=schedule.length-1;i>=0;i--){if(schedule[i].done)count++;else if(count>0)break;}
-  return count;
- }
- $("createSchedule").addEventListener("click",()=>{
-  const subjects=$("subjects").value.split(/[،,]/).map(s=>s.trim()).filter(Boolean);
-  const n=Math.max(1,Math.min(120,Number.parseInt($("daysNumber").value,10)||1));
-  if(!subjects.length){$("subjects").focus();alert("اكتب مادة واحدة على الأقل.");return;}
-  if(schedule.length&&!confirm("إنشاء جدول جديد سيستبدل الجدول الحالي. هل تريد المتابعة؟"))return;
-  schedule=Array.from({length:n},(_,i)=>({day:"اليوم "+(i+1),subject:subjects[i%subjects.length],color:i%subjects.length,done:false}));
-  saveSchedule();renderSchedule();
- });
- $("clearSchedule").addEventListener("click",()=>{
-  if(!schedule.length)return;
-  if(confirm("هل تريد مسح الجدول الحالي؟")){schedule=[];saveSchedule();renderSchedule();}
- });
-
- function formatTime(s){const m=Math.floor(s/60),sec=s%60;return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");}
- function renderTimer(){
-  $("clock").textContent=formatTime(seconds);
-  $("phaseName").textContent=phase==="work"?"وقت المذاكرة":phase==="short"?"استراحة قصيرة":"استراحة طويلة";
-  $("timerNote").textContent=phase==="work"?"حان وقت التركيز، أبعد المشتتات وابدأ.":phase==="short"?"استراحة قصيرة، خذ نفسًا وارجع بنشاط.":"أحسنت! خذ استراحة طويلة قبل الجولة التالية.";
-  $("roundDots").querySelectorAll("span").forEach((dot,i)=>dot.classList.toggle("done",i<round));
-  document.title=formatTime(seconds)+" | منبر التحصيلي";
- }
- function stopTimer(){if(timerId!==null){clearInterval(timerId);timerId=null;}}
- function nextPhase(){
-  if(phase==="work"){round++;if(round>=4){phase="long";seconds=LONG;}else{phase="short";seconds=SHORT;}}
-  else{if(phase==="long")round=0;phase="work";seconds=WORK;}
-  renderTimer();
- }
- $("startTimer").addEventListener("click",()=>{
-  if(timerId!==null)return;
-  timerId=setInterval(()=>{if(seconds>0){seconds--;renderTimer();}if(seconds<=0){stopTimer();nextPhase();}},1000);
- });
- $("pauseTimer").addEventListener("click",stopTimer);
- $("resetTimer").addEventListener("click",()=>{stopTimer();phase="work";seconds=WORK;round=0;renderTimer();});
- $("skipTimer").addEventListener("click",()=>{stopTimer();nextPhase();});
- renderTimer();
-
- const EXAM_DATE=new Date("2027-05-27T08:00:00+03:00").getTime();
- function countdown(){
-  const diff=EXAM_DATE-Date.now();
-  if(diff<=0){$("cdDays").textContent="0";$("cdHours").textContent="0";$("cdMinutes").textContent="0";$("countdownSeconds").textContent="حلّ موعد الاختبار حسب التاريخ المحدد في العداد.";return;}
-  const days=Math.floor(diff/86400000),hours=Math.floor(diff%86400000/3600000),minutes=Math.floor(diff%3600000/60000),secs=Math.floor(diff%60000/1000);
-  $("cdDays").textContent=days;$("cdHours").textContent=hours;$("cdMinutes").textContent=minutes;$("countdownSeconds").textContent="و "+secs+" ثانية متبقية";
- }
- countdown();setInterval(countdown,1000);
-
- const gradeIds=["schoolGrade","qudratGrade","tahsiliGrade"],weightIds=["schoolWeight","qudratWeight","tahsiliWeight"];
- function calculate(){
-  const grades=gradeIds.map(id=>$(id).value===""?null:Number($(id).value));
-  const weights=weightIds.map(id=>$(id).value===""?0:Number($(id).value));
-  const sum=weights.reduce((a,b)=>a+b,0);
-  $("weightSum").textContent=(Math.round(sum*100)/100)+"٪";
-  $("weightSum").style.color=Math.abs(sum-100)<0.001?"#5ee0b0":"#ffd66b";
-  if(weights.some(x=>!Number.isFinite(x)||x<0||x>100)||Math.abs(sum-100)>0.001){
-   $("weightedResult").textContent="—";$("resultNote").textContent="عدّل الأوزان حتى يصبح مجموعها 100٪.";return;
-  }
-  if(grades.some(x=>x===null)){ $("weightedResult").textContent="—";$("resultNote").textContent="أدخل الدرجات الثلاث لحساب النتيجة.";return;}
-  if(grades.some(x=>!Number.isFinite(x)||x<0||x>100)){
-   $("weightedResult").textContent="—";$("resultNote").textContent="يجب أن تكون كل درجة بين 0 و100.";return;
-  }
-  const result=grades.reduce((total,g,i)=>total+g*weights[i]/100,0);
-  $("weightedResult").textContent=result.toFixed(2)+"٪";$("resultNote").textContent="هذه نتيجة تقديرية وفق الأوزان التي أدخلتها.";
- }
- [...gradeIds,...weightIds].forEach(id=>$(id).addEventListener("input",calculate));
- calculate();
- loadSchedule();
-})();
-</script>
-</body>
-</html>
