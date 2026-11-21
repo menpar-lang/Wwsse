@@ -6,8 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#092747">
 <title>منبر التحصيلي</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -36,57 +34,38 @@ body{
 button,input,select{font:inherit}
 button{cursor:pointer}
 .container{width:min(1050px,94%);margin:auto}
-header{padding:24px 0 12px}
+header{padding:25px 0 12px}
 .brandline{display:flex;justify-content:space-between;align-items:center}
 .brand{font-size:25px;font-weight:700}
 .brand small{display:block;color:#c5e9f7;font-size:12px;font-weight:400}
 .free{
- font-size:12px;
- padding:7px 13px;
- border:1px solid #ffffff40;
- border-radius:30px;
+ font-size:12px;padding:7px 13px;
+ border:1px solid #ffffff40;border-radius:30px;
  background:#ffffff12
 }
 .intro{padding:23px 0 14px}
 .intro h1{font-size:clamp(23px,5vw,34px);margin:0 0 5px}
 .intro p{margin:0;color:var(--muted);font-size:14px}
 .countdown{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:8px;
- background:#ffffff0d;
- border:1px solid var(--line);
- border-radius:17px;
- padding:13px;
- margin:12px 0 19px
+ display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+ background:#ffffff0d;border:1px solid var(--line);
+ border-radius:17px;padding:13px;margin:12px 0 19px
 }
 .count-title{grid-column:1/-1;font-size:13px;color:#c9efff}
 .time{text-align:center;background:#06172c70;padding:9px 3px;border-radius:11px}
-.time b{
- display:block;
- font-size:23px;
- color:var(--sky);
- font-variant-numeric:tabular-nums
-}
+.time b{display:block;font-size:23px;color:var(--sky);font-variant-numeric:tabular-nums}
 .time span{font-size:11px;color:var(--muted)}
 nav{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:8px;
- margin:12px 0 22px
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:8px;margin:12px 0 22px
 }
 nav button{
- border:1px solid var(--line);
- border-radius:12px;
- padding:12px 5px;
- color:#d7eaf5;
- background:#ffffff0b;
- font-weight:600
+ border:1px solid var(--line);border-radius:12px;padding:12px 5px;
+ color:#d7eaf5;background:#ffffff0b;font-weight:600
 }
 nav button.active{
  background:linear-gradient(120deg,var(--sky),var(--blue));
- color:#06213a;
- border:0
+ color:#06213a;border:0
 }
 .page{display:none;padding-bottom:20px}
 .page.active{display:block}
@@ -94,132 +73,72 @@ nav button.active{
 .heading h2{font-size:22px;margin:0 0 3px}
 .heading p{margin:0;color:var(--muted);font-size:13px}
 .card{
- padding:17px;
- margin-bottom:13px;
- border-radius:17px;
- background:var(--panel);
- border:1px solid var(--line);
+ padding:17px;margin-bottom:13px;border-radius:17px;
+ background:var(--panel);border:1px solid var(--line);
  box-shadow:0 9px 25px #00000012
 }
 .card h3{margin:0 0 12px;font-size:17px}
 .hint{font-size:12px;color:var(--muted);margin:-5px 0 13px}
 .fields{
- display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
- gap:10px
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px
 }
-.field label{
- display:block;
- font-size:12px;
- color:#c9dce9;
- margin-bottom:6px
-}
+.field label{display:block;font-size:12px;color:#c9dce9;margin-bottom:6px}
 .field input,.field select{
- width:100%;
- min-width:0;
- padding:11px;
- border-radius:10px;
- background:#061b34a8;
- color:white;
- border:1px solid var(--line);
+ width:100%;min-width:0;padding:11px;border-radius:10px;
+ background:#061b34a8;color:white;border:1px solid var(--line);
  outline:none
 }
 .field input:focus,.field select:focus{border-color:var(--sky)}
 .field select option{background:#092747}
 .btn{
- border:0;
- border-radius:10px;
- padding:10px 16px;
- margin-top:12px;
+ border:0;border-radius:10px;padding:10px 16px;margin-top:12px;
  background:linear-gradient(120deg,var(--sky),var(--blue));
- color:#06213a;
- font-weight:700
+ color:#06213a;font-weight:700
 }
 .btn.secondary{background:#ffffff12;color:white;border:1px solid var(--line)}
-.btn.danger{
- background:#ff77771c;
- color:#ffc0c0;
- border:1px solid #ffaaaa44
-}
+.btn.danger{background:#ff77771c;color:#ffc0c0;border:1px solid #ffaaaa44}
 .output{
- margin-top:12px;
- padding:12px;
- border-radius:11px;
- background:#82ddf714;
- border:1px solid #82ddf72c;
- font-size:13px;
- line-height:1.9
+ margin-top:12px;padding:12px;border-radius:11px;
+ background:#82ddf714;border:1px solid #82ddf72c;
+ font-size:13px;line-height:1.9
 }
 .muted{color:var(--muted);font-size:12px}
 .separator{height:1px;background:var(--line);margin:16px 0}
 .item{
- margin-top:11px;
- padding:13px;
- border-radius:13px;
- background:#06172c55;
- border:1px solid var(--line)
+ margin-top:11px;padding:13px;border-radius:13px;
+ background:#06172c55;border:1px solid var(--line)
 }
-.item-head{
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:8px
-}
+.item-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .item-title{font-weight:700}
 .pill{
- font-size:11px;
- color:#a9eaff;
- background:#82ddf71a;
- padding:4px 9px;
- border-radius:20px
+ font-size:11px;color:#a9eaff;background:#82ddf71a;
+ padding:4px 9px;border-radius:20px
 }
-.progress{
- height:7px;
- border-radius:20px;
- background:#ffffff17;
- overflow:hidden;
- margin:12px 0 7px
-}
+.progress{height:7px;border-radius:20px;background:#ffffff17;overflow:hidden;margin:12px 0 7px}
 .progress>span{
- height:100%;
- display:block;
+ height:100%;display:block;
  background:linear-gradient(90deg,var(--sky),var(--green));
  transition:width .2s
 }
-.stats{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:7px;
- margin-top:10px
-}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}
 .stat{text-align:center;padding:9px 4px;background:#ffffff0b;border-radius:10px}
 .stat b{display:block;font-size:18px;color:var(--sky)}
 .stat span{font-size:10px;color:var(--muted)}
 .day-grid{
- display:grid;
- grid-template-columns:repeat(auto-fill,minmax(115px,1fr));
- gap:7px;
- margin-top:12px
+ display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));
+ gap:7px;margin-top:12px
 }
 .day{
- display:flex;
- align-items:center;
- gap:7px;
- padding:8px;
- background:#ffffff0a;
- border-radius:8px;
- font-size:12px
+ display:flex;align-items:center;gap:7px;padding:9px;
+ background:#ffffff0a;border-radius:8px;font-size:12px;
+ border:1px solid transparent
 }
-.day input{accent-color:var(--sky);width:16px;height:16px}
+.day:has(input:checked){border-color:#72e0b455;background:#72e0b411}
+.day input{accent-color:var(--green);width:16px;height:16px;flex-shrink:0}
 .empty{text-align:center;color:var(--muted);font-size:13px;padding:19px}
 .timer{text-align:center;padding:12px 0}
 .phase{font-size:14px;color:#c4e9f6}
-.clock{
- font-size:clamp(54px,13vw,78px);
- font-weight:700;
- color:var(--sky);
- font-variant-numeric:tabular-nums
-}
+.clock{font-size:clamp(54px,13vw,78px);font-weight:700;color:var(--sky);font-variant-numeric:tabular-nums}
 .timer-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .timer-actions button{margin:0}
 .rounds{display:flex;justify-content:center;gap:8px;margin:13px}
@@ -230,21 +149,17 @@ nav button.active{
 .weight-result span{font-size:12px;color:var(--muted)}
 .links{display:flex;flex-wrap:wrap;gap:8px}
 .links a{
- color:#b7edff;
- text-decoration:none;
- border:1px solid var(--line);
- padding:8px 11px;
- border-radius:9px;
- font-size:12px
+ color:#b7edff;text-decoration:none;border:1px solid var(--line);
+ padding:8px 11px;border-radius:9px;font-size:12px
 }
 footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
-
 @media(max-width:600px){
  .fields{grid-template-columns:1fr}
  .card{padding:14px}
  .brand{font-size:21px}
  .countdown{gap:5px;padding:9px}
  .time b{font-size:20px}
+ .day-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 </style>
 </head>
@@ -254,8 +169,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
 
 <header>
  <div class="brandline">
-  <div class="brand">
-   منبر التحصيلي
+  <div class="brand">منبر التحصيلي
    <small>علمٌ يُتقن، وهدفٌ يُدرك</small>
   </div>
   <div class="free">مجاني 100٪</div>
@@ -276,28 +190,26 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
 </header>
 
 <nav>
- <button class="active" data-target="planner">الجداول</button>
- <button data-target="study">مساحة المذاكرة</button>
- <button data-target="calculator">الموزونة</button>
+ <button class="active" data-page="planner">الجداول</button>
+ <button data-page="study">مساحة المذاكرة</button>
+ <button data-page="calculator">الموزونة</button>
 </nav>
 
-<!-- الجداول -->
+<!-- صفحة الجداول -->
 <section class="page active" id="planner">
-
  <div class="heading">
   <h2>جداولك الدراسية</h2>
-  <p>خطط للتأسيس والتدريب في مكان واحد.</p>
+  <p>خطط للتأسيس والتدريب وتابع تقدمك يومًا بعد يوم.</p>
  </div>
 
- <!-- التأسيس -->
  <div class="card">
   <h3>التأسيس</h3>
-  <p class="hint">أضف مادة وحدد عدد دروسها والأيام المتاحة لإنهائها.</p>
+  <p class="hint">حدد المادة وعدد الدروس والأيام، وسنقسمها لك تلقائيًا.</p>
 
   <div class="fields">
    <div class="field">
-    <label for="subject">اسم المادة</label>
-    <select id="subject">
+    <label for="fSubject">اسم المادة</label>
+    <select id="fSubject">
      <option value="">اختر المادة</option>
      <option>الرياضيات</option>
      <option>الفيزياء</option>
@@ -306,35 +218,30 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
      <option>أخرى</option>
     </select>
    </div>
-
    <div class="field">
-    <label for="lessonCount">عدد الدروس</label>
-    <input id="lessonCount" type="number" min="1" placeholder="مثال: 20">
+    <label for="fTotal">عدد الدروس</label>
+    <input id="fTotal" type="number" min="1" placeholder="مثال: 50">
    </div>
-
    <div class="field">
-    <label for="lessonDays">عدد الأيام</label>
-    <input id="lessonDays" type="number" min="1" placeholder="مثال: 10">
+    <label for="fDays">عدد الأيام</label>
+    <input id="fDays" type="number" min="1" placeholder="مثال: 10">
    </div>
   </div>
 
-  <button class="btn" id="addFoundation">إضافة مادة</button>
-  <div class="output" id="foundationMessage" hidden></div>
+  <button class="btn" id="fAdd">إنشاء جدول التأسيس</button>
+  <div class="output" id="fMessage" hidden></div>
   <div class="separator"></div>
-  <div id="foundationItems">
-   <div class="empty">لا توجد مواد مضافة حتى الآن.</div>
-  </div>
+  <div id="fPlans"><div class="empty">لا توجد خطط تأسيس حتى الآن.</div></div>
  </div>
 
- <!-- التدريب -->
  <div class="card">
   <h3>التدريب</h3>
-  <p class="hint">أضف مادة وحدد عدد أسئلتها والأيام المتاحة لإنهائها.</p>
+  <p class="hint">حدد المادة وعدد الأسئلة والأيام، وسنقسمها لك تلقائيًا.</p>
 
   <div class="fields">
    <div class="field">
-    <label for="trainingSubject">اسم المادة</label>
-    <select id="trainingSubject">
+    <label for="tSubject">اسم المادة</label>
+    <select id="tSubject">
      <option value="">اختر المادة</option>
      <option>الرياضيات</option>
      <option>الفيزياء</option>
@@ -343,32 +250,28 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
      <option>أخرى</option>
     </select>
    </div>
-
    <div class="field">
-    <label for="questionCount">عدد الأسئلة</label>
-    <input id="questionCount" type="number" min="1" placeholder="مثال: 500">
+    <label for="tTotal">عدد الأسئلة</label>
+    <input id="tTotal" type="number" min="1" placeholder="مثال: 500">
    </div>
-
    <div class="field">
-    <label for="questionDays">عدد الأيام</label>
-    <input id="questionDays" type="number" min="1" placeholder="مثال: 10">
+    <label for="tDays">عدد الأيام</label>
+    <input id="tDays" type="number" min="1" placeholder="مثال: 10">
    </div>
   </div>
 
-  <button class="btn" id="addTraining">إضافة خطة تدريب</button>
-  <div class="output" id="trainingMessage" hidden></div>
+  <button class="btn" id="tAdd">إنشاء جدول التدريب</button>
+  <div class="output" id="tMessage" hidden></div>
   <div class="separator"></div>
-  <div id="trainingItems">
-   <div class="empty">لا توجد خطط تدريب حتى الآن.</div>
-  </div>
+  <div id="tPlans"><div class="empty">لا توجد خطط تدريب حتى الآن.</div></div>
  </div>
 </section>
 
-<!-- مساحة المذاكرة -->
+<!-- صفحة المذاكرة -->
 <section class="page" id="study">
  <div class="heading">
   <h2>مساحة المذاكرة</h2>
-  <p>ابدأ جلسة تركيز وابتعد عن المشتتات.</p>
+  <p>جلسات تركيز تساعدك على تنظيم وقتك.</p>
  </div>
 
  <div class="card">
@@ -376,51 +279,41 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
   <div class="timer">
    <div class="phase" id="timerPhase">وقت التركيز</div>
    <div class="clock" id="clock">25:00</div>
-   <div class="rounds" id="roundDots">
-    <i></i><i></i><i></i><i></i>
-   </div>
-
+   <div class="rounds" id="roundDots"><i></i><i></i><i></i><i></i></div>
    <div class="timer-actions">
     <button class="btn" id="timerStart">ابدأ</button>
     <button class="btn secondary" id="timerPause">إيقاف</button>
     <button class="btn secondary" id="timerReset">إعادة</button>
     <button class="btn secondary" id="timerSkip">تخطي</button>
    </div>
-
    <p class="muted" id="timerDescription">25 دقيقة تركيز ثم 5 دقائق راحة.</p>
   </div>
  </div>
 
  <div class="card">
-  <h3>كيف يعمل؟</h3>
-  <p class="muted">
-   بعد كل جلسة تركيز تحصل على استراحة قصيرة، وبعد أربع جلسات تحصل على استراحة طويلة.
-   يمكنك إيقاف المؤقت أو إعادة المرحلة متى شئت.
-  </p>
+  <h3>طريقة العمل</h3>
+  <p class="muted">بعد كل جلسة تركيز تحصل على استراحة قصيرة، وبعد أربع جلسات تحصل على استراحة طويلة.</p>
  </div>
 </section>
 
-<!-- الموزونة -->
+<!-- صفحة الموزونة -->
 <section class="page" id="calculator">
  <div class="heading">
   <h2>حساب النسبة الموزونة</h2>
-  <p>استخدم أوزان الجامعة التي تريد حسابها.</p>
+  <p>أدخل درجاتك وأوزان الجامعة لتحصل على النتيجة.</p>
  </div>
 
  <div class="card">
   <h3>درجاتك</h3>
-
   <div class="fields">
    <div class="field">
     <label for="schoolGrade">الثانوية</label>
     <input id="schoolGrade" type="number" min="0" max="100" placeholder="من 100">
    </div>
-
    <div class="field">
     <label for="aptitudeGrade">القدرات</label>
     <input id="aptitudeGrade" type="number" min="0" max="100" placeholder="من 100">
    </div>
-
    <div class="field">
     <label for="achievementGrade">التحصيلي</label>
     <input id="achievementGrade" type="number" min="0" max="100" placeholder="من 100">
@@ -428,20 +321,16 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
   </div>
 
   <div class="separator"></div>
-
   <h3>أوزان الجامعة</h3>
-
   <div class="fields">
    <div class="field">
     <label for="schoolWeight">وزن الثانوية ٪</label>
     <input id="schoolWeight" type="number" min="0" max="100" value="30">
    </div>
-
    <div class="field">
     <label for="aptitudeWeight">وزن القدرات ٪</label>
     <input id="aptitudeWeight" type="number" min="0" max="100" value="30">
    </div>
-
    <div class="field">
     <label for="achievementWeight">وزن التحصيلي ٪</label>
     <input id="achievementWeight" type="number" min="0" max="100" value="40">
@@ -449,7 +338,6 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
   </div>
 
   <button class="btn" id="calculate">احسب الموزونة</button>
-
   <div class="output weight-result" id="weightOutput" hidden>
    <span>النسبة الموزونة</span>
    <b id="finalScore">--</b>
@@ -482,309 +370,320 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 25px}
 <script>
 "use strict";
 
-(() => {
- const $ = id => document.getElementById(id);
- const KEY = "minbar_site_fresh_2026";
+const $ = id => document.getElementById(id);
+const STORAGE_KEY = "minbar_new_complete_v1";
 
- function get(key,fallback){
-  try{
-   const raw=localStorage.getItem(KEY+"_"+key);
-   return raw===null?fallback:JSON.parse(raw);
-  }catch(e){return fallback;}
+function loadData(key, fallback){
+ try{
+  const value = localStorage.getItem(STORAGE_KEY + "_" + key);
+  return value === null ? fallback : JSON.parse(value);
+ }catch(error){
+  return fallback;
  }
+}
 
- function put(key,value){
-  try{
-   localStorage.setItem(KEY+"_"+key,JSON.stringify(value));
-  }catch(e){}
- }
+function saveData(key, value){
+ try{
+  localStorage.setItem(STORAGE_KEY + "_" + key, JSON.stringify(value));
+ }catch(error){}
+}
 
- function positiveInteger(n){
-  return Number.isInteger(n)&&n>0;
- }
+function validNumber(value){
+ return Number.isSafeInteger(value) && value > 0;
+}
 
- // التنقل
- document.querySelectorAll("nav button").forEach(button=>{
-  button.addEventListener("click",()=>{
-   document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-   document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+function escapeText(value){
+ return String(value).replace(/[&<>"']/g, char => ({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ })[char]);
+}
 
-   button.classList.add("active");
-   $(button.dataset.target).classList.add("active");
+// التنقل بين الصفحات
+document.querySelectorAll("nav button").forEach(button=>{
+ button.addEventListener("click",()=>{
+  document.querySelectorAll("nav button").forEach(item=>item.classList.remove("active"));
+  document.querySelectorAll(".page").forEach(page=>page.classList.remove("active"));
 
-   window.scrollTo({top:0,behavior:"smooth"});
-  });
+  button.classList.add("active");
+  $(button.dataset.page).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
  });
+});
 
- // العداد
- const examTime=new Date("2027-05-27T08:00:00+03:00").getTime();
+// عداد التحصيلي
+const examDate = new Date("2027-05-27T08:00:00+03:00").getTime();
 
- function countdown(){
-  let left=Math.max(0,examTime-Date.now());
+function updateCountdown(){
+ let remaining = Math.max(0, examDate - Date.now());
 
-  const days=Math.floor(left/86400000);
-  left%=86400000;
+ const days = Math.floor(remaining / 86400000);
+ remaining %= 86400000;
 
-  const hours=Math.floor(left/3600000);
-  left%=3600000;
+ const hours = Math.floor(remaining / 3600000);
+ remaining %= 3600000;
 
-  const minutes=Math.floor(left/60000);
-  const seconds=Math.floor((left%60000)/1000);
+ const minutes = Math.floor(remaining / 60000);
+ const seconds = Math.floor((remaining % 60000) / 1000);
 
-  $("cdDays").textContent=days;
-  $("cdHours").textContent=hours;
-  $("cdMinutes").textContent=minutes;
-  $("cdSeconds").textContent=seconds;
- }
+ $("cdDays").textContent = days;
+ $("cdHours").textContent = hours;
+ $("cdMinutes").textContent = minutes;
+ $("cdSeconds").textContent = seconds;
+}
 
- countdown();
- setInterval(countdown,1000);
+updateCountdown();
+setInterval(updateCountdown,1000);
 
- // التأسيس
- let foundations=get("foundations",[]);
- if(!Array.isArray(foundations))foundations=[];
+// توزيع العدد على الأيام
+function distribute(total, days, index){
+ const basic = Math.floor(total / days);
+ const remainder = total % days;
+ return basic + (index < remainder ? 1 : 0);
+}
 
- function renderFoundations(){
-  const host=$("foundationItems");
-  host.replaceChildren();
+// نظام إنشاء الجداول ومتابعتها
+function createPlanner(config){
+ const {
+  type, storage, subjectInput, totalInput, daysInput,
+  addButton, message, list, unit
+ } = config;
 
-  if(!foundations.length){
-   host.innerHTML='<div class="empty">لا توجد مواد مضافة حتى الآن.</div>';
+ let plans = loadData(storage, []);
+ if(!Array.isArray(plans)) plans = [];
+
+ plans = plans.map(plan=>({
+  ...plan,
+  done:Array.isArray(plan.done)?plan.done:[]
+ }));
+
+ function render(){
+  list.replaceChildren();
+
+  if(plans.length === 0){
+   const empty = document.createElement("div");
+   empty.className = "empty";
+   empty.textContent = type === "foundation"
+    ? "لا توجد خطط تأسيس حتى الآن."
+    : "لا توجد خطط تدريب حتى الآن.";
+   list.append(empty);
    return;
   }
 
-  foundations.forEach((item,index)=>{
-   if(!Array.isArray(item.done))item.done=[];
+  plans.forEach((plan,index)=>{
+   const total = Number(plan.total);
+   const days = Number(plan.days);
+   const done = plan.done.length;
+   const completed = plan.done.reduce((sum,dayIndex)=>{
+    return sum + distribute(total,days,dayIndex);
+   },0);
 
-   const total=Number(item.lessons)||0;
-   const done=item.done.length;
-   const percent=total?Math.round(done/total*100):0;
+   const percent = Math.round(done / days * 100);
+   const dailyAverage = Math.ceil(total / days);
 
-   const wrap=document.createElement("div");
-   wrap.className="item";
+   const item = document.createElement("div");
+   item.className = "item";
 
-   const head=document.createElement("div");
-   head.className="item-head";
+   const head = document.createElement("div");
+   head.className = "item-head";
 
-   const title=document.createElement("strong");
-   title.className="item-title";
-   title.textContent=item.subject;
+   const title = document.createElement("strong");
+   title.className = "item-title";
+   title.textContent = plan.subject;
 
-   const tag=document.createElement("span");
-   tag.className="pill";
-   tag.textContent=Math.ceil(total/item.days)+" درس يوميًا";
+   const pill = document.createElement("span");
+   pill.className = "pill";
+   pill.textContent = dailyAverage + " " + unit + " يوميًا تقريبًا";
 
-   head.append(title,tag);
+   head.append(title,pill);
 
-   const info=document.createElement("p");
-   info.className="muted";
-   info.textContent=total+" درس · "+item.days+" يوم · أنجزت "+done+" من "+total;
+   const info = document.createElement("p");
+   info.className = "muted";
+   info.textContent =
+    total + " " + unit + " · " + days + " أيام · أنجزت " +
+    completed + " من " + total;
 
-   const bar=document.createElement("div");
-   bar.className="progress";
+   const progress = document.createElement("div");
+   progress.className = "progress";
 
-   const fill=document.createElement("span");
-   fill.style.width=percent+"%";
-   bar.append(fill);
+   const fill = document.createElement("span");
+   fill.style.width = percent + "%";
+   progress.append(fill);
 
-   const stats=document.createElement("div");
-   stats.className="stats";
+   const stats = document.createElement("div");
+   stats.className = "stats";
 
    [
-    ["إجمالي الدروس",total],
-    ["المنجز",done],
-    ["نسبة الإنجاز",percent+"%"]
-   ].forEach(pair=>{
-    const box=document.createElement("div");
-    box.className="stat";
+    ["الإجمالي",total],
+    ["المنجز",completed],
+    ["التقدم",percent+"%"]
+   ].forEach(([label,value])=>{
+    const box = document.createElement("div");
+    box.className = "stat";
 
-    const b=document.createElement("b");
-    b.textContent=pair[1];
+    const number = document.createElement("b");
+    number.textContent = value;
 
-    const s=document.createElement("span");
-    s.textContent=pair[0];
+    const caption = document.createElement("span");
+    caption.textContent = label;
 
-    box.append(b,s);
+    box.append(number,caption);
     stats.append(box);
    });
 
-   const days=document.createElement("div");
-   days.className="day-grid";
+   const dayTitle = document.createElement("p");
+   dayTitle.className = "muted";
+   dayTitle.style.marginTop = "15px";
+   dayTitle.textContent = "جدول الإنجاز اليومي:";
 
-   for(let i=0;i<total;i++){
-    const label=document.createElement("label");
-    label.className="day";
+   const dayGrid = document.createElement("div");
+   dayGrid.className = "day-grid";
 
-    const check=document.createElement("input");
-    check.type="checkbox";
-    check.checked=item.done.includes(i);
+   for(let day=0;day<days;day++){
+    const amount = distribute(total,days,day);
 
-    check.addEventListener("change",()=>{
-     const set=new Set(foundations[index].done);
+    const label = document.createElement("label");
+    label.className = "day";
 
-     if(check.checked)set.add(i);
-     else set.delete(i);
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = plan.done.includes(day);
+    checkbox.setAttribute("aria-label","إنجاز اليوم "+(day+1));
 
-     foundations[index].done=[...set];
-     put("foundations",foundations);
-     renderFoundations();
+    checkbox.addEventListener("change",()=>{
+     const current = plans[index];
+     const selected = new Set(current.done);
+
+     if(checkbox.checked) selected.add(day);
+     else selected.delete(day);
+
+     current.done = [...selected].sort((a,b)=>a-b);
+     saveData(storage,plans);
+     render();
     });
 
-    const text=document.createElement("span");
-    text.textContent="الدرس "+(i+1);
+    const text = document.createElement("span");
+    text.textContent =
+     "اليوم " + (day+1) + " · " + amount + " " + unit;
 
-    label.append(check,text);
-    days.append(label);
+    label.append(checkbox,text);
+    dayGrid.append(label);
    }
 
-   const remove=document.createElement("button");
-   remove.className="btn danger";
-   remove.textContent="حذف المادة";
+   const remove = document.createElement("button");
+   remove.className = "btn danger";
+   remove.textContent = "حذف الخطة";
 
    remove.addEventListener("click",()=>{
-    if(!confirm("هل تريد حذف جدول "+item.subject+"؟"))return;
+    if(!confirm("هل تريد حذف خطة "+plan.subject+"؟")) return;
 
-    foundations.splice(index,1);
-    put("foundations",foundations);
-    renderFoundations();
+    plans.splice(index,1);
+    saveData(storage,plans);
+    render();
    });
 
-   wrap.append(head,info,bar,stats,days,remove);
-   host.append(wrap);
+   item.append(head,info,progress,stats,dayTitle,dayGrid,remove);
+   list.append(item);
   });
  }
 
- $("addFoundation").addEventListener("click",()=>{
-  const subject=$("subject").value;
-  const lessons=Number($("lessonCount").value);
-  const days=Number($("lessonDays").value);
+ addButton.addEventListener("click",()=>{
+  const subject = subjectInput.value;
+  const total = Number(totalInput.value);
+  const days = Number(daysInput.value);
 
-  const msg=$("foundationMessage");
-  msg.hidden=false;
+  message.hidden = false;
 
   if(!subject){
-   msg.textContent="اختر اسم المادة أولًا.";
+   message.textContent = "اختر اسم المادة أولًا.";
    return;
   }
 
-  if(!positiveInteger(lessons)||!positiveInteger(days)){
-   msg.textContent="أدخل عددًا صحيحًا موجبًا للدروس والأيام.";
+  if(!validNumber(total) || !validNumber(days)){
+   message.textContent = "أدخل أعدادًا صحيحة موجبة.";
    return;
   }
 
-  foundations.push({
+  if(days > 1000){
+   message.textContent = "عدد الأيام كبير جدًا. أدخل 1000 يوم أو أقل.";
+   return;
+  }
+
+  plans.push({
+   id:Date.now() + Math.random(),
    subject,
-   lessons,
+   total,
    days,
    done:[]
   });
 
-  put("foundations",foundations);
+  saveData(storage,plans);
 
-  msg.textContent=
-   "تمت إضافة "+subject+" بنجاح. المطلوب "+
-   Math.ceil(lessons/days)+" درس يوميًا.";
+  message.textContent =
+   "تم إنشاء الجدول بنجاح. تم توزيع " + total +
+   " " + unit + " على " + days + " أيام.";
 
-  $("subject").value="";
-  $("lessonCount").value="";
-  $("lessonDays").value="";
+  subjectInput.value = "";
+  totalInput.value = "";
+  daysInput.value = "";
 
-  renderFoundations();
+  render();
  });
 
- renderFoundations();
+ render();
+}
 
- // التدريب - توزيع الأسئلة على الأيام
- let trainings=get("trainings",[]);
- if(!Array.isArray(trainings))trainings=[];
+// تشغيل التأسيس
+createPlanner({
+ type:"foundation",
+ storage:"foundation_plans",
+ subjectInput:$("fSubject"),
+ totalInput:$("fTotal"),
+ daysInput:$("fDays"),
+ addButton:$("fAdd"),
+ message:$("fMessage"),
+ list:$("fPlans"),
+ unit:"درس"
+});
 
- // الحفاظ على الخطط القديمة إن وجدت
- trainings.forEach(item=>{
-  if(!Array.isArray(item.done))item.done=[];
-  if(!item.subject)item.subject="غير محددة";
- });
+// تشغيل التدريب
+createPlanner({
+ type:"training",
+ storage:"training_plans",
+ subjectInput:$("tSubject"),
+ totalInput:$("tTotal"),
+ daysInput:$("tDays"),
+ addButton:$("tAdd"),
+ message:$("tMessage"),
+ list:$("tPlans"),
+ unit:"سؤال"
+});
 
- // حساب توزيع الأسئلة بالتساوي
- function getDailyQuestions(total,days,dayIndex){
-  const base=Math.floor(total/days);
-  const remainder=total%days;
+// مؤقت المذاكرة
+const WORK = 25 * 60;
+const SHORT = 5 * 60;
+const LONG = 30 * 60;
 
-  return base+(dayIndex<remainder?1:0);
- }
+let phase = "work";
+let remaining = WORK;
+let completedRounds = 0;
+let timerInterval = null;
 
- function renderTrainings(){
-  const host=$("trainingItems");
-  host.replaceChildren();
+function drawTimer(){
+ $("clock").textContent =
+  String(Math.floor(remaining/60)).padStart(2,"0") + ":" +
+  String(remaining%60).padStart(2,"0");
 
-  if(!trainings.length){
-   host.innerHTML='<div class="empty">لا توجد خطط تدريب حتى الآن.</div>';
-   return;
-  }
+ $("timerPhase").textContent =
+  phase === "work" ? "وقت التركيز" :
+  phase === "short" ? "راحة قصيرة" : "راحة طويلة";
 
-  trainings.forEach((item,index)=>{
-   if(!Array.isArray(item.done))item.done=[];
+ $("timerDescription").textContent =
+  phase === "work"
+   ? "25 دقيقة تركيز ثم استراحة."
+   : "انتهت جلسة التركيز، استمتع باستراحتك.";
 
-   const total=Number(item.questions)||0;
-   const daysCount=Number(item.days)||1;
-
-   const doneDays=item.done.length;
-   const percent=daysCount?Math.round(doneDays/daysCount*100):0;
-
-   const completedQuestions=item.done.reduce((sum,dayIndex)=>{
-    return sum+getDailyQuestions(total,daysCount,dayIndex);
-   },0);
-
-   const wrap=document.createElement("div");
-   wrap.className="item";
-
-   const head=document.createElement("div");
-   head.className="item-head";
-
-   const title=document.createElement("strong");
-   title.className="item-title";
-   title.textContent=item.subject;
-
-   const tag=document.createElement("span");
-   tag.className="pill";
-   tag.textContent=Math.ceil(total/daysCount)+" سؤال يوميًا تقريبًا";
-
-   head.append(title,tag);
-
-   const info=document.createElement("p");
-   info.className="muted";
-   info.textContent=
-    total+" سؤال · "+daysCount+" يوم · أنجزت "+
-    completedQuestions+" من "+total+" سؤال";
-
-   const bar=document.createElement("div");
-   bar.className="progress";
-
-   const fill=document.createElement("span");
-   fill.style.width=percent+"%";
-   bar.append(fill);
-
-   const stats=document.createElement("div");
-   stats.className="stats";
-
-   [
-    ["إجمالي الأسئلة",total],
-    ["الأسئلة المنجزة",completedQuestions],
-    ["نسبة الإنجاز",percent+"%"]
-   ].forEach(pair=>{
-    const box=document.createElement("div");
-    box.className="stat";
-
-    const b=document.createElement("b");
-    b.textContent=pair[1];
-
-    const s=document.createElement("span");
-    s.textContent=pair[0];
-
-    box.append(b,s);
-    stats.append(box);
-   });
-
-   const days=document.createElement("div");
-   days.className="day-grid";
-
-   for(let i=0;i<daysCount;
+ $("roundDots").querySelectorAll("i").forEach(
