@@ -3,536 +3,673 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07182f">
+<meta name="theme-color" content="#07172d">
 <title>منبر التحصيلي</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root{
- --bg:#07172d;
- --panel:#102944;
- --panel2:#0b2038;
- --blue:#54bde7;
- --cyan:#a4e8ff;
- --gold:#e9c987;
- --white:#f4faff;
- --muted:#a6bfd2;
- --green:#65d5ae;
- --line:rgba(210,238,255,.13);
+  --bg:#06172b;
+  --panel:#102943;
+  --panel2:#0b2038;
+  --blue:#5bc4ed;
+  --cyan:#b5edff;
+  --gold:#e9c987;
+  --white:#f4faff;
+  --muted:#a7bfd2;
+  --green:#65d5ae;
+  --red:#ff8585;
+  --line:rgba(210,238,255,.14);
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
- margin:0;
- font-family:Alexandria,sans-serif;
- color:var(--white);
- background:
- radial-gradient(circle at 10% 0%,#245c7d 0,transparent 32%),
- radial-gradient(circle at 90% 20%,#173f67 0,transparent 30%),
- linear-gradient(145deg,#123a5b,#091d35 48%,#040d1b);
- background-attachment:fixed;
- min-height:100vh;
+  margin:0;
+  min-height:100vh;
+  color:var(--white);
+  font-family:Alexandria,sans-serif;
+  background:
+    radial-gradient(ellipse at 12% 0%,#245c7d 0,transparent 34%),
+    radial-gradient(ellipse at 90% 18%,#173f67 0,transparent 32%),
+    linear-gradient(145deg,#123a5b,#091d35 48%,#040d1b);
+  background-attachment:fixed;
 }
 button,input{font:inherit}
 button{cursor:pointer}
-.container{width:min(1100px,92%);margin:auto}
-header{padding:25px 0}
-.head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+a{text-decoration:none;color:inherit}
+.container{width:min(1080px,92%);margin:auto}
+
+/* الرأس */
+header{padding:24px 0 12px}
+.head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
 .brand{display:flex;align-items:center;gap:12px}
 .logo{
- width:48px;height:48px;border-radius:15px;
- display:grid;place-items:center;
- background:linear-gradient(135deg,#d9f7ff,#66c9ee);
- color:#09233e;font-size:26px;font-weight:800;
+  width:48px;height:48px;
+  display:grid;place-items:center;
+  border-radius:15px;
+  background:linear-gradient(135deg,#d9f7ff,#66c9ee);
+  color:#09233e;font-size:27px;font-weight:800;
+  box-shadow:0 8px 25px #42b8e633;
 }
 .brand h1{font-size:18px;margin:0}
 .brand p{font-size:9px;color:#b5d4e7;margin:5px 0 0}
 .free{
- color:#f1d9a8;border:1px solid #e9c98766;
- background:#e9c98712;border-radius:30px;
- padding:9px 14px;font-size:10px;
+  color:#f1d9a8;
+  border:1px solid #e9c98766;
+  background:#e9c98712;
+  border-radius:30px;
+  padding:9px 14px;
+  font-size:10px;
+  white-space:nowrap;
 }
-.hero{padding:45px 0 25px}
-.eyebrow{font-size:10px;color:var(--cyan);margin-bottom:14px}
-.hero h2{font-size:clamp(29px,5vw,48px);line-height:1.5;margin:0;font-weight:800}
+
+/* المقدمة */
+.hero{padding:42px 0 18px}
+.eyebrow{font-size:10px;color:var(--cyan);margin-bottom:13px}
+.hero h2{
+  font-size:clamp(28px,5vw,46px);
+  line-height:1.55;margin:0;font-weight:800;
+}
 .hero h2 span{color:var(--cyan)}
-.hero p{font-size:11px;color:var(--muted);line-height:2.3;max-width:600px}
-.countdown{
- padding:20px;border:1px solid var(--line);
- background:#ffffff09;border-radius:20px;
- margin:18px 0 25px;
+.hero p{
+  font-size:11px;color:var(--muted);
+  line-height:2.4;max-width:620px;
 }
-.count-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+
+/* العداد */
+.countdown{
+  padding:20px;
+  border:1px solid var(--line);
+  background:#ffffff09;
+  border-radius:20px;
+  margin:18px 0 24px;
+}
+.count-title{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;margin-bottom:15px;
+}
 .count-title b{font-size:12px}
 .count-title small{font-size:9px;color:var(--muted)}
-.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-.count-box{background:#06172b;border:1px solid var(--line);border-radius:13px;text-align:center;padding:12px 4px}
-.count-box strong{display:block;font-size:27px;color:var(--cyan);direction:ltr}
-.count-box span{font-size:9px;color:var(--muted)}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#04132688;padding:7px;border-radius:16px;margin:22px 0}
-.tab{
- padding:14px 5px;border:1px solid transparent;
- border-radius:11px;background:transparent;color:var(--muted);
- font-size:11px;font-weight:700;
+.count-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
 }
-.tab.active{background:linear-gradient(120deg,#c9f2ff,#68c9ed);color:#08223c}
+.count-box{
+  background:#06172b;
+  border:1px solid var(--line);
+  border-radius:13px;
+  text-align:center;padding:12px 4px;
+}
+.count-box strong{
+  display:block;font-size:clamp(21px,5vw,29px);
+  color:var(--cyan);direction:ltr;
+}
+.count-box span{font-size:9px;color:var(--muted)}
+.count-note{
+  font-size:9px;color:var(--muted);
+  margin-top:12px;line-height:2;
+}
+
+/* التبويبات */
+.tabs{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;background:#04132699;
+  padding:7px;border-radius:16px;margin:22px 0;
+}
+.tab{
+  padding:14px 5px;border:1px solid transparent;
+  border-radius:11px;background:transparent;
+  color:var(--muted);font-size:11px;font-weight:700;
+}
+.tab.active{
+  background:linear-gradient(120deg,#c9f2ff,#68c9ed);
+  color:#08223c;
+}
 .panel{display:none}
-.panel.active{display:block;animation:show .25s ease}
-@keyframes show{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.panel.active{display:block;animation:appear .22s ease}
+@keyframes appear{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:translateY(0)}
+}
 .section-head{margin:30px 0 17px}
 .section-head h2{font-size:21px;margin:0}
-.section-head p{font-size:10px;color:var(--muted);line-height:2;margin:7px 0}
+.section-head p{
+  font-size:10px;color:var(--muted);
+  line-height:2.2;margin:7px 0;
+}
 .subtabs{display:flex;gap:9px;margin:20px 0}
 .subtab{
- flex:1;padding:13px;border:1px solid var(--line);
- border-radius:12px;background:#ffffff08;color:#c6dbe9;
- font-size:11px;font-weight:700;
+  flex:1;padding:13px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#ffffff08;color:#c6dbe9;
+  font-size:11px;font-weight:700;
 }
-.subtab.active{background:#54bde722;border-color:#54bde7;color:#dff8ff}
+.subtab.active{
+  background:#54bde722;
+  border-color:var(--blue);color:#dff8ff;
+}
 .subpanel{display:none}
 .subpanel.active{display:block}
+
+/* البطاقات والحقول */
 .card{
- background:linear-gradient(145deg,#12314f,#0a2038);
- border:1px solid var(--line);
- border-radius:19px;padding:20px;margin:13px 0;
+  background:linear-gradient(145deg,#12314f,#0a2038);
+  border:1px solid var(--line);
+  border-radius:19px;
+  padding:20px;margin:13px 0;
 }
 .card h3{font-size:14px;margin:0 0 9px}
-.desc{font-size:10px;color:var(--muted);line-height:2.2;margin:0 0 15px}
-.subjects{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:16px 0}
-.subject{
- padding:13px;border:1px solid var(--line);
- border-radius:12px;background:#ffffff08;
- display:flex;align-items:center;gap:9px;font-size:11px;
+.desc{
+  font-size:10px;color:var(--muted);
+  line-height:2.3;margin:0 0 15px;
 }
-.subject:has(input:checked){border-color:var(--blue);background:#54bde71c}
-.subject input{accent-color:#54bde7;width:16px;height:16px}
 .field{margin:14px 0}
-.field label{display:block;font-size:10px;margin-bottom:8px;color:#c5d9e7}
+.field label{
+  display:block;font-size:10px;
+  margin-bottom:8px;color:#c5d9e7;
+}
 .field input{
- width:100%;padding:13px;border-radius:11px;
- background:#06172b;border:1px solid var(--line);
- color:white;outline:none;font-size:12px;
+  width:100%;padding:13px;
+  border-radius:11px;background:#06172b;
+  border:1px solid var(--line);
+  color:white;outline:none;font-size:12px;
 }
 .field input:focus{border-color:var(--blue)}
 .field input::placeholder{color:#718ba1}
 .primary{
- width:100%;padding:14px;border:0;border-radius:12px;
- background:linear-gradient(110deg,#a6eaff,#4eafd9);
- color:#08223c;font-size:11px;font-weight:800;
+  width:100%;padding:14px;border:0;
+  border-radius:12px;
+  background:linear-gradient(110deg,#a6eaff,#4eafd9);
+  color:#08223c;font-size:11px;font-weight:800;
 }
-.primary:hover{filter:brightness(1.1)}
+.primary:hover{filter:brightness(1.08)}
 .secondary{
- padding:9px 13px;border:1px solid #54bde766;
- background:#54bde718;color:#bceeff;
- border-radius:10px;font-size:9px;
+  padding:10px 13px;border:1px solid #54bde766;
+  background:#54bde718;color:#bceeff;
+  border-radius:10px;font-size:9px;
 }
+.danger{
+  padding:10px 13px;border:1px solid #ff858566;
+  background:#ff858512;color:#ffb0b0;
+  border-radius:10px;font-size:9px;
+}
+.subjects{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:9px;margin:16px 0;
+}
+.subject{
+  padding:13px;border:1px solid var(--line);
+  border-radius:12px;background:#ffffff08;
+  display:flex;align-items:center;gap:9px;font-size:11px;
+}
+.subject:has(input:checked){
+  border-color:var(--blue);background:#54bde71c;
+}
+.subject input{accent-color:#54bde7;width:16px;height:16px}
 .empty{
- padding:25px;text-align:center;color:#8fa9bd;
- border:1px dashed var(--line);border-radius:13px;
- font-size:10px;line-height:2.3;
+  padding:25px;text-align:center;color:#8fa9bd;
+  border:1px dashed var(--line);
+  border-radius:13px;font-size:10px;line-height:2.3;
 }
-.progress-info{display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}
-.progress{height:7px;background:#06172b;border-radius:20px;overflow:hidden;margin:9px 0 14px}
-.progress span{height:100%;display:block;background:linear-gradient(90deg,#59d1aa,#70d8f2);width:0;transition:.2s}
+.progress-info{
+  display:flex;justify-content:space-between;
+  gap:10px;font-size:9px;color:var(--muted);
+}
+.progress{
+  height:7px;background:#06172b;
+  border-radius:20px;overflow:hidden;margin:9px 0 14px;
+}
+.progress span{
+  height:100%;display:block;
+  background:linear-gradient(90deg,#59d1aa,#70d8f2);
+  width:0;transition:width .2s;
+}
 .day{
- display:flex;align-items:center;gap:12px;
- padding:13px;border:1px solid var(--line);
- border-radius:12px;margin:8px 0;background:#ffffff06;
+  display:flex;align-items:center;gap:12px;
+  padding:13px;border:1px solid var(--line);
+  border-radius:12px;margin:8px 0;background:#ffffff06;
 }
 .day.done{background:#65d5ae12;border-color:#65d5ae66}
-.day-info{flex:1}
+.day-info{flex:1;min-width:0}
 .day-info b{font-size:11px;display:block;margin-bottom:5px}
-.day-info small{font-size:9px;color:var(--muted);line-height:2}
-.day input{width:18px;height:18px;accent-color:#65d5ae}
+.day-info small{
+  font-size:9px;color:var(--muted);line-height:2;
+}
+.day input{width:19px;height:19px;accent-color:#65d5ae}
+
+/* مساحة المذاكرة */
 .timer-card{text-align:center;padding:30px 15px}
-.mode{font-size:10px;color:var(--cyan);margin-bottom:12px}
-.clock{font-size:clamp(55px,13vw,82px);font-weight:800;direction:ltr}
+.mode{font-size:11px;color:var(--cyan);margin-bottom:12px}
+.clock{
+  font-size:clamp(55px,13vw,82px);
+  font-weight:800;direction:ltr;
+}
 .rounds{font-size:10px;color:var(--muted);margin:9px 0 22px}
-.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.actions button{padding:11px 17px;border-radius:10px;font-size:10px;font-weight:700}
-.start{border:0;background:linear-gradient(120deg,#a6eaff,#4eafd9);color:#08223c}
-.soft{border:1px solid var(--line);background:#ffffff0b;color:#d9edf9}
-.calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.actions{
+  display:flex;justify-content:center;
+  gap:8px;flex-wrap:wrap;
+}
+.actions button{
+  padding:12px 17px;border-radius:10px;
+  font-size:10px;font-weight:700;
+}
+.start{
+  border:0;background:linear-gradient(120deg,#a6eaff,#4eafd9);
+  color:#08223c;
+}
+.soft{
+  border:1px solid var(--line);
+  background:#ffffff0b;color:#d9edf9;
+}
+.timer-presets{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:8px;margin-top:20px;
+}
+.preset{
+  padding:12px 5px;border:1px solid var(--line);
+  background:#ffffff08;color:var(--muted);
+  border-radius:10px;font-size:9px;
+}
+.preset.active{border-color:var(--blue);color:var(--cyan)}
+
+/* الموزونة */
+.calc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
 .calc-result{
- text-align:center;padding:20px;border:1px solid #54bde755;
- border-radius:15px;background:#54bde710;margin-top:15px;
+  text-align:center;padding:20px;
+  border:1px solid #54bde755;
+  border-radius:15px;background:#54bde710;
+  margin-top:15px;
 }
 .calc-result small{font-size:10px;color:var(--muted)}
-.calc-result strong{display:block;font-size:38px;color:var(--cyan);margin-top:7px}
-.note{font-size:9px;color:#e7cb94;line-height:2.2;margin-top:13px}
-footer{margin-top:50px;padding:30px 0 20px;border-top:1px solid var(--line);background:#020e1d55}
+.calc-result strong{
+  display:block;font-size:38px;
+  color:var(--cyan);margin-top:7px;
+}
+.calc-breakdown{
+  font-size:10px;color:var(--muted);
+  line-height:2.3;margin-top:12px;
+}
+.note{
+  font-size:9px;color:#e7cb94;
+  line-height:2.2;margin-top:13px;
+}
+
+/* الرسائل */
+.toast{
+  position:fixed;z-index:99;
+  bottom:20px;left:50%;
+  transform:translate(-50%,20px);
+  opacity:0;pointer-events:none;
+  background:#e5f7ff;color:#09233e;
+  padding:13px 18px;border-radius:12px;
+  font-size:10px;font-weight:700;
+  box-shadow:0 8px 30px #0005;
+  transition:.25s;
+  width:max-content;max-width:90%;
+  text-align:center;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* التذييل */
+footer{
+  margin-top:50px;padding:30px 0 20px;
+  border-top:1px solid var(--line);
+  background:#020e1d55;
+}
 footer h2{text-align:center;font-size:16px}
-.dua{padding:17px;border:1px solid var(--line);border-radius:15px;background:#ffffff08;margin:10px 0;text-align:center}
+.dua{
+  padding:17px;border:1px solid var(--line);
+  border-radius:15px;background:#ffffff08;
+  margin:10px 0;text-align:center;
+}
 .dua h3{font-size:11px;color:var(--cyan)}
-.dua p{font-size:10px;color:var(--muted);line-height:2.5;margin:0}
-.links{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
-.links a{padding:13px 4px;border:1px solid var(--line);border-radius:11px;text-align:center;font-size:9px;color:#d2e9f6;background:#ffffff08}
-.copy{text-align:center;color:#718ba1;font-size:9px;margin-top:23px}
+.dua p{
+  font-size:10px;color:var(--muted);
+  line-height:2.5;margin:0;
+}
+.links{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:8px;margin-top:16px;
+}
+.links a{
+  padding:13px 4px;border:1px solid var(--line);
+  border-radius:11px;text-align:center;
+  font-size:9px;color:#d2e9f6;background:#ffffff08;
+}
+.links a:hover{border-color:var(--blue)}
+.copy{
+  text-align:center;color:#718ba1;
+  font-size:9px;margin-top:23px;line-height:2;
+}
+
 @media(max-width:600px){
- .brand h1{font-size:15px}
- .logo{width:42px;height:42px}
- .tabs{gap:4px;padding:5px}
- .tab{font-size:10px;padding:12px 3px}
- .card{padding:16px}
- .calc-grid{grid-template-columns:1fr}
- .links{grid-template-columns:1fr 1fr}
+  .brand h1{font-size:15px}
+  .logo{width:42px;height:42px}
+  .tabs{gap:4px;padding:5px}
+  .tab{font-size:10px;padding:12px 3px}
+  .card{padding:16px}
+  .calc-grid{grid-template-columns:1fr}
+  .links{grid-template-columns:1fr 1fr}
+  .count-grid{gap:6px}
+  .count-box{padding:11px 2px}
 }
 </style>
 </head>
 
 <body>
+
 <header class="container">
- <div class="head">
-  <div class="brand">
-   <div class="logo">✦</div>
-   <div>
-    <h1>منبر التحصيلي</h1>
-    <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
-   </div>
+  <div class="head">
+    <div class="brand">
+      <div class="logo">✦</div>
+      <div>
+        <h1>منبر التحصيلي</h1>
+        <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
+      </div>
+    </div>
+    <div class="free">مجاني 100٪</div>
   </div>
-  <div class="free">مجاني 100٪</div>
- </div>
 </header>
 
 <main class="container">
- <section class="hero">
-  <div class="eyebrow">وجهتك لتنظيم رحلة التحصيلي</div>
-  <h2>كل يوم يقرّبك من <span>هدفك.</span></h2>
-  <p>خطّط لتأسيسك، نظّم تدريبك، وراقب تقدمك في مكان واحد. ابدأ بخطوة واضحة، ودع الاستمرار يصنع الفرق.</p>
- </section>
 
- <section class="countdown">
-  <div class="count-title">
-   <b>الوقت المتبقي على التحصيلي</b>
-   <small>رحلتك مستمرة</small>
-  </div>
-  <div class="count-grid">
-   <div class="count-box"><strong id="days">--</strong><span>يوم</span></div>
-   <div class="count-box"><strong id="hours">--</strong><span>ساعة</span></div>
-   <div class="count-box"><strong id="minutes">--</strong><span>دقيقة</span></div>
-   <div class="count-box"><strong id="seconds">--</strong><span>ثانية</span></div>
-  </div>
- </section>
+  <section class="hero">
+    <div class="eyebrow">وجهتك لتنظيم رحلة التحصيلي</div>
+    <h2>كل يوم يقرّبك من <span>هدفك.</span></h2>
+    <p>خطّط لتأسيسك، نظّم تدريبك، واحسب موزونتك، وتابع تقدمك في مكان واحد.</p>
+  </section>
 
- <nav class="tabs">
-  <button class="tab active" data-tab="schedules">الجداول</button>
-  <button class="tab" data-tab="workspace">مساحة المذاكرة</button>
-  <button class="tab" data-tab="weighted">حساب الموزونة</button>
- </nav>
+  <!-- العداد يظهر في جميع الأقسام -->
+  <section class="countdown">
+    <div class="count-title">
+      <b>الوقت المتبقي على التحصيلي</b>
+      <small>كل ثانية تقرّبك من هدفك</small>
+    </div>
+    <div class="count-grid">
+      <div class="count-box"><strong id="days">--</strong><span>يوم</span></div>
+      <div class="count-box"><strong id="hours">--</strong><span>ساعة</span></div>
+      <div class="count-box"><strong id="minutes">--</strong><span>دقيقة</span></div>
+      <div class="count-box"><strong id="seconds">--</strong><span>ثانية</span></div>
+    </div>
+    <div class="count-note" id="countdownNote">العداد يعمل تلقائيًا.</div>
+  </section>
 
- <!-- الجداول -->
- <section class="panel active" id="schedules">
-  <div class="section-head">
-   <h2>خطتك الدراسية</h2>
-   <p>حوّل هدفك إلى مهام واضحة يمكنك متابعتها.</p>
-  </div>
+  <nav class="tabs">
+    <button class="tab active" type="button" data-tab="schedules">الجداول</button>
+    <button class="tab" type="button" data-tab="workspace">مساحة المذاكرة</button>
+    <button class="tab" type="button" data-tab="weighted">حساب الموزونة</button>
+  </nav>
 
-  <div class="subtabs">
-   <button class="subtab active" data-sub="foundation">التأسيس</button>
-   <button class="subtab" data-sub="training">التدريب</button>
-  </div>
-
-  <div class="subpanel active" id="foundation">
-   <div class="card">
-    <h3>بناء جدول التأسيس</h3>
-    <p class="desc">اختر المواد التي تريد دراستها، وحدد عدد الأيام، وسيتم توزيعها على جدولك.</p>
-
-    <div class="subjects">
-     <label class="subject"><input type="checkbox" value="الرياضيات"> الرياضيات</label>
-     <label class="subject"><input type="checkbox" value="الفيزياء"> الفيزياء</label>
-     <label class="subject"><input type="checkbox" value="الكيمياء"> الكيمياء</label>
-     <label class="subject"><input type="checkbox" value="الأحياء"> الأحياء</label>
+  <!-- ================= الجداول ================= -->
+  <section class="panel active" id="schedules">
+    <div class="section-head">
+      <h2>خطتك الدراسية</h2>
+      <p>رتّب مذاكرتك، ووزّع مهامك، وتابع إنجازك خطوة بخطوة.</p>
     </div>
 
-    <div class="field">
-     <label for="foundationDays">عدد أيام التأسيس</label>
-     <input id="foundationDays" type="number" min="1" max="365" placeholder="اكتب عدد الأيام">
+    <div class="subtabs">
+      <button class="subtab active" type="button" data-sub="foundation">التأسيس</button>
+      <button class="subtab" type="button" data-sub="training">التدريب</button>
     </div>
-    <button class="primary" id="makeFoundation">إنشاء جدول التأسيس</button>
-   </div>
 
-   <div class="card" id="foundationResult">
-    <div class="empty">اختر المواد وعدد الأيام ليظهر جدولك هنا.</div>
-   </div>
-  </div>
+    <!-- التأسيس -->
+    <div class="subpanel active" id="foundation">
+      <div class="card">
+        <h3>إنشاء جدول التأسيس</h3>
+        <p class="desc">اختر المواد التي تريد تأسيسها، ثم اكتب عدد الأيام. سيتم توزيع المواد بالتساوي على الأيام.</p>
 
-  <div class="subpanel" id="training">
-   <div class="card">
-    <h3>خطة التدريب على الأسئلة</h3>
-    <p class="desc">حدد عدد الأسئلة وعدد الأيام، وسنوزع الأسئلة بشكل متوازن.</p>
-    <div class="field">
-     <label for="totalQuestions">عدد الأسئلة</label>
-     <input id="totalQuestions" type="number" min="1" placeholder="مثال: 1200">
+        <div class="subjects">
+          <label class="subject"><input type="checkbox" value="الرياضيات"> الرياضيات</label>
+          <label class="subject"><input type="checkbox" value="الفيزياء"> الفيزياء</label>
+          <label class="subject"><input type="checkbox" value="الكيمياء"> الكيمياء</label>
+          <label class="subject"><input type="checkbox" value="الأحياء"> الأحياء</label>
+        </div>
+
+        <div class="field">
+          <label for="foundationDays">عدد أيام التأسيس</label>
+          <input id="foundationDays" type="number" min="1" max="365" step="1" placeholder="اكتب عدد الأيام">
+        </div>
+
+        <button class="primary" type="button" id="makeFoundation">إنشاء جدول التأسيس</button>
+      </div>
+
+      <div class="card" id="foundationResult">
+        <div class="empty">اختر المواد وعدد الأيام ليظهر جدولك هنا.</div>
+      </div>
     </div>
-    <div class="field">
-     <label for="trainingDays">عدد الأيام</label>
-     <input id="trainingDays" type="number" min="1" max="365" placeholder="مثال: 40">
+
+    <!-- التدريب -->
+    <div class="subpanel" id="training">
+      <div class="card">
+        <h3>إنشاء جدول التدريب</h3>
+        <p class="desc">اكتب عدد الأسئلة التي تريد حلها وعدد الأيام المتاحة، وسيتم تقسيم الأسئلة بشكل متوازن.</p>
+
+        <div class="field">
+          <label for="totalQuestions">عدد الأسئلة</label>
+          <input id="totalQuestions" type="number" min="1" step="1" placeholder="مثال: 1200">
+        </div>
+
+        <div class="field">
+          <label for="trainingDays">عدد الأيام</label>
+          <input id="trainingDays" type="number" min="1" max="365" step="1" placeholder="مثال: 40">
+        </div>
+
+        <button class="primary" type="button" id="makeTraining">إنشاء جدول التدريب</button>
+      </div>
+
+      <div class="card" id="trainingResult">
+        <div class="empty">أدخل عدد الأسئلة والأيام ليظهر جدولك هنا.</div>
+      </div>
     </div>
-    <button class="primary" id="makeTraining">إنشاء جدول التدريب</button>
-   </div>
-   <div class="card" id="trainingResult">
-    <div class="empty">أدخل عدد الأسئلة والأيام ليظهر جدولك هنا.</div>
-   </div>
-  </div>
- </section>
+  </section>
 
- <!-- مساحة المذاكرة -->
- <section class="panel" id="workspace">
-  <div class="section-head">
-   <h2>مساحة المذاكرة</h2>
-   <p>وقت منظم يساعدك على التركيز والإنجاز.</p>
-  </div>
+  <!-- ================= مساحة المذاكرة ================= -->
+  <section class="panel" id="workspace">
+    <div class="section-head">
+      <h2>مساحة المذاكرة</h2>
+      <p>نظّم وقتك، وامنح كل جلسة تركيزها الكامل.</p>
+    </div>
 
-  <div class="card timer-card">
-   <div class="mode" id="timerMode">وقت التركيز</div>
-   <div class="clock" id="clock">25:00</div>
-   <div class="rounds" id="rounds">الجولات المكتملة: 0 من 4</div>
-   <div class="actions">
-    <button class="start" id="timerStart">ابدأ التركيز</button>
-    <button class="soft" id="timerReset">إعادة ضبط</button>
-    <button class="soft" id="timerSkip">تخطي المرحلة</button>
-   </div>
-  </div>
+    <div class="card timer-card">
+      <div class="mode" id="timerMode">وقت التركيز</div>
+      <div class="clock" id="clock">25:00</div>
+      <div class="rounds" id="rounds">الجولات المكتملة: 0 من 4</div>
 
-  <div class="card">
-   <h3>كيف يعمل المؤقت؟</h3>
-   <p class="desc">25 دقيقة تركيز، ثم 5 دقائق استراحة. بعد أربع جولات تركيز تحصل على استراحة طويلة مدتها 30 دقيقة.</p>
-  </div>
- </section>
+      <div class="actions">
+        <button class="start" type="button" id="timerStart">ابدأ التركيز</button>
+        <button class="soft" type="button" id="timerReset">إعادة ضبط</button>
+        <button class="soft" type="button" id="timerSkip">تخطي المرحلة</button>
+      </div>
 
- <!-- الموزونة -->
- <section class="panel" id="weighted">
-  <div class="section-head">
-   <h2>حساب الموزونة</h2>
-   <p>أدخل درجاتك وأوزانها لمعرفة النتيجة التقديرية.</p>
-  </div>
+      <div class="timer-presets">
+        <button class="preset active" type="button" data-focus="25">25 دقيقة</button>
+        <button class="preset" type="button" data-focus="45">45 دقيقة</button>
+        <button class="preset" type="button" data-focus="50">50 دقيقة</button>
+      </div>
+    </div>
 
-  <div class="card">
-   <h3>درجاتك</h3>
-   <div class="field"><label for="school">معدل الثانوية</label><input id="school" type="number" min="0" max="100" placeholder="من 100"></div>
-   <div class="field"><label for="qudrat">درجة القدرات</label><input id="qudrat" type="number" min="0" max="100" placeholder="من 100"></div>
-   <div class="field"><label for="tahsili">درجة التحصيلي</label><input id="tahsili" type="number" min="0" max="100" placeholder="من 100"></div>
-  </div>
+    <div class="card">
+      <h3>نظام التركيز</h3>
+      <p class="desc">
+        جلسة تركيز، تليها استراحة قصيرة. بعد أربع جلسات تركيز تحصل على استراحة طويلة.
+        يمكنك اختيار مدة التركيز المناسبة لك من الأزرار أعلاه.
+      </p>
+      <div class="progress-info">
+        <span>تقدم الجولات</span>
+        <b id="roundProgressText">0 من 4</b>
+      </div>
+      <div class="progress"><span id="roundProgress" style="width:0%"></span></div>
+    </div>
+  </section>
 
-  <div class="card">
-   <h3>أوزان النسب</h3>
-   <p class="desc">الأوزان الافتراضية 30٪ و30٪ و40٪. عدّلها بحسب الجامعة.</p>
-   <div class="calc-grid">
-    <div class="field"><label for="wSchool">وزن الثانوية ٪</label><input id="wSchool" type="number" min="0" max="100" value="30"></div>
-    <div class="field"><label for="wQudrat">وزن القدرات ٪</label><input id="wQudrat" type="number" min="0" max="100" value="30"></div>
-    <div class="field"><label for="wTahsili">وزن التحصيلي ٪</label><input id="wTahsili" type="number" min="0" max="100" value="40"></div>
-   </div>
-   <div class="progress-info"><span>مجموع الأوزان</span><b id="weightTotal">100٪</b></div>
-   <div class="progress"><span id="weightBar" style="width:100%"></span></div>
-   <button class="primary" id="calculate">احسب الموزونة</button>
-   <div class="calc-result">
-    <small>موزونتك التقديرية</small>
-    <strong id="result">--</strong>
-   </div>
-   <p class="note">تختلف أوزان القبول من جامعة لأخرى. تأكد من إدخال أوزان الجامعة المستهدفة.</p>
-  </div>
- </section>
+  <!-- ================= الموزونة ================= -->
+  <section class="panel" id="weighted">
+    <div class="section-head">
+      <h2>حساب الموزونة</h2>
+      <p>أدخل درجاتك وأوزان الجامعة لمعرفة موزونتك التقديرية.</p>
+    </div>
+
+    <div class="card">
+      <h3>درجاتك</h3>
+      <div class="field">
+        <label for="school">معدل الثانوية</label>
+        <input id="school" type="number" min="0" max="100" step="0.01" placeholder="من 100">
+      </div>
+      <div class="field">
+        <label for="qudrat">درجة القدرات</label>
+        <input id="qudrat" type="number" min="0" max="100" step="0.01" placeholder="من 100">
+      </div>
+      <div class="field">
+        <label for="tahsili">درجة التحصيلي</label>
+        <input id="tahsili" type="number" min="0" max="100" step="0.01" placeholder="من 100">
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>أوزان النسب</h3>
+      <p class="desc">الأوزان الافتراضية 30٪ للثانوية، 30٪ للقدرات، و40٪ للتحصيلي. يمكنك تغييرها.</p>
+
+      <div class="calc-grid">
+        <div class="field">
+          <label for="wSchool">وزن الثانوية ٪</label>
+          <input id="wSchool" type="number" min="0" max="100" step="1" value="30">
+        </div>
+        <div class="field">
+          <label for="wQudrat">وزن القدرات ٪</label>
+          <input id="wQudrat" type="number" min="0" max="100" step="1" value="30">
+        </div>
+        <div class="field">
+          <label for="wTahsili">وزن التحصيلي ٪</label>
+          <input id="wTahsili" type="number" min="0" max="100" step="1" value="40">
+        </div>
+      </div>
+
+      <div class="progress-info">
+        <span>مجموع الأوزان</span>
+        <b id="weightTotal">100٪</b>
+      </div>
+      <div class="progress"><span id="weightBar" style="width:100%"></span></div>
+
+      <button class="primary" type="button" id="calculate">احسب الموزونة</button>
+
+      <div class="calc-result">
+        <small>موزونتك التقديرية</small>
+        <strong id="result">--</strong>
+        <div class="calc-breakdown" id="calcBreakdown">أدخل درجاتك ثم اضغط على احسب الموزونة.</div>
+      </div>
+
+      <p class="note">تختلف أوزان القبول من جامعة لأخرى. تأكد من إدخال أوزان الجامعة التي تستهدفها.</p>
+    </div>
+  </section>
+
 </main>
 
 <footer>
- <div class="container">
-  <h2>منبر التحصيلي</h2>
+  <div class="container">
+    <h2>منبر التحصيلي</h2>
 
-  <div class="dua">
-   <h3>دعاء للطلاب والطالبات</h3>
-   <p>اللهم افتح عليهم فتوح العارفين، ويسّر لهم دروب العلم، وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد، واجعل النجاح حليفهم والتميز نصيبهم.</p>
-  </div>
+    <div class="dua">
+      <h3>دعاء للطلاب والطالبات</h3>
+      <p>اللهم افتح عليهم فتوح العارفين، ويسّر لهم دروب العلم، وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد، واجعل النجاح حليفهم والتميز نصيبهم.</p>
+    </div>
 
-  <div class="dua">
-   <h3>دعاء لصاحب منبر التحصيلي والأدمن معه</h3>
-   <p>اللهم بارك في سعيهم وعملهم، واجعل ما يقدمونه علمًا نافعًا وأجرًا باقيًا، واكتب لهم التوفيق والقبول، واجعل هذا المنبر باب خير ونفع لكل طالب وطالبة.</p>
-  </div>
+    <div class="dua">
+      <h3>دعاء لصاحب منبر التحصيلي والأدمن معه</h3>
+      <p>اللهم بارك في سعيهم وعملهم، واجعل ما يقدمونه علمًا نافعًا وأجرًا باقيًا، واكتب لهم التوفيق والقبول، واجعل هذا المنبر باب خير ونفع لكل طالب وطالبة.</p>
+    </div>
 
-  <h2 style="font-size:12px;margin-top:25px">انضم إلى مجتمع منبر التحصيلي</h2>
-  <div class="links">
-   <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
-   <a href="https://t.me/w_9lr" target="_blank" rel="noopener">قناة الكويزات</a>
-   <a href="https://t.me/w_1lr" target="_blank" rel="noopener">قناة الملفات</a>
-   <a href="https://t.me/w_2lr" target="_blank" rel="noopener">مجموعة المناقشة</a>
+    <h2 style="font-size:12px;margin-top:25px">انضم إلى مجتمع منبر التحصيلي</h2>
+    <div class="links">
+      <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
+      <a href="https://t.me/w_9lr" target="_blank" rel="noopener">قناة الكويزات</a>
+      <a href="https://t.me/w_1lr" target="_blank" rel="noopener">قناة الملفات</a>
+      <a href="https://t.me/w_2lr" target="_blank" rel="noopener">مجموعة المناقشة</a>
+    </div>
+
+    <div class="copy">علمٌ يُتقن، وهدفٌ يُدرك<br>منبر التحصيلي © 2026</div>
   </div>
-  <div class="copy">علمٌ يُتقن، وهدفٌ يُدرك<br>منبر التحصيلي © 2026</div>
- </div>
 </footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 "use strict";
 
-/* أدوات عامة */
-const $ = id => document.getElementById(id);
+(() => {
+  const $ = id => document.getElementById(id);
 
-function saveData(key,value){
- try{localStorage.setItem(key,JSON.stringify(value));}
- catch(error){console.warn("تعذر حفظ البيانات",error);}
-}
-function loadData(key){
- try{
-  const value=localStorage.getItem(key);
-  return value===null?null:JSON.parse(value);
- }catch(error){return null;}
-}
-function wholeNumber(value,min,max){
- return Number.isSafeInteger(value)&&value>=min&&value<=max;
-}
-function safeText(value){
- return String(value).replace(/[&<>"']/g,char=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[char]);
-}
+  /* رسائل الموقع */
+  let toastTimeout;
+  function showMessage(message){
+    const toast=$("toast");
+    toast.textContent=message;
+    toast.classList.add("show");
+    clearTimeout(toastTimeout);
+    toastTimeout=setTimeout(()=>toast.classList.remove("show"),2600);
+  }
 
-/* التنقل بين الأقسام */
-document.querySelectorAll(".tab").forEach(button=>{
- button.addEventListener("click",()=>{
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".panel").forEach(x=>x.classList.remove("active"));
-  button.classList.add("active");
-  $(button.dataset.tab).classList.add("active");
- });
-});
+  /* الحفظ المحلي */
+  function save(key,value){
+    try{
+      localStorage.setItem(key,JSON.stringify(value));
+      return true;
+    }catch(error){
+      showMessage("تعذر الحفظ على هذا المتصفح.");
+      return false;
+    }
+  }
 
-/* التنقل بين التأسيس والتدريب */
-document.querySelectorAll(".subtab").forEach(button=>{
- button.addEventListener("click",()=>{
-  document.querySelectorAll(".subtab").forEach(x=>x.classList.remove("active"));
-  document.querySelectorAll(".subpanel").forEach(x=>x.classList.remove("active"));
-  button.classList.add("active");
-  $(button.dataset.sub).classList.add("active");
- });
-});
+  function load(key){
+    try{
+      const value=localStorage.getItem(key);
+      return value===null?null:JSON.parse(value);
+    }catch(error){
+      return null;
+    }
+  }
 
-/* العد التنازلي */
-const EXAM_DATE="2027-05-27T08:00:00+03:00";
+  function remove(key){
+    try{localStorage.removeItem(key);}catch(error){}
+  }
 
-function updateCountdown(){
- const difference=new Date(EXAM_DATE).getTime()-Date.now();
- const ids=["days","hours","minutes","seconds"];
+  function validWhole(value,min,max){
+    return Number.isSafeInteger(value)&&value>=min&&value<=max;
+  }
 
- if(!Number.isFinite(difference)||difference<=0){
-  ids.forEach(id=>$(id).textContent="0");
-  return;
- }
+  function escapeHTML(value){
+    return String(value).replace(/[&<>"']/g,char=>({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    })[char]);
+  }
 
- const values=[
-  Math.floor(difference/86400000),
-  Math.floor((difference%86400000)/3600000),
-  Math.floor((difference%3600000)/60000),
-  Math.floor((difference%60000)/1000)
- ];
+  /* التنقل الرئيسي */
+  document.querySelectorAll("[data-tab]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      document.querySelectorAll(".tab").forEach(item=>item.classList.remove("active"));
+      document.querySelectorAll(".panel").forEach(item=>item.classList.remove("active"));
 
- ids.forEach((id,index)=>$(id).textContent=values[index]);
-}
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-/* جدول التأسيس */
-let foundationData=loadData("minbar_foundation_v3");
-
-function renderFoundation(){
- const root=$("foundationResult");
-
- if(!foundationData||!Array.isArray(foundationData.days)||!foundationData.days.length){
-  root.innerHTML='<div class="empty">اختر المواد وعدد الأيام ليظهر جدولك هنا.</div>';
-  return;
- }
-
- const done=foundationData.days.filter(day=>day.done).length;
- const percent=Math.round(done/foundationData.days.length*100);
-
- let html=`
-  <h3>جدول التأسيس</h3>
-  <div class="progress-info"><span>نسبة الإنجاز</span><b>${done} / ${foundationData.days.length} · ${percent}٪</b></div>
-  <div class="progress"><span style="width:${percent}%"></span></div>
- `;
-
- foundationData.days.forEach((day,index)=>{
-  html+=`
-   <div class="day ${day.done?"done":""}">
-    <div class="day-info">
-     <b>اليوم ${index+1}</b>
-     <small>${day.subjects.map(safeText).join(" · ")}</small>
-    </div>
-    <input type="checkbox" class="foundationCheck" data-index="${index}" ${day.done?"checked":""}>
-   </div>
-  `;
- });
-
- html+='<button class="secondary" id="deleteFoundation">حذف الجدول</button>';
- root.innerHTML=html;
-
- root.querySelectorAll(".foundationCheck").forEach(check=>{
-  check.addEventListener("change",()=>{
-   foundationData.days[Number(check.dataset.index)].done=check.checked;
-   saveData("minbar_foundation_v3",foundationData);
-   renderFoundation();
+      button.classList.add("active");
+      $(button.dataset.tab).classList.add("active");
+    });
   });
- });
 
- $("deleteFoundation").addEventListener("click",()=>{
-  if(!confirm("هل تريد حذف جدول التأسيس؟"))return;
-  foundationData=null;
-  saveData("minbar_foundation_v3",null);
-  renderFoundation();
- });
-}
-
-$("makeFoundation").addEventListener("click",()=>{
- const subjects=[...document.querySelectorAll(".subjects input:checked")].map(x=>x.value);
- const days=Number($("foundationDays").value);
-
- if(subjects.length===0)return alert("اختر مادة واحدة على الأقل.");
- if(!wholeNumber(days,1,365))return alert("أدخل عدد أيام صحيحًا من 1 إلى 365.");
-
- const schedule=Array.from({length:days},(_,index)=>{
-  const subject=subjects[index%subjects.length];
-  return {subjects:[subject],done:false};
- });
-
- foundationData={days:schedule};
- saveData("minbar_foundation_v3",foundationData);
- renderFoundation();
-});
-renderFoundation();
-
-/* جدول التدريب */
-let trainingData=loadData("minbar_training_v3");
-
-function renderTraining(){
- const root=$("trainingResult");
-
- if(!trainingData||!Array.isArray(trainingData.days)||!trainingData.days.length){
-  root.innerHTML='<div class="empty">أدخل عدد الأسئلة والأيام ليظهر جدولك هنا.</div>';
-  return;
- }
-
- const completed=trainingData.days.reduce((sum,day)=>sum+(day.done?day.questions:0),0);
- const percent=Math.round(completed/trainingData.total*100);
-
- let html=`
-  <h3>جدول التدريب</h3>
-  <div class="progress-info"><span>الأسئلة المنجزة</span><b>${completed.toLocaleString("en-US")} / ${trainingData.total.toLocaleString("en-US")}</b></div>
-  <div class="progress"><span style="width:${percent}%"></span></div>
-  <div class="progress-info"><span>نسبة الإنجاز</span><b>${percent}٪</b></div>
- `;
-
- trainingData.days.forEach((day,index)=>{
-  html+=`
-   <div class="day ${day.done?"done":""}">
-    <div class="day-info">
-     <b>اليوم ${index+1}</b>
-     <small>${day.questions.toLocaleString("en-US")} سؤال</small>
-    </div>
-    <input type="checkbox" class="trainingCheck" data-index="${index}" ${day.done?"checked":""}>
-   </div>
-  `;
- });
-
- html+='<button class="secondary" id="deleteTraining">حذف الجدول</button>';
- root.innerHTML=html;
-
- root.querySelectorAll(".trainingCheck").forEach(check=>{
-  check.addEventListener("change",()=>{
-   trainingData.days[Number(check.dataset.inde
+  /* التنقل بين التأسيس والتدريب */
+  document.querySelectorAll("[data-sub]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      document.querySelectorAll(".subtab").forEach(item=>item.classList.remove(
