@@ -1,675 +1,842 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07172d">
+<meta name="theme-color" content="#071a35">
+<meta name="description" content="منبر التحصيلي - جداول التأسيس والتدريب ومساحة المذاكرة وحساب الموزونة">
 <title>منبر التحصيلي</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#06172b;
-  --panel:#102943;
-  --panel2:#0b2038;
-  --blue:#5bc4ed;
-  --cyan:#b5edff;
-  --gold:#e9c987;
-  --white:#f4faff;
-  --muted:#a7bfd2;
-  --green:#65d5ae;
-  --red:#ff8585;
-  --line:rgba(210,238,255,.14);
+:root {
+  --bg: #06152b;
+  --bg2: #0a2344;
+  --panel: rgba(14, 43, 76, .78);
+  --panel2: rgba(19, 57, 94, .72);
+  --blue: #55c5f2;
+  --blue2: #8cddfa;
+  --white: #f3f9ff;
+  --muted: #a9bfd4;
+  --line: rgba(151, 207, 239, .17);
+  --green: #58d6a2;
+  --red: #ff8585;
+  --gold: #f4d58a;
+  --radius: 22px;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  min-height:100vh;
-  color:var(--white);
-  font-family:Alexandria,sans-serif;
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--white);
+  font-family: "Alexandria", Tahoma, sans-serif;
   background:
-    radial-gradient(ellipse at 12% 0%,#245c7d 0,transparent 34%),
-    radial-gradient(ellipse at 90% 18%,#173f67 0,transparent 32%),
-    linear-gradient(145deg,#123a5b,#091d35 48%,#040d1b);
-  background-attachment:fixed;
-}
-button,input{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-.container{width:min(1080px,92%);margin:auto}
-
-/* الرأس */
-header{padding:24px 0 12px}
-.head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
-  width:48px;height:48px;
-  display:grid;place-items:center;
-  border-radius:15px;
-  background:linear-gradient(135deg,#d9f7ff,#66c9ee);
-  color:#09233e;font-size:27px;font-weight:800;
-  box-shadow:0 8px 25px #42b8e633;
-}
-.brand h1{font-size:18px;margin:0}
-.brand p{font-size:9px;color:#b5d4e7;margin:5px 0 0}
-.free{
-  color:#f1d9a8;
-  border:1px solid #e9c98766;
-  background:#e9c98712;
-  border-radius:30px;
-  padding:9px 14px;
-  font-size:10px;
-  white-space:nowrap;
+    radial-gradient(ellipse at 12% 0%, rgba(73, 183, 235, .28), transparent 35%),
+    radial-gradient(ellipse at 90% 28%, rgba(31, 102, 166, .20), transparent 32%),
+    linear-gradient(145deg, #102f54 0%, #0a203d 38%, #06152b 100%);
+  background-attachment: fixed;
 }
 
-/* المقدمة */
-.hero{padding:42px 0 18px}
-.eyebrow{font-size:10px;color:var(--cyan);margin-bottom:13px}
-.hero h2{
-  font-size:clamp(28px,5vw,46px);
-  line-height:1.55;margin:0;font-weight:800;
-}
-.hero h2 span{color:var(--cyan)}
-.hero p{
-  font-size:11px;color:var(--muted);
-  line-height:2.4;max-width:620px;
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
 }
 
-/* العداد */
-.countdown{
-  padding:20px;
-  border:1px solid var(--line);
-  background:#ffffff09;
-  border-radius:20px;
-  margin:18px 0 24px;
-}
-.count-title{
-  display:flex;justify-content:space-between;
-  align-items:center;gap:10px;margin-bottom:15px;
-}
-.count-title b{font-size:12px}
-.count-title small{font-size:9px;color:var(--muted)}
-.count-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:9px;
-}
-.count-box{
-  background:#06172b;
-  border:1px solid var(--line);
-  border-radius:13px;
-  text-align:center;padding:12px 4px;
-}
-.count-box strong{
-  display:block;font-size:clamp(21px,5vw,29px);
-  color:var(--cyan);direction:ltr;
-}
-.count-box span{font-size:9px;color:var(--muted)}
-.count-note{
-  font-size:9px;color:var(--muted);
-  margin-top:12px;line-height:2;
+header {
+  padding: 25px 0 12px;
 }
 
-/* التبويبات */
-.tabs{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:8px;background:#04132699;
-  padding:7px;border-radius:16px;margin:22px 0;
-}
-.tab{
-  padding:14px 5px;border:1px solid transparent;
-  border-radius:11px;background:transparent;
-  color:var(--muted);font-size:11px;font-weight:700;
-}
-.tab.active{
-  background:linear-gradient(120deg,#c9f2ff,#68c9ed);
-  color:#08223c;
-}
-.panel{display:none}
-.panel.active{display:block;animation:appear .22s ease}
-@keyframes appear{
-  from{opacity:0;transform:translateY(6px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.section-head{margin:30px 0 17px}
-.section-head h2{font-size:21px;margin:0}
-.section-head p{
-  font-size:10px;color:var(--muted);
-  line-height:2.2;margin:7px 0;
-}
-.subtabs{display:flex;gap:9px;margin:20px 0}
-.subtab{
-  flex:1;padding:13px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:#ffffff08;color:#c6dbe9;
-  font-size:11px;font-weight:700;
-}
-.subtab.active{
-  background:#54bde722;
-  border-color:var(--blue);color:#dff8ff;
-}
-.subpanel{display:none}
-.subpanel.active{display:block}
-
-/* البطاقات والحقول */
-.card{
-  background:linear-gradient(145deg,#12314f,#0a2038);
-  border:1px solid var(--line);
-  border-radius:19px;
-  padding:20px;margin:13px 0;
-}
-.card h3{font-size:14px;margin:0 0 9px}
-.desc{
-  font-size:10px;color:var(--muted);
-  line-height:2.3;margin:0 0 15px;
-}
-.field{margin:14px 0}
-.field label{
-  display:block;font-size:10px;
-  margin-bottom:8px;color:#c5d9e7;
-}
-.field input{
-  width:100%;padding:13px;
-  border-radius:11px;background:#06172b;
-  border:1px solid var(--line);
-  color:white;outline:none;font-size:12px;
-}
-.field input:focus{border-color:var(--blue)}
-.field input::placeholder{color:#718ba1}
-.primary{
-  width:100%;padding:14px;border:0;
-  border-radius:12px;
-  background:linear-gradient(110deg,#a6eaff,#4eafd9);
-  color:#08223c;font-size:11px;font-weight:800;
-}
-.primary:hover{filter:brightness(1.08)}
-.secondary{
-  padding:10px 13px;border:1px solid #54bde766;
-  background:#54bde718;color:#bceeff;
-  border-radius:10px;font-size:9px;
-}
-.danger{
-  padding:10px 13px;border:1px solid #ff858566;
-  background:#ff858512;color:#ffb0b0;
-  border-radius:10px;font-size:9px;
-}
-.subjects{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:9px;margin:16px 0;
-}
-.subject{
-  padding:13px;border:1px solid var(--line);
-  border-radius:12px;background:#ffffff08;
-  display:flex;align-items:center;gap:9px;font-size:11px;
-}
-.subject:has(input:checked){
-  border-color:var(--blue);background:#54bde71c;
-}
-.subject input{accent-color:#54bde7;width:16px;height:16px}
-.empty{
-  padding:25px;text-align:center;color:#8fa9bd;
-  border:1px dashed var(--line);
-  border-radius:13px;font-size:10px;line-height:2.3;
-}
-.progress-info{
-  display:flex;justify-content:space-between;
-  gap:10px;font-size:9px;color:var(--muted);
-}
-.progress{
-  height:7px;background:#06172b;
-  border-radius:20px;overflow:hidden;margin:9px 0 14px;
-}
-.progress span{
-  height:100%;display:block;
-  background:linear-gradient(90deg,#59d1aa,#70d8f2);
-  width:0;transition:width .2s;
-}
-.day{
-  display:flex;align-items:center;gap:12px;
-  padding:13px;border:1px solid var(--line);
-  border-radius:12px;margin:8px 0;background:#ffffff06;
-}
-.day.done{background:#65d5ae12;border-color:#65d5ae66}
-.day-info{flex:1;min-width:0}
-.day-info b{font-size:11px;display:block;margin-bottom:5px}
-.day-info small{
-  font-size:9px;color:var(--muted);line-height:2;
-}
-.day input{width:19px;height:19px;accent-color:#65d5ae}
-
-/* مساحة المذاكرة */
-.timer-card{text-align:center;padding:30px 15px}
-.mode{font-size:11px;color:var(--cyan);margin-bottom:12px}
-.clock{
-  font-size:clamp(55px,13vw,82px);
-  font-weight:800;direction:ltr;
-}
-.rounds{font-size:10px;color:var(--muted);margin:9px 0 22px}
-.actions{
-  display:flex;justify-content:center;
-  gap:8px;flex-wrap:wrap;
-}
-.actions button{
-  padding:12px 17px;border-radius:10px;
-  font-size:10px;font-weight:700;
-}
-.start{
-  border:0;background:linear-gradient(120deg,#a6eaff,#4eafd9);
-  color:#08223c;
-}
-.soft{
-  border:1px solid var(--line);
-  background:#ffffff0b;color:#d9edf9;
-}
-.timer-presets{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:8px;margin-top:20px;
-}
-.preset{
-  padding:12px 5px;border:1px solid var(--line);
-  background:#ffffff08;color:var(--muted);
-  border-radius:10px;font-size:9px;
-}
-.preset.active{border-color:var(--blue);color:var(--cyan)}
-
-/* الموزونة */
-.calc-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:9px;
-}
-.calc-result{
-  text-align:center;padding:20px;
-  border:1px solid #54bde755;
-  border-radius:15px;background:#54bde710;
-  margin-top:15px;
-}
-.calc-result small{font-size:10px;color:var(--muted)}
-.calc-result strong{
-  display:block;font-size:38px;
-  color:var(--cyan);margin-top:7px;
-}
-.calc-breakdown{
-  font-size:10px;color:var(--muted);
-  line-height:2.3;margin-top:12px;
-}
-.note{
-  font-size:9px;color:#e7cb94;
-  line-height:2.2;margin-top:13px;
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-/* الرسائل */
-.toast{
-  position:fixed;z-index:99;
-  bottom:20px;left:50%;
-  transform:translate(-50%,20px);
-  opacity:0;pointer-events:none;
-  background:#e5f7ff;color:#09233e;
-  padding:13px 18px;border-radius:12px;
-  font-size:10px;font-weight:700;
-  box-shadow:0 8px 30px #0005;
-  transition:.25s;
-  width:max-content;max-width:90%;
-  text-align:center;
-}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-
-/* التذييل */
-footer{
-  margin-top:50px;padding:30px 0 20px;
-  border-top:1px solid var(--line);
-  background:#020e1d55;
-}
-footer h2{text-align:center;font-size:16px}
-.dua{
-  padding:17px;border:1px solid var(--line);
-  border-radius:15px;background:#ffffff08;
-  margin:10px 0;text-align:center;
-}
-.dua h3{font-size:11px;color:var(--cyan)}
-.dua p{
-  font-size:10px;color:var(--muted);
-  line-height:2.5;margin:0;
-}
-.links{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:8px;margin-top:16px;
-}
-.links a{
-  padding:13px 4px;border:1px solid var(--line);
-  border-radius:11px;text-align:center;
-  font-size:9px;color:#d2e9f6;background:#ffffff08;
-}
-.links a:hover{border-color:var(--blue)}
-.copy{
-  text-align:center;color:#718ba1;
-  font-size:9px;margin-top:23px;line-height:2;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-@media(max-width:600px){
-  .brand h1{font-size:15px}
-  .logo{width:42px;height:42px}
-  .tabs{gap:4px;padding:5px}
-  .tab{font-size:10px;padding:12px 3px}
-  .card{padding:16px}
-  .calc-grid{grid-template-columns:1fr}
-  .links{grid-template-columns:1fr 1fr}
-  .count-grid{gap:6px}
-  .count-box{padding:11px 2px}
+.brand-symbol {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #8ce2ff, #2799d0);
+  color: #06213a;
+  font-size: 25px;
+  box-shadow: 0 8px 28px rgba(65, 190, 240, .2);
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(20px, 4vw, 27px);
+  font-weight: 800;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.free-badge {
+  border: 1px solid rgba(111, 220, 255, .35);
+  color: var(--blue2);
+  background: rgba(63, 170, 215, .1);
+  padding: 10px 15px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.hero {
+  margin: 24px 0 20px;
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 27px;
+  background: linear-gradient(120deg, rgba(39, 125, 174, .26), rgba(9, 34, 65, .75));
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "✦";
+  position: absolute;
+  left: 25px;
+  top: 0;
+  font-size: 105px;
+  color: rgba(122, 216, 250, .07);
+  pointer-events: none;
+}
+
+.hero h2 {
+  margin: 0 0 8px;
+  font-size: clamp(20px, 4vw, 27px);
+}
+
+.hero p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.countdown {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 560px;
+}
+
+.count-box {
+  background: rgba(3, 17, 35, .48);
+  border: 1px solid rgba(132, 209, 245, .16);
+  border-radius: 15px;
+  text-align: center;
+  padding: 12px 5px;
+}
+
+.count-box strong {
+  display: block;
+  font-size: clamp(21px, 5vw, 30px);
+  color: var(--blue2);
+  font-weight: 800;
+  direction: ltr;
+}
+
+.count-box span {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.count-note {
+  margin-top: 10px;
+  color: #8caac2;
+  font-size: 10px;
+}
+
+.main-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.main-tab {
+  border: 1px solid var(--line);
+  background: rgba(11, 35, 64, .78);
+  color: #c1d6e8;
+  padding: 16px 8px;
+  border-radius: 17px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: .2s;
+}
+
+.main-tab.active {
+  color: #062039;
+  border-color: transparent;
+  background: linear-gradient(135deg, #8ce1ff, #45b6e8);
+  box-shadow: 0 8px 25px rgba(55, 177, 228, .18);
+}
+
+.section {
+  display: none;
+  animation: appear .25s ease;
+}
+
+.section.active { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-bottom: 17px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, .12);
+}
+
+.section-heading {
+  margin: 0 0 7px;
+  font-size: 20px;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+  margin: 0 0 20px;
+}
+
+.sub-tabs {
+  display: flex;
+  gap: 9px;
+  margin-bottom: 17px;
+}
+
+.sub-tab {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(4, 22, 43, .55);
+  color: var(--muted);
+  padding: 13px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sub-tab.active {
+  color: var(--blue2);
+  border-color: rgba(85, 197, 242, .55);
+  background: rgba(66, 170, 215, .13);
+}
+
+.sub-section { display: none; }
+.sub-section.active { display: block; }
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  color: #d5e6f4;
+  margin: 0 0 9px;
+  font-weight: 600;
+}
+
+.field {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(149, 201, 231, .2);
+  outline: none;
+  color: white;
+  background: rgba(3, 19, 38, .62);
+  border-radius: 12px;
+  padding: 13px 14px;
+  transition: .2s;
+}
+
+.field:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(85, 197, 242, .1);
+}
+
+.field::placeholder { color: #718da7; }
+
+.field option {
+  color: white;
+  background: #0b2544;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 17px;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+  margin: 12px 0 18px;
+}
+
+.subject-option {
+  position: relative;
+}
+
+.subject-option input {
+  position: absolute;
+  opacity: 0;
+}
+
+.subject-option span {
+  display: block;
+  text-align: center;
+  padding: 14px 5px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  color: #b9cde0;
+  background: rgba(3, 19, 38, .45);
+  font-size: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.subject-option input:checked + span {
+  color: var(--blue2);
+  border-color: var(--blue);
+  background: rgba(69, 180, 225, .13);
+}
+
+.primary-btn, .secondary-btn, .danger-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 13px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.primary-btn {
+  color: #052039;
+  background: linear-gradient(135deg, #91e4ff, #4bb8e7);
+}
+
+.primary-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+.secondary-btn {
+  color: var(--blue2);
+  border: 1px solid rgba(85, 197, 242, .35);
+  background: rgba(85, 197, 242, .1);
+}
+
+.danger-btn {
+  color: #ffc0c0;
+  border: 1px solid rgba(255, 133, 133, .3);
+  background: rgba(255, 133, 133, .08);
+}
+
+.full-btn { width: 100%; }
+
+.progress-wrap { margin: 17px 0; }
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.progress-track {
+  height: 9px;
+  border-radius: 20px;
+  background: rgba(1, 13, 28, .65);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #3eaddf, #8ce3ff);
+  transition: width .3s;
+}
+
+.schedule-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.day-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 14px;
+  background: rgba(3, 19, 38, .38);
+}
+
+.day-card.done {
+  border-color: rgba(88, 214, 162, .35);
+  background: rgba(55, 160, 116, .08);
+}
+
+.day-info strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.day-info small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.day-check {
+  width: 22px;
+  height: 22px;
+  accent-color: #58d6a2;
+  flex-shrink: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 28px 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+  border: 1px dashed var(--line);
+  border-radius: 15px;
+}
+
+.timer-card {
+  text-align: center;
+  padding: 28px 18px;
+  background: linear-gradient(145deg, rgba(27, 83, 126, .55), rgba(5, 24, 47, .65));
+  border: 1px solid var(--line);
+  border-radius: 23px;
+}
+
+.timer-mode {
+  color: var(--blue2);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.timer-display {
+  direction: ltr;
+  font-size: clamp(58px, 14vw, 86px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 12px 0;
+  color: white;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-rounds {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.timer-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.timer-settings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.duration-btn {
+  padding: 12px 5px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(3, 19, 38, .5);
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.duration-btn.active {
+  border-color: var(--blue);
+  color: var(--blue2);
+  background: rgba(85, 197, 242, .12);
+}
+
+.calc-result {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 17px;
+  text-align: center;
+  background: rgba(75, 184, 231, .1);
+  border: 1px solid rgba(85, 197, 242, .25);
+}
+
+.calc-result.show { display: block; }
+
+.result-number {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--blue2);
+  direction: ltr;
+  margin: 8px 0;
+}
+
+.breakdown {
+  display: grid;
+  gap: 8px;
+  margin-top: 15px;
+  text-align: right;
+}
+
+.breakdown div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+  color: var(--muted);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-top: 12px;
+}
+
+footer {
+  margin: 28px 0 20px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(5, 23, 44, .7);
+  text-align: center;
+}
+
+.footer-title {
+  color: var(--blue2);
+  font-weight: 800;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.dua {
+  color: #d4e5f3;
+  font-size: 12px;
+  line-height: 2.1;
+  margin: 9px auto;
+  max-width: 700px;
+}
+
+.telegram-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.telegram-links a {
+  text-decoration: none;
+  color: var(--blue2);
+  border: 1px solid rgba(85, 197, 242, .25);
+  background: rgba(85, 197, 242, .08);
+  border-radius: 30px;
+  padding: 9px 13px;
+  font-size: 10px;
+}
+
+.copyright {
+  color: #7894ac;
+  font-size: 10px;
+  margin-top: 20px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99;
+  padding: 12px 18px;
+  border-radius: 30px;
+  color: #062039;
+  background: #8ce1ff;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .25s;
+  box-shadow: 0 8px 30px rgba(0,0,0,.25);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 650px) {
+  .container { width: 93%; }
+  header { padding-top: 17px; }
+  .hero { padding: 20px 17px; }
+  .panel { padding: 17px; }
+  .main-tabs { gap: 7px; }
+  .main-tab { padding: 14px 4px; font-size: 11px; }
+  .subjects { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; }
+  .countdown { gap: 6px; }
+  .count-box { padding: 10px 3px; }
+  .count-box span { font-size: 9px; }
+  .day-card { padding: 12px; }
+  footer { padding: 20px 13px; }
 }
 </style>
 </head>
 
 <body>
+<div class="container">
 
-<header class="container">
-  <div class="head">
+<header>
+  <div class="topbar">
     <div class="brand">
-      <div class="logo">✦</div>
+      <div class="brand-symbol">✦</div>
       <div>
         <h1>منبر التحصيلي</h1>
         <p>علمٌ يُتقن، وهدفٌ يُدرك</p>
       </div>
     </div>
-    <div class="free">مجاني 100٪</div>
+    <div class="free-badge">مجاني 100٪</div>
   </div>
 </header>
 
-<main class="container">
+<div class="hero">
+  <h2>رحلتك نحو الدرجة التي تطمح لها</h2>
+  <p>نظّم مذاكرتك، تابع إنجازك، واجعل لكل يوم خطوة تقرّبك من هدفك.</p>
 
-  <section class="hero">
-    <div class="eyebrow">وجهتك لتنظيم رحلة التحصيلي</div>
-    <h2>كل يوم يقرّبك من <span>هدفك.</span></h2>
-    <p>خطّط لتأسيسك، نظّم تدريبك، واحسب موزونتك، وتابع تقدمك في مكان واحد.</p>
-  </section>
+  <div class="countdown" aria-label="الوقت المتبقي للتحصيلي">
+    <div class="count-box"><strong id="cd-days">--</strong><span>يوم</span></div>
+    <div class="count-box"><strong id="cd-hours">--</strong><span>ساعة</span></div>
+    <div class="count-box"><strong id="cd-minutes">--</strong><span>دقيقة</span></div>
+    <div class="count-box"><strong id="cd-seconds">--</strong><span>ثانية</span></div>
+  </div>
+  <div class="count-note">العد التنازلي للموعد المحدد داخل إعدادات الموقع.</div>
+</div>
 
-  <!-- العداد يظهر في جميع الأقسام -->
-  <section class="countdown">
-    <div class="count-title">
-      <b>الوقت المتبقي على التحصيلي</b>
-      <small>كل ثانية تقرّبك من هدفك</small>
-    </div>
-    <div class="count-grid">
-      <div class="count-box"><strong id="days">--</strong><span>يوم</span></div>
-      <div class="count-box"><strong id="hours">--</strong><span>ساعة</span></div>
-      <div class="count-box"><strong id="minutes">--</strong><span>دقيقة</span></div>
-      <div class="count-box"><strong id="seconds">--</strong><span>ثانية</span></div>
-    </div>
-    <div class="count-note" id="countdownNote">العداد يعمل تلقائيًا.</div>
-  </section>
+<nav class="main-tabs" aria-label="الأقسام الرئيسية">
+  <button class="main-tab active" data-tab="schedules">الجداول</button>
+  <button class="main-tab" data-tab="study">مساحة المذاكرة</button>
+  <button class="main-tab" data-tab="calculator">حساب الموزونة</button>
+</nav>
 
-  <nav class="tabs">
-    <button class="tab active" type="button" data-tab="schedules">الجداول</button>
-    <button class="tab" type="button" data-tab="workspace">مساحة المذاكرة</button>
-    <button class="tab" type="button" data-tab="weighted">حساب الموزونة</button>
-  </nav>
+<!-- الجداول -->
+<section class="section active" id="schedules">
+  <div class="panel">
+    <h2 class="section-heading">خطّط لإنجازك</h2>
+    <p class="section-desc">أنشئ جدولك بالطريقة المناسبة لك، وتابع الأيام التي أنجزتها.</p>
 
-  <!-- ================= الجداول ================= -->
-  <section class="panel active" id="schedules">
-    <div class="section-head">
-      <h2>خطتك الدراسية</h2>
-      <p>رتّب مذاكرتك، ووزّع مهامك، وتابع إنجازك خطوة بخطوة.</p>
-    </div>
-
-    <div class="subtabs">
-      <button class="subtab active" type="button" data-sub="foundation">التأسيس</button>
-      <button class="subtab" type="button" data-sub="training">التدريب</button>
+    <div class="sub-tabs">
+      <button class="sub-tab active" data-subtab="foundation">التأسيس</button>
+      <button class="sub-tab" data-subtab="training">التدريب</button>
     </div>
 
     <!-- التأسيس -->
-    <div class="subpanel active" id="foundation">
-      <div class="card">
-        <h3>إنشاء جدول التأسيس</h3>
-        <p class="desc">اختر المواد التي تريد تأسيسها، ثم اكتب عدد الأيام. سيتم توزيع المواد بالتساوي على الأيام.</p>
-
-        <div class="subjects">
-          <label class="subject"><input type="checkbox" value="الرياضيات"> الرياضيات</label>
-          <label class="subject"><input type="checkbox" value="الفيزياء"> الفيزياء</label>
-          <label class="subject"><input type="checkbox" value="الكيمياء"> الكيمياء</label>
-          <label class="subject"><input type="checkbox" value="الأحياء"> الأحياء</label>
-        </div>
-
-        <div class="field">
-          <label for="foundationDays">عدد أيام التأسيس</label>
-          <input id="foundationDays" type="number" min="1" max="365" step="1" placeholder="اكتب عدد الأيام">
-        </div>
-
-        <button class="primary" type="button" id="makeFoundation">إنشاء جدول التأسيس</button>
+    <div class="sub-section active" id="foundation">
+      <label class="field-label">اختر المواد التي تريد تأسيسها</label>
+      <div class="subjects">
+        <label class="subject-option">
+          <input type="checkbox" name="subject" value="الرياضيات">
+          <span>الرياضيات</span>
+        </label>
+        <label class="subject-option">
+          <input type="checkbox" name="subject" value="الفيزياء">
+          <span>الفيزياء</span>
+        </label>
+        <label class="subject-option">
+          <input type="checkbox" name="subject" value="الكيمياء">
+          <span>الكيمياء</span>
+        </label>
+        <label class="subject-option">
+          <input type="checkbox" name="subject" value="الأحياء">
+          <span>الأحياء</span>
+        </label>
       </div>
 
-      <div class="card" id="foundationResult">
-        <div class="empty">اختر المواد وعدد الأيام ليظهر جدولك هنا.</div>
+      <div class="form-grid">
+        <div>
+          <label class="field-label" for="foundationDays">عدد أيام التأسيس</label>
+          <input class="field" id="foundationDays" type="number" min="1" max="365" placeholder="اكتب عدد الأيام">
+        </div>
+      </div>
+
+      <button class="primary-btn full-btn" id="createFoundation">إنشاء جدول التأسيس</button>
+      <div id="foundationOutput" style="margin-top:20px">
+        <div class="empty-state">اختر المواد وحدد عدد الأيام، وسيُنشأ جدولك هنا.</div>
       </div>
     </div>
 
     <!-- التدريب -->
-    <div class="subpanel" id="training">
-      <div class="card">
-        <h3>إنشاء جدول التدريب</h3>
-        <p class="desc">اكتب عدد الأسئلة التي تريد حلها وعدد الأيام المتاحة، وسيتم تقسيم الأسئلة بشكل متوازن.</p>
+    <div class="sub-section" id="training">
+      <p class="section-desc">أدخل عدد الأسئلة وعدد الأيام، وسنوزّع الأسئلة على الأيام بأقرب توزيع متساوٍ.</p>
 
-        <div class="field">
-          <label for="totalQuestions">عدد الأسئلة</label>
-          <input id="totalQuestions" type="number" min="1" step="1" placeholder="مثال: 1200">
+      <div class="form-grid">
+        <div>
+          <label class="field-label" for="questionCount">عدد الأسئلة</label>
+          <input class="field" id="questionCount" type="number" min="1" max="100000" placeholder="مثال: 1000">
         </div>
-
-        <div class="field">
-          <label for="trainingDays">عدد الأيام</label>
-          <input id="trainingDays" type="number" min="1" max="365" step="1" placeholder="مثال: 40">
-        </div>
-
-        <button class="primary" type="button" id="makeTraining">إنشاء جدول التدريب</button>
-      </div>
-
-      <div class="card" id="trainingResult">
-        <div class="empty">أدخل عدد الأسئلة والأيام ليظهر جدولك هنا.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= مساحة المذاكرة ================= -->
-  <section class="panel" id="workspace">
-    <div class="section-head">
-      <h2>مساحة المذاكرة</h2>
-      <p>نظّم وقتك، وامنح كل جلسة تركيزها الكامل.</p>
-    </div>
-
-    <div class="card timer-card">
-      <div class="mode" id="timerMode">وقت التركيز</div>
-      <div class="clock" id="clock">25:00</div>
-      <div class="rounds" id="rounds">الجولات المكتملة: 0 من 4</div>
-
-      <div class="actions">
-        <button class="start" type="button" id="timerStart">ابدأ التركيز</button>
-        <button class="soft" type="button" id="timerReset">إعادة ضبط</button>
-        <button class="soft" type="button" id="timerSkip">تخطي المرحلة</button>
-      </div>
-
-      <div class="timer-presets">
-        <button class="preset active" type="button" data-focus="25">25 دقيقة</button>
-        <button class="preset" type="button" data-focus="45">45 دقيقة</button>
-        <button class="preset" type="button" data-focus="50">50 دقيقة</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>نظام التركيز</h3>
-      <p class="desc">
-        جلسة تركيز، تليها استراحة قصيرة. بعد أربع جلسات تركيز تحصل على استراحة طويلة.
-        يمكنك اختيار مدة التركيز المناسبة لك من الأزرار أعلاه.
-      </p>
-      <div class="progress-info">
-        <span>تقدم الجولات</span>
-        <b id="roundProgressText">0 من 4</b>
-      </div>
-      <div class="progress"><span id="roundProgress" style="width:0%"></span></div>
-    </div>
-  </section>
-
-  <!-- ================= الموزونة ================= -->
-  <section class="panel" id="weighted">
-    <div class="section-head">
-      <h2>حساب الموزونة</h2>
-      <p>أدخل درجاتك وأوزان الجامعة لمعرفة موزونتك التقديرية.</p>
-    </div>
-
-    <div class="card">
-      <h3>درجاتك</h3>
-      <div class="field">
-        <label for="school">معدل الثانوية</label>
-        <input id="school" type="number" min="0" max="100" step="0.01" placeholder="من 100">
-      </div>
-      <div class="field">
-        <label for="qudrat">درجة القدرات</label>
-        <input id="qudrat" type="number" min="0" max="100" step="0.01" placeholder="من 100">
-      </div>
-      <div class="field">
-        <label for="tahsili">درجة التحصيلي</label>
-        <input id="tahsili" type="number" min="0" max="100" step="0.01" placeholder="من 100">
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>أوزان النسب</h3>
-      <p class="desc">الأوزان الافتراضية 30٪ للثانوية، 30٪ للقدرات، و40٪ للتحصيلي. يمكنك تغييرها.</p>
-
-      <div class="calc-grid">
-        <div class="field">
-          <label for="wSchool">وزن الثانوية ٪</label>
-          <input id="wSchool" type="number" min="0" max="100" step="1" value="30">
-        </div>
-        <div class="field">
-          <label for="wQudrat">وزن القدرات ٪</label>
-          <input id="wQudrat" type="number" min="0" max="100" step="1" value="30">
-        </div>
-        <div class="field">
-          <label for="wTahsili">وزن التحصيلي ٪</label>
-          <input id="wTahsili" type="number" min="0" max="100" step="1" value="40">
+        <div>
+          <label class="field-label" for="trainingDays">عدد الأيام</label>
+          <input class="field" id="trainingDays" type="number" min="1" max="365" placeholder="مثال: 30">
         </div>
       </div>
 
-      <div class="progress-info">
-        <span>مجموع الأوزان</span>
-        <b id="weightTotal">100٪</b>
+      <button class="primary-btn full-btn" id="createTraining">إنشاء جدول التدريب</button>
+      <div id="trainingOutput" style="margin-top:20px">
+        <div class="empty-state">أدخل عدد الأسئلة والأيام لعرض جدول التدريب.</div>
       </div>
-      <div class="progress"><span id="weightBar" style="width:100%"></span></div>
-
-      <button class="primary" type="button" id="calculate">احسب الموزونة</button>
-
-      <div class="calc-result">
-        <small>موزونتك التقديرية</small>
-        <strong id="result">--</strong>
-        <div class="calc-breakdown" id="calcBreakdown">أدخل درجاتك ثم اضغط على احسب الموزونة.</div>
-      </div>
-
-      <p class="note">تختلف أوزان القبول من جامعة لأخرى. تأكد من إدخال أوزان الجامعة التي تستهدفها.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-</main>
+<!-- مساحة المذاكرة -->
+<section class="section" id="study">
+  <div class="panel">
+    <h2 class="section-heading">مساحة المذاكرة</h2>
+    <p class="section-desc">ركّز في مهمتك، وخذ استراحة قصيرة، ثم عُد بطاقة متجددة.</p>
+
+    <div class="timer-card">
+      <div class="timer-mode" id="timerMode">وقت التركيز</div>
+      <div class="timer-display" id="timerDisplay">25:00</div>
+      <div class="timer-rounds" id="timerRounds">الجولات المكتملة: 0</div>
+
+      <div class="timer-actions">
+        <button class="primary-btn" id="timerStart">ابدأ</button>
+        <button class="secondary-btn" id="timerPause">إيقاف مؤقت</button>
+        <button class="secondary-btn" id="timerReset">إعادة</button>
+        <button class="secondary-btn" id="timerSkip">تخطّي</button>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:17px;margin-bottom:0;background:rgba(3,19,38,.3)">
+      <label class="field-label">مدة التركيز</label>
+      <div class="timer-settings">
+        <button class="duration-btn active" data-duration="25">25 دقيقة</button>
+        <button class="duration-btn" data-duration="45">45 دقيقة</button>
+        <button class="duration-btn" data-duration="50">50 دقيقة</button>
+      </div>
+      <p class="hint">الاستراحة القصيرة: 5 دقائق. وبعد كل 4 جولات تركيز: استراحة طويلة 30 دقيقة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- حساب الموزونة -->
+<section class="section" id="calculator">
+  <div class="panel">
+    <h2 class="section-heading">حساب النسبة الموزونة</h2>
+    <p class="section-desc">أدخل درجاتك وأوزانها، وسيظهر الناتج مباشرة بعد الضغط على احسب.</p>
+
+    <div class="form-grid">
+      <div>
+        <label class="field-label" for="schoolGrade">درجة الثانوية</label>
+        <input class="field grade-input" id="schoolGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100">
+      </div>
+      <div>
+        <label class="field-label" for="schoolWeight">وزن الثانوية ٪</label>
+        <input class="field weight-input" id="schoolWeight" type="number" min="0" max="100" step="0.1" value="30">
+      </div>
+      <div>
+        <label class="field-label" for="qudratGrade">درجة القدرات</label>
+        <input class="field grade-input" id="qudratGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100">
+      </div>
+      <div>
+        <label class="field-label" for="qudratWeight">وزن القدرات ٪</label>
+        <input class="field weight-input" id="qudratWeight" type="number" min="0" max="100" step="0.1" value="30">
+      </div>
+      <div>
+        <label class="field-label" for="tahsiliGrade">درجة التحصيلي</label>
+        <input class="field grade-input" id="tahsiliGrade" type="number" min="0" max="100" step="0.01" placeholder="من 100">
+      </div>
+      <div>
+        <label class="field-label" for="tahsiliWeight">وزن التحصيلي ٪</label>
+        <input class="field weight-input" id="tahsiliWeight" type="number" min="0" max="100" step="0.1" value="40">
+      </div>
+    </div>
+
+    <div class="progress-info">
+      <span>مجموع الأوزان</span>
+      <strong id="weightTotal">100٪</strong>
+    </div>
+
+    <button class="primary-btn full-btn" id="calculateBtn">احسب النسبة الموزونة</button>
+
+    <div class="calc-result" id="calcResult">
+      <div style="font-size:12px;color:var(--muted)">النسبة الموزونة</div>
+      <div class="result-number" id="resultNumber">0.00</div>
+      <div style="font-size:11px;color:var(--muted)">من 100</div>
+      <div class="breakdown" id="breakdown"></div>
+    </div>
+    <p class="hint">تأكد من إدخال الأوزان المعتمدة لدى جامعتك؛ الأوزان الافتراضية قابلة للتغيير.</p>
+  </div>
+</section>
 
 <footer>
-  <div class="container">
-    <h2>منبر التحصيلي</h2>
+  <div class="footer-title">منبر التحصيلي ✦</div>
+  <p class="dua">اللهم يسّر للطلاب والطالبات طريق العلم، وافتح عليهم فتوح العارفين، وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد.</p>
+  <p class="dua">اللهم وفّق صاحب منبر التحصيلي والأدمن معه، وبارك في جهودهما، واجعل هذا العمل نافعًا مباركًا، واكتب أجر كل من ساهم فيه.</p>
 
-    <div class="dua">
-      <h3>دعاء للطلاب والطالبات</h3>
-      <p>اللهم افتح عليهم فتوح العارفين، ويسّر لهم دروب العلم، وبارك لهم في أوقاتهم وجهودهم، وارزقهم التوفيق والسداد، واجعل النجاح حليفهم والتميز نصيبهم.</p>
-    </div>
-
-    <div class="dua">
-      <h3>دعاء لصاحب منبر التحصيلي والأدمن معه</h3>
-      <p>اللهم بارك في سعيهم وعملهم، واجعل ما يقدمونه علمًا نافعًا وأجرًا باقيًا، واكتب لهم التوفيق والقبول، واجعل هذا المنبر باب خير ونفع لكل طالب وطالبة.</p>
-    </div>
-
-    <h2 style="font-size:12px;margin-top:25px">انضم إلى مجتمع منبر التحصيلي</h2>
-    <div class="links">
-      <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
-      <a href="https://t.me/w_9lr" target="_blank" rel="noopener">قناة الكويزات</a>
-      <a href="https://t.me/w_1lr" target="_blank" rel="noopener">قناة الملفات</a>
-      <a href="https://t.me/w_2lr" target="_blank" rel="noopener">مجموعة المناقشة</a>
-    </div>
-
-    <div class="copy">علمٌ يُتقن، وهدفٌ يُدرك<br>منبر التحصيلي © 2026</div>
+  <div class="telegram-links">
+    <a href="https://t.me/uloost" target="_blank" rel="noopener">القناة الرئيسية</a>
+    <a href="https://t.me/w_9lr" target="_blank" rel="noopener">قناة الكويزات</a>
+    <a href="https://t.me/w_1lr" target="_blank" rel="noopener">قناة الملفات</a>
+    <a href="https://t.me/w_2lr" target="_blank" rel="noopener">المناقشة</a>
   </div>
+  <div class="copyright">منبر التحصيلي · علمٌ يُتقن، وهدفٌ يُدرك</div>
 </footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
 
 <script>
 "use strict";
 
-(() => {
-  const $ = id => document.getElementById(id);
+/* =========================
+   إعدادات عامة
+========================= */
 
-  /* رسائل الموقع */
-  let toastTimeout;
-  function showMessage(message){
-    const toast=$("toast");
-    toast.textContent=message;
-    toast.classList.add("show");
-    clearTimeout(toastTimeout);
-    toastTimeout=setTimeout(()=>toast.classList.remove("show"),2600);
-  }
-
-  /* الحفظ المحلي */
-  function save(key,value){
-    try{
-      localStorage.setItem(key,JSON.stringify(value));
-      return true;
-    }catch(error){
-      showMessage("تعذر الحفظ على هذا المتصفح.");
-      return false;
-    }
-  }
-
-  function load(key){
-    try{
-      const value=localStorage.getItem(key);
-      return value===null?null:JSON.parse(value);
-    }catch(error){
-      return null;
-    }
-  }
-
-  function remove(key){
-    try{localStorage.removeItem(key);}catch(error){}
-  }
-
-  function validWhole(value,min,max){
-    return Number.isSafeInteger(value)&&value>=min&&value<=max;
-  }
-
-  function escapeHTML(value){
-    return String(value).replace(/[&<>"']/g,char=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#39;"
-    })[char]);
-  }
-
-  /* التنقل الرئيسي */
-  document.querySelectorAll("[data-tab]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      document.querySelectorAll(".tab").forEach(item=>item.classList.remove("active"));
-      document.querySelectorAll(".panel").forEach(item=>item.classList.remove("active"));
-
-      button.classList.add("active");
-      $(button.dataset.tab).classList.add("active");
-    });
-  });
-
-  /* التنقل بين التأسيس والتدريب */
-  document.querySelectorAll("[data-sub]").forEach(button=>{
-    button.addEventListener("click",()=>{
-      document.querySelectorAll(".subtab").forEach(item=>item.classList.remove(
+const EX
