@@ -4,22 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#07182d">
+<meta name="theme-color" content="#071526">
 <title>إذاعة ثانوية الشقيقة</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap');
+
 :root{
-  --sky:#55d5ff;
-  --blue:#159bd0;
-  --navy:#07182d;
-  --panel:rgba(15,39,65,.82);
-  --border:rgba(125,211,252,.15);
-  --muted:#9cb6cc;
-  --white:#f4faff;
+  --sky:#61d9ff;
+  --blue:#159bcf;
+  --navy:#071526;
+  --panel:#10283d;
+  --line:rgba(133,215,255,.15);
+  --muted:#9bb5c9;
+  --white:#f3faff;
 }
 *{box-sizing:border-box}
 body{
@@ -27,159 +25,171 @@ body{
   font-family:'Tajawal',sans-serif;
   color:var(--white);
   background:
-    radial-gradient(ellipse at 15% 0%,rgba(37,174,224,.22),transparent 38%),
-    radial-gradient(ellipse at 90% 25%,rgba(20,105,166,.16),transparent 35%),
-    linear-gradient(155deg,#0b2945 0%,#07182d 48%,#030912 100%);
+    radial-gradient(ellipse at 10% 0%,#15577b66,transparent 35%),
+    radial-gradient(ellipse at 90% 30%,#104c7350,transparent 35%),
+    linear-gradient(145deg,#102e48,#071526 55%,#030912);
   min-height:100vh;
 }
 button,input{font:inherit}
 button{cursor:pointer}
-.container{width:min(1100px,92%);margin:auto}
+.container{width:min(1150px,92%);margin:auto}
 header{
-  padding:25px 0 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:25px 0;gap:15px;
 }
 .brand{display:flex;align-items:center;gap:13px}
-.logo{
-  width:52px;height:52px;border-radius:17px;
+.brand-icon{
+  width:53px;height:53px;border-radius:17px;
   display:grid;place-items:center;
-  background:linear-gradient(135deg,#74e2ff,#087eb8);
-  color:#052039;font-size:25px;font-weight:900;
-  box-shadow:0 8px 30px #159bd044;
+  color:#062037;font-size:25px;font-weight:900;
+  background:linear-gradient(135deg,#a3edff,#21a9dd);
+  box-shadow:0 8px 30px #22b5eb35;
 }
-.brand h1{font-size:21px;margin:0;font-weight:900}
-.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}
-.badge{
-  border:1px solid var(--border);
-  color:#9ce7ff;background:#0c2942;
-  padding:9px 14px;border-radius:30px;font-size:13px;
+.brand h1{font-size:20px;margin:0;font-weight:900}
+.brand p{font-size:12px;color:var(--muted);margin:5px 0 0}
+.manager{
+  color:#a7eaff;border:1px solid var(--line);
+  background:#102c43;padding:9px 14px;border-radius:30px;
+  font-size:13px;
 }
-.hero{
-  text-align:center;
-  padding:48px 15px 38px;
+.hero{text-align:center;padding:55px 10px 38px}
+.hero-label{
+  color:var(--sky);font-weight:800;font-size:14px;
+  letter-spacing:1px;
 }
-.hero .eyebrow{color:var(--sky);font-weight:700;font-size:14px}
 .hero h2{
-  font-size:clamp(31px,6vw,53px);
-  line-height:1.3;margin:13px auto;
+  font-size:clamp(34px,6vw,58px);
+  line-height:1.35;margin:15px 0;
   font-weight:900;
 }
 .hero h2 span{
-  background:linear-gradient(90deg,#fff,#6bdcff);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
+  color:#75dfff;
+  text-shadow:0 0 35px #48caff35;
 }
-.hero p{color:var(--muted);font-size:16px;line-height:1.9;margin:0}
+.hero p{
+  color:var(--muted);line-height:2;
+  font-size:16px;margin:0;
+}
 .panel{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:23px;
-  padding:24px;
-  box-shadow:0 18px 60px #0003;
-  backdrop-filter:blur(12px);
+  background:linear-gradient(145deg,#142f47ed,#0b2034ed);
+  border:1px solid var(--line);
+  border-radius:23px;padding:25px;
+  box-shadow:0 20px 60px #0003;
 }
-.search-title{font-size:19px;font-weight:800;margin:0 0 8px}
-.hint{font-size:13px;color:var(--muted);margin:0 0 18px}
-.search-row{display:flex;gap:10px}
-.search-row input{
+.search-heading{
+  font-size:21px;font-weight:900;margin:0 0 8px;
+}
+.description{color:var(--muted);font-size:13px;margin:0 0 20px}
+.search-line{display:flex;gap:10px}
+.search-line input,.filter-input{
   flex:1;min-width:0;
-  border:1px solid #28516d;background:#071b30;
-  color:white;border-radius:13px;padding:15px 17px;
-  outline:none;font-size:15px;
+  background:#071a2c;border:1px solid #284b66;
+  border-radius:13px;padding:15px;
+  color:white;outline:none;
 }
-.search-row input:focus{border-color:var(--sky);box-shadow:0 0 0 3px #55d5ff18}
-.primary{
+.search-line input:focus,.filter-input:focus{
+  border-color:var(--sky);
+  box-shadow:0 0 0 3px #61d9ff18;
+}
+.main-button{
   border:0;border-radius:13px;padding:0 24px;
-  color:#032039;font-weight:900;
-  background:linear-gradient(135deg,#8ceaff,#29b9ed);
-  box-shadow:0 7px 22px #159bd033;
+  background:linear-gradient(120deg,#9beaff,#32bce9);
+  color:#06233a;font-weight:900;
+  transition:.2s;
 }
-.primary:hover{filter:brightness(1.08)}
-.message{font-size:13px;color:#9ce7ff;margin:13px 2px 0;min-height:18px}
-.section-head{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:12px;margin:36px 0 17px;
+.main-button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.status{font-size:13px;color:#91dfff;margin:12px 0 0;min-height:18px}
+.section-title{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;margin:38px 0 17px;
 }
-.section-head h3{font-size:21px;margin:0;font-weight:900}
-.section-head span{color:var(--muted);font-size:13px}
-.categories{
-  display:flex;gap:9px;overflow-x:auto;padding:3px 0 12px;
-  scrollbar-width:thin;
+.section-title h3{font-size:22px;font-weight:900;margin:0}
+.section-title span{font-size:13px;color:var(--muted)}
+.category-list{
+  display:flex;gap:9px;overflow-x:auto;
+  padding:3px 0 14px;scrollbar-width:thin;
 }
-.cat{
-  white-space:nowrap;border:1px solid var(--border);
-  color:#b6d1e5;background:#0c2238;
-  padding:9px 15px;border-radius:30px;font-size:13px;
+.category{
+  white-space:nowrap;background:#102940;
+  border:1px solid var(--line);color:#c5deee;
+  padding:10px 16px;border-radius:30px;font-size:13px;
 }
-.cat.active{background:#1a91c2;color:#fff;border-color:#52cfff}
-.library-search{
-  width:100%;padding:13px 15px;border-radius:12px;
-  border:1px solid #28516d;background:#071b30;color:white;
-  outline:none;margin-bottom:17px;
+.category.selected{
+  color:white;background:#147fae;border-color:#59d5ff;
 }
-.cards{
+.filter-input{width:100%;margin-bottom:17px}
+.library-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:13px;
 }
-.radio-card{
-  background:linear-gradient(145deg,#102c47,#0a1c30);
-  border:1px solid var(--border);border-radius:16px;
-  padding:17px;text-align:right;color:white;
+.topic{
+  text-align:right;color:white;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#17354e,#0d2135);
+  border-radius:16px;padding:18px;
   transition:.2s;min-height:105px;
 }
-.radio-card:hover{transform:translateY(-3px);border-color:#48c9f5}
-.radio-card small{color:#69d8ff;font-size:11px}
-.radio-card h4{font-size:15px;margin:9px 0 0;line-height:1.6}
-.empty{color:var(--muted);text-align:center;padding:25px;grid-column:1/-1}
-.result{margin-top:25px;display:none}
-.result-top{
-  display:flex;justify-content:space-between;align-items:center;
-  gap:12px;flex-wrap:wrap;margin-bottom:20px;
+.topic:hover{
+  border-color:#5bd6ff;
+  transform:translateY(-3px);
+  background:#173d59;
 }
-.result-top h3{margin:0;font-size:24px}
-.actions{display:flex;gap:8px;flex-wrap:wrap}
-.secondary{
-  border:1px solid #32607e;background:#102c47;color:#dff7ff;
-  padding:10px 15px;border-radius:10px;font-weight:700;
+.topic small{color:#72dcff;font-size:11px}
+.topic strong{display:block;font-size:16px;margin-top:10px}
+.no-results{
+  grid-column:1/-1;text-align:center;
+  color:var(--muted);padding:25px;
 }
-.secondary:hover{border-color:var(--sky)}
-.radio-title{
-  text-align:center;padding:28px 15px;
-  border-radius:17px;
-  background:linear-gradient(135deg,#123c5b,#0a1b30);
-  border:1px solid var(--border);margin-bottom:17px;
+.radio-result{display:none;margin-top:35px}
+.radio-toolbar{
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:20px;
 }
-.radio-title small{color:#7fe1ff}
-.radio-title h2{font-size:29px;margin:9px 0;font-weight:900}
-.radio-title p{color:var(--muted);margin:0;font-size:13px}
-.paragraph{
-  background:#0a2036;border:1px solid var(--border);
-  padding:19px;border-radius:15px;margin:12px 0;
+.radio-toolbar h3{margin:0;font-size:23px}
+.toolbar-buttons{display:flex;gap:8px;flex-wrap:wrap}
+.tool-button{
+  border:1px solid #345d78;background:#112d45;
+  color:#e5f7ff;padding:10px 15px;border-radius:10px;
 }
-.paragraph h4{color:#75ddff;margin:0 0 10px;font-size:17px}
-.paragraph p{margin:0;color:#e2eff8;line-height:2;font-size:15px;white-space:pre-line}
-.footer{text-align:center;color:#7695ad;font-size:12px;padding:35px 10px}
+.tool-button:hover{border-color:var(--sky)}
+.radio-cover{
+  text-align:center;padding:32px 15px;
+  background:linear-gradient(135deg,#174967,#0b2035);
+  border:1px solid var(--line);border-radius:18px;
+  margin-bottom:16px;
+}
+.radio-cover small{color:#8de4ff}
+.radio-cover h2{font-size:30px;margin:10px 0;font-weight:900}
+.radio-cover p{color:#bdd5e6;margin:0;font-size:13px}
+.segment{
+  padding:21px;background:#0c2237;
+  border:1px solid var(--line);border-radius:15px;
+  margin:12px 0;break-inside:avoid;
+}
+.segment h4{margin:0 0 12px;color:#71dcff;font-size:18px}
+.segment p{margin:0;line-height:2.1;color:#e5f1f8;font-size:15px;white-space:pre-line}
+footer{
+  text-align:center;color:#7795aa;
+  padding:38px 10px;font-size:13px;line-height:2;
+}
 @media(max-width:750px){
-  .cards{grid-template-columns:repeat(2,1fr)}
-  .search-row{flex-direction:column}
-  .primary{padding:14px}
+  .library-grid{grid-template-columns:repeat(2,1fr)}
+  .search-line{flex-direction:column}
+  .main-button{padding:15px}
 }
-@media(max-width:430px){
-  .cards{grid-template-columns:1fr}
-  .badge{font-size:11px;padding:7px 10px}
+@media(max-width:480px){
+  .library-grid{grid-template-columns:1fr}
+  .panel{padding:18px}
+  .manager{font-size:11px;padding:8px}
   .brand h1{font-size:17px}
-  .panel{padding:17px}
 }
 @media print{
   body{background:white;color:#111}
-  header,.hero,.search-panel,.library,.footer,.actions{display:none!important}
+  header,.hero,.search-panel,.library,footer,.radio-toolbar{display:none!important}
   .container{width:100%}
-  .panel{background:white;border:0;box-shadow:none;padding:0}
-  .result{display:block!important}
-  .radio-title,.paragraph{background:white;color:#111;border:1px solid #ccc;break-inside:avoid}
-  .radio-title h2,.paragraph h4,.paragraph p{color:#111}
-  .paragraph p{font-size:15px}
+  .radio-result{display:block!important}
+  .radio-cover,.segment{background:white;border:1px solid #ccc}
+  .radio-cover h2,.radio-cover p,.segment h4,.segment p{color:#111}
+  .segment{margin:10px 0}
 }
 </style>
 </head>
@@ -189,61 +199,64 @@ header{
 
 <header>
   <div class="brand">
-    <div class="logo">ش</div>
+    <div class="brand-icon">ش</div>
     <div>
       <h1>ثانوية الشقيقة</h1>
-      <p>منصة الإذاعة المدرسية</p>
+      <p>بوابة الإذاعة المدرسية</p>
     </div>
   </div>
-  <div class="badge">المدير: عيد حرمل</div>
+  <div class="manager">مدير المدرسة: عيد حرمل</div>
 </header>
 
 <section class="hero">
-  <div class="eyebrow">صباح المعرفة والإبداع</div>
-  <h2>إذاعتك المدرسية،<br><span>بأسلوب يليق بمدرستك</span></h2>
-  <p>اختر موضوعاً من المكتبة أو اكتب عنوان إذاعتك<br>واستعد لتقديم إذاعة مدرسية منظمة وجاهزة.</p>
+  <div class="hero-label">منصة الإبداع والإلقاء المدرسي</div>
+  <h2>ابدأ صباحك بـ<br><span>إذاعة مميزة</span></h2>
+  <p>مكتبة متنوعة من الإذاعات المدرسية<br>اختر موضوعك وجهّز إذاعتك بكل سهولة.</p>
 </section>
 
 <section class="panel search-panel">
-  <h3 class="search-title">اكتب عنوان الإذاعة</h3>
-  <p class="hint">اكتب الموضوع الذي تريده ثم اضغط على زر إنشاء الإذاعة.</p>
-  <div class="search-row">
-    <input id="topicInput" type="text" placeholder="مثال: أهمية الصلاة، بر الوالدين، الأمن السيبراني...">
-    <button class="primary" id="createBtn">إنشاء الإذاعة</button>
+  <h3 class="search-heading">أنشئ إذاعتك الخاصة</h3>
+  <p class="description">اكتب عنوان الموضوع الذي تريده، ثم اضغط على إنشاء الإذاعة.</p>
+  <div class="search-line">
+    <input id="customTitle" placeholder="مثال: أهمية القراءة، بر الوالدين، التقنية..." autocomplete="off">
+    <button class="main-button" id="generate">إنشاء الإذاعة ←</button>
   </div>
-  <div class="message" id="searchMessage"></div>
+  <div class="status" id="status"></div>
 </section>
 
 <section class="library">
-  <div class="section-head">
+  <div class="section-title">
     <h3>مكتبة الإذاعات</h3>
-    <span id="countLabel">110 موضوع</span>
+    <span id="topicCount">110 موضوع</span>
   </div>
-  <div class="categories" id="categories"></div>
-  <input class="library-search" id="librarySearch" placeholder="ابحث في مكتبة الإذاعات...">
-  <div class="cards" id="radioCards"></div>
+  <div class="category-list" id="categoryList"></div>
+  <input class="filter-input" id="filter" placeholder="ابحث عن إذاعة في المكتبة...">
+  <div class="library-grid" id="libraryGrid"></div>
 </section>
 
-<section class="panel result" id="result">
-  <div class="result-top">
-    <h3>الإذاعة المدرسية</h3>
-    <div class="actions">
-      <button class="secondary" id="copyBtn">نسخ الإذاعة</button>
-      <button class="secondary" id="printBtn">طباعة / PDF</button>
+<section class="panel radio-result" id="radioResult">
+  <div class="radio-toolbar">
+    <h3>الإذاعة المختارة</h3>
+    <div class="toolbar-buttons">
+      <button class="tool-button" id="copy">نسخ الإذاعة</button>
+      <button class="tool-button" id="print">طباعة / PDF</button>
     </div>
   </div>
-  <div id="radioContent"></div>
+  <div id="radioBody"></div>
 </section>
 
-<footer class="footer">
-  إعداد وتقديم الطالب سعد بجاد<br>
-  ثانوية الشقيقة · جميع الحقوق محفوظة
+<footer>
+  ثانوية الشقيقة<br>
+  إعداد وتقديم: الطالب سعد بجاد
 </footer>
 
 </div>
 
 <script>
-const topics = {
+"use strict";
+
+/* مكتبة المواضيع */
+const library = {
 "القيم والأخلاق":[
 "بر الوالدين","الصدق والأمانة","احترام الآخرين","حسن الخلق","التسامح والعفو",
 "التعاون والعمل الجماعي","الرحمة بالآخرين","الوفاء بالعهد","حفظ اللسان","الإحسان إلى الجار","الرفق واللين"
@@ -276,7 +289,7 @@ const topics = {
 "الثقة بالنفس","تحقيق الأهداف","قوة الإرادة","إدارة الوقت","التفاؤل",
 "مواجهة التحديات","التخطيط للمستقبل","تطوير الذات","اتخاذ القرار","الانضباط الشخصي","النجاح يبدأ بخطوة"
 ],
-"المدرسة والحياة الطلابية":[
+"المدرسة والطلاب":[
 "احترام المدرسة","المحافظة على الكتب","النظام المدرسي","الصداقة الإيجابية","الاستعداد لليوم الدراسي",
 "المشاركة الصفية","الموهبة والإبداع","الانضباط والحضور","المحافظة على مرافق المدرسة","التعاون بين الطلاب","الاختبارات بلا قلق"
 ],
@@ -286,61 +299,70 @@ const topics = {
 ]
 };
 
-const allRadios=[];
-Object.entries(topics).forEach(([category,list])=>{
-  list.forEach(title=>allRadios.push({title,category}));
-});
+const topics=[];
+for(const category in library){
+  for(const title of library[category]){
+    topics.push({title,category});
+  }
+}
 
-let activeCategory="الكل";
-let currentRadio=null;
+let selectedCategory="الكل";
+let currentBroadcast=null;
 
-const categoriesEl=document.getElementById("categories");
-const cardsEl=document.getElementById("radioCards");
-const librarySearch=document.getElementById("librarySearch");
+const $=id=>document.getElementById(id);
 
-function makeCategories(){
-  const names=["الكل",...Object.keys(topics)];
-  categoriesEl.innerHTML="";
+function renderCategories(){
+  const names=["الكل",...Object.keys(library)];
+  $("categoryList").innerHTML="";
   names.forEach(name=>{
-    const b=document.createElement("button");
-    b.className="cat"+(name===activeCategory?" active":"");
-    b.textContent=name;
-    b.onclick=()=>{
-      activeCategory=name;
-      makeCategories();
-      renderCards();
-    };
-    categoriesEl.appendChild(b);
+    const button=document.createElement("button");
+    button.className="category"+(name===selectedCategory?" selected":"");
+    button.textContent=name;
+    button.addEventListener("click",()=>{
+      selectedCategory=name;
+      renderCategories();
+      renderLibrary();
+    });
+    $("categoryList").appendChild(button);
   });
 }
 
-function renderCards(){
-  const q=librarySearch.value.trim().toLowerCase();
-  const filtered=allRadios.filter(r=>{
-    const categoryMatch=activeCategory==="الكل"||r.category===activeCategory;
-    return categoryMatch&&r.title.toLowerCase().includes(q);
+function renderLibrary(){
+  const query=clean($("filter").value);
+  const results=topics.filter(item=>{
+    const categoryOK=selectedCategory==="الكل"||item.category===selectedCategory;
+    return categoryOK&&clean(item.title).includes(query);
   });
-  cardsEl.innerHTML="";
-  document.getElementById("countLabel").textContent=filtered.length+" موضوع";
-  if(!filtered.length){
-    cardsEl.innerHTML='<div class="empty">لم نعثر على موضوع بهذا الاسم.</div>';
+
+  $("libraryGrid").innerHTML="";
+  $("topicCount").textContent=results.length+" موضوع";
+
+  if(results.length===0){
+    const empty=document.createElement("div");
+    empty.className="no-results";
+    empty.textContent="لا توجد نتائج مطابقة. جرّب كلمة أخرى.";
+    $("libraryGrid").appendChild(empty);
     return;
   }
-  filtered.forEach(r=>{
-    const card=document.createElement("button");
-    card.className="radio-card";
+
+  results.forEach(item=>{
+    const button=document.createElement("button");
+    button.className="topic";
+
     const small=document.createElement("small");
-    small.textContent=r.category;
-    const h=document.createElement("h4");
-    h.textContent=r.title;
-    card.append(small,h);
-    card.onclick=()=>openRadio(r);
-    cardsEl.appendChild(card);
+    small.textContent=item.category;
+
+    const title=document.createElement("strong");
+    title.textContent=item.title;
+
+    button.append(small,title);
+    button.addEventListener("click",()=>showBroadcast(item.title,item.category));
+    $("libraryGrid").appendChild(button);
   });
 }
 
-function normalize(s){
-  return s.toLowerCase()
+function clean(value){
+  return value.toLowerCase()
     .replace(/[أإآ]/g,"ا")
     .replace(/ة/g,"ه")
     .replace(/ى/g,"ي")
@@ -349,104 +371,132 @@ function normalize(s){
     .replace(/\s+/g," ").trim();
 }
 
-function findBestTopic(input){
-  const query=normalize(input);
-  if(!query)return null;
-  let best=null,bestScore=0;
-  allRadios.forEach(r=>{
-    const title=normalize(r.title);
+function findCategory(value){
+  const query=clean(value);
+  let bestCategory="موضوعات متنوعة";
+  let bestScore=0;
+
+  for(const item of topics){
+    const title=clean(item.title);
     let score=0;
+
     if(title===query)score=100;
-    else if(title.includes(query)||query.includes(title))score=85;
+    else if(title.includes(query)||query.includes(title))score=80;
     else{
       const words=query.split(" ").filter(Boolean);
-      const matches=words.filter(w=>title.includes(w));
-      score=(matches.length/Math.max(words.length,1))*75;
+      const matched=words.filter(word=>title.includes(word));
+      score=words.length?(matched.length/words.length)*70:0;
     }
-    if(score>bestScore){bestScore=score;best=r;}
-  });
-  return bestScore>=35?best:null;
+
+    if(score>bestScore){
+      bestScore=score;
+      bestCategory=item.category;
+    }
+  }
+
+  return {category:bestCategory,score:bestScore};
 }
 
-function makeBroadcast(title,category){
-  const data={
-    "القيم والأخلاق":{
-      intro:"الحمد لله الذي أمر بمكارم الأخلاق، وجعل حسن التعامل من صفات المؤمنين، والصلاة والسلام على نبينا محمد. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا لهذا اليوم تتحدث عن موضوع: "+title+".",
-      word:"إن الأخلاق ليست كلمات تقال، بل سلوك يظهر في تعامل الإنسان مع من حوله. ومن أعظم ما يميز الإنسان أن يراقب تصرفاته، ويحترم الآخرين، ويحرص على فعل الخير. وكل واحد منا يستطيع أن يجعل يومه أفضل بكلمة طيبة أو موقف نبيل أو مساعدة صادقة. فلنجعل "+title+" مبدأ نطبقه في حياتنا اليومية.",
-      fact:"هل تعلم أن السلوك الإيجابي ينتقل أثره إلى الآخرين؟ وأن الكلمة الطيبة قد تترك أثراً جميلاً لا ينسى؟",
-      wisdom:"الأخلاق زينة الإنسان، وبها يكبر قدره بين الناس.",
-      message:"اجعل أخلاقك عنوانك، وتعامل مع الناس بما تحب أن يعاملوك به."
-    },
-    "الدين والإسلام":{
-      intro:"بسم الله الرحمن الرحيم، الحمد لله رب العالمين، والصلاة والسلام على أشرف الأنبياء والمرسلين. أما بعد، مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوع إذاعتنا اليوم هو: "+title+".",
-      word:"إن حياة المسلم تقوم على الإيمان والعمل الصالح، والحرص على ما ينفعه في دنياه وآخرته. ومن الجميل أن يجعل الإنسان لنفسه نصيباً يومياً من الطاعات، وأن يحرص على الاستمرار في الخير ولو كان قليلاً. وموضوع "+title+" يذكرنا بأهمية أن تكون علاقتنا بالله حاضرة في أقوالنا وأعمالنا.",
-      fact:"هل تعلم أن الأعمال الصالحة تقوي صلة العبد بربه، وتعينه على الثبات على الخير؟",
-      wisdom:"من أصلح ما بينه وبين الله أصلح الله ما بينه وبين الناس.",
-      message:"اجعل لك عملاً صالحاً لا تتركه، وابدأ يومك بنية طيبة."
-    },
-    "العلم والتعليم":{
-      intro:"الحمد لله الذي رفع أهل العلم درجات، وجعل المعرفة طريقاً للتقدم والنجاح. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. نقدم لكم إذاعتنا بعنوان: "+title+".",
-      word:"العلم أساس نهضة الأمم، وبه تتطور المجتمعات وتُحل المشكلات وتُبنى الإنجازات. والطالب الناجح لا ينتظر النتائج دون عمل، بل ينظم وقته، ويسأل عندما لا يفهم، ويستفيد من أخطائه. إن "+title+" يذكرنا بأن النجاح رحلة تحتاج إلى صبر واستمرار.",
-      fact:"هل تعلم أن التعلم المستمر يساعد الإنسان على تطوير مهاراته ومواكبة التغيرات؟",
-      wisdom:"من جد وجد، ومن زرع حصد.",
-      message:"لا تؤجل هدفك، فكل دقيقة تستثمرها في العلم تقربك من مستقبل أفضل."
-    },
-    "الصحة والحياة":{
-      intro:"الحمد لله على نعمة الصحة والعافية، فهما من أعظم النعم التي تستحق الشكر والمحافظة. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوعنا اليوم هو: "+title+".",
-      word:"الصحة أساس مهم لحياة متوازنة، والمحافظة عليها تبدأ بعادات يومية بسيطة، مثل النوم الكافي، والغذاء المتنوع، والنشاط البدني، والاهتمام بالنظافة. إن "+title+" يذكرنا بأن العناية بأنفسنا مسؤولية مستمرة، وليست أمراً نؤجله حتى نشعر بالتعب.",
-      fact:"هل تعلم أن العادات اليومية الصغيرة قد يكون لها أثر كبير في صحتنا ونشاطنا؟",
-      wisdom:"الصحة تاج على رؤوس الأصحاء.",
-      message:"اختر اليوم عادة صحية واحدة، واجعلها جزءاً من يومك."
-    },
-    "الوطن والمجتمع":{
-      intro:"الحمد لله الذي جعل التعاون أساساً لقوة المجتمعات، والصلاة والسلام على نبينا محمد. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا لهذا اليوم بعنوان: "+title+".",
-      word:"الوطن ليس مكاناً نعيش فيه فحسب، بل مسؤولية نشارك في بنائها والمحافظة عليها. وكل فرد يستطيع أن يخدم مجتمعه بإتقانه لعمله، واحترامه للأنظمة، ومساعدته للآخرين. وموضوع "+title+" يدعونا إلى أن نكون أفراداً إيجابيين يضيفون إلى مجتمعهم.",
-      fact:"هل تعلم أن المبادرات التطوعية تسهم في تعزيز التعاون والتكافل بين أفراد المجتمع؟",
-      wisdom:"الأوطان تبنى بسواعد أبنائها وإخلاصهم.",
-      message:"كن جزءاً من الحل، وابدأ بخطوة نافعة في محيطك."
-    },
-    "التقنية والمستقبل":{
-      intro:"نعيش في زمن تتسارع فيه التقنية وتتجدد فيه المعرفة، وأصبح الوعي الرقمي ضرورة لكل طالب. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوعنا اليوم هو: "+title+".",
-      word:"أصبحت التقنية جزءاً من حياتنا اليومية، وهي فرصة عظيمة للتعلم والإبداع إذا أحسنا استخدامها. لكن الاستفادة منها تحتاج إلى وعي، والتحقق من المعلومات، واحترام الخصوصية، وعدم مشاركة البيانات الشخصية. إن "+title+" يذكرنا بأن المستخدم الواعي هو من يستفيد من التقنية دون أن يفقد مسؤوليته.",
-      fact:"هل تعلم أن التحقق من مصدر المعلومة قبل نشرها يساعد في الحد من انتشار الأخبار المضللة؟",
-      wisdom:"التقنية أداة، وقيمة استخدامها تعتمد على وعي الإنسان.",
-      message:"استخدم التقنية فيما ينفعك، واجعل معرفتك أقوى من مجرد تصفحك."
-    },
-    "البيئة والطبيعة":{
-      intro:"الحمد لله الذي أنعم علينا بالأرض وما فيها من خيرات، وجعل المحافظة على النعم مسؤولية علينا. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا بعنوان: "+title+".",
-      word:"البيئة مسؤولية مشتركة، والمحافظة عليها تبدأ من سلوك الفرد في منزله ومدرسته وشارعه. ومن صور ذلك عدم رمي النفايات، وترشيد استهلاك الماء، والعناية بالأشجار والمرافق العامة. وموضوع "+title+" يذكرنا بأن حماية البيئة عمل يومي يشارك فيه الجميع.",
-      fact:"هل تعلم أن ترشيد استهلاك الماء والطاقة يقلل الهدر ويحافظ على الموارد؟",
-      wisdom:"الأرض أمانة، والمحافظة عليها مسؤولية.",
-      message:"اترك المكان أفضل مما وجدته، وابدأ بنفسك."
-    },
-    "الشخصية والطموح":{
-      intro:"لكل إنسان طموح يسعى إليه، ولكل نجاح بداية تحتاج إلى قرار وعمل. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوع إذاعتنا اليوم هو: "+title+".",
-      word:"الإنجاز لا يأتي في يوم واحد، بل تصنعه خطوات صغيرة متتابعة. والإنسان الطموح يعرف هدفه، ويتعلم من تجاربه، ولا يجعل العقبات سبباً للتوقف. إن "+title+" يدعونا إلى الإيمان بقدرتنا على التطور، مع إدراك أن النجاح يحتاج إلى تخطيط وصبر.",
-      fact:"هل تعلم أن تقسيم الهدف الكبير إلى خطوات صغيرة يجعل العمل عليه أوضح وأسهل متابعة؟",
-      wisdom:"رحلة الألف ميل تبدأ بخطوة.",
-      message:"حدد هدفك، واكتب أول خطوة، ثم ابدأ بتنفيذها اليوم."
-    },
-    "المدرسة والحياة الطلابية":{
-      intro:"المدرسة بيت العلم، وفيها نتعلم المعرفة والمسؤولية والتعاون. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. نقدم لكم إذاعتنا بعنوان: "+title+".",
-      word:"تقوم الحياة المدرسية الناجحة على الاحترام والانضباط والتعاون، فالطالب مسؤول عن وقته وأدواته ومرافق مدرسته. وكل تصرف إيجابي يساهم في جعل البيئة المدرسية مكاناً أفضل للجميع. وموضوع "+title+" يذكرنا بأن المدرسة ليست مكاناً للتعلم فقط، بل مساحة لبناء الشخصية.",
-      fact:"هل تعلم أن المشاركة في الأنشطة المدرسية تساعد الطلاب على اكتشاف مهاراتهم وتنميتها؟",
-      wisdom:"المدرسة بداية الطريق، والاجتهاد يصنع الفرق.",
-      message:"احترم مدرستك، وقدر معلمك، وكن قدوة في سلوكك."
-    },
-    "موضوعات متنوعة":{
-      intro:"الحمد لله الذي وهب الإنسان العقل والقدرة على التعلم والعمل، والصلاة والسلام على نبينا محمد. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا لهذا اليوم تتناول موضوع: "+title+".",
-      word:"في حياتنا موضوعات كثيرة تستحق أن نتوقف عندها ونتأمل أثرها في سلوكنا ومستقبلنا. والإنسان الواعي هو من يحول ما يتعلمه إلى عمل نافع، ويبحث دائماً عن فرص التحسن والتقدم. إن "+title+" فرصة لنجدد أفكارنا ونراجع عاداتنا ونختار الأفضل.",
-      fact:"هل تعلم أن المعرفة تزداد قيمتها عندما تتحول إلى سلوك وعمل؟",
-      wisdom:"خير الكلام ما نفع، وخير العمل ما أتقن.",
-      message:"اجعل يومك فرصة للتعلم، ولا تمر عليك فكرة نافعة دون أن تستفيد منها."
-    }
-  };
+/* قوالب الإذاعة حسب التصنيف */
+const templates={
+"القيم والأخلاق":{
+intro:"الحمد لله الذي أمر بمكارم الأخلاق، وجعل حسن التعامل من صفات المؤمنين، والصلاة والسلام على نبينا محمد. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. نقدم لكم إذاعتنا لهذا اليوم بعنوان: ",
+word:"إن الأخلاق ليست كلمات تقال، بل سلوك يظهر في تعامل الإنسان مع من حوله. ومن أعظم ما يميز الإنسان أن يحترم الآخرين، ويحرص على فعل الخير، ويجعل الصدق والأمانة أساساً لتعامله. إن هذا الموضوع يذكرنا بأننا نستطيع أن نجعل يومنا أفضل بكلمة طيبة أو موقف نبيل أو مساعدة صادقة.",
+fact:"هل تعلم أن الكلمة الطيبة قد تترك أثراً جميلاً في نفس الإنسان؟ وأن السلوك الحسن يساعد على بناء علاقات قائمة على الاحترام؟",
+wisdom:"الأخلاق زينة الإنسان، وبها يكبر قدره بين الناس.",
+message:"اجعل أخلاقك عنوانك، وعامل الناس بما تحب أن يعاملوك به."
+},
+"الدين والإسلام":{
+intro:"بسم الله الرحمن الرحيم، الحمد لله رب العالمين، والصلاة والسلام على أشرف الأنبياء والمرسلين. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوع إذاعتنا اليوم هو: ",
+word:"إن حياة المسلم تقوم على الإيمان والعمل الصالح، والحرص على ما ينفعه في دنياه وآخرته. ومن الجميل أن يجعل الإنسان لنفسه نصيباً من الطاعات، وأن يستمر في فعل الخير. فالمسلم يحرص على أن تكون علاقته بالله حاضرة في أقواله وأعماله.",
+fact:"هل تعلم أن المداومة على الأعمال الصالحة، وإن كانت قليلة، من أسباب الثبات على الخير؟",
+wisdom:"من أصلح ما بينه وبين الله أصلح الله ما بينه وبين الناس.",
+message:"ابدأ يومك بنية طيبة، واجعل لك عملاً صالحاً تحافظ عليه."
+},
+"العلم والتعليم":{
+intro:"الحمد لله الذي رفع أهل العلم درجات، وجعل المعرفة طريقاً للتقدم والنجاح. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا لهذا اليوم بعنوان: ",
+word:"العلم أساس نهضة الأمم، وبه تتطور المجتمعات وتُحل المشكلات وتُبنى الإنجازات. والطالب الناجح ينظم وقته، ويسأل عندما لا يفهم، ويستفيد من أخطائه. النجاح رحلة تحتاج إلى صبر واستمرار، وكل خطوة في طريق التعلم تقربنا من أهدافنا.",
+fact:"هل تعلم أن التعلم المستمر يساعد الإنسان على تطوير مهاراته ومواكبة التغيرات؟",
+wisdom:"من جد وجد، ومن زرع حصد.",
+message:"لا تؤجل هدفك، فكل دقيقة تستثمرها في العلم تقربك من مستقبل أفضل."
+},
+"الصحة والحياة":{
+intro:"الحمد لله على نعمة الصحة والعافية، فهما من أعظم النعم التي تستحق الشكر والمحافظة. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوعنا اليوم هو: ",
+word:"الصحة أساس مهم لحياة متوازنة، والمحافظة عليها تبدأ بعادات يومية بسيطة، مثل النوم الكافي، والغذاء المتنوع، والنشاط البدني، والاهتمام بالنظافة. العناية بأنفسنا مسؤولية مستمرة، وليست أمراً نؤجله حتى نشعر بالتعب.",
+fact:"هل تعلم أن العادات اليومية الصغيرة قد يكون لها أثر كبير في صحتنا ونشاطنا؟",
+wisdom:"الصحة تاج على رؤوس الأصحاء.",
+message:"اختر اليوم عادة صحية نافعة، واجعلها جزءاً من يومك."
+},
+"الوطن والمجتمع":{
+intro:"الحمد لله الذي جعل التعاون أساساً لقوة المجتمعات، والصلاة والسلام على نبينا محمد. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا لهذا اليوم بعنوان: ",
+word:"الوطن ليس مكاناً نعيش فيه فحسب، بل مسؤولية نشارك في بنائها والمحافظة عليها. وكل فرد يستطيع أن يخدم مجتمعه بإتقانه لعمله، واحترامه للأنظمة، ومساعدته للآخرين. المجتمع القوي يقوم على التعاون والمسؤولية.",
+fact:"هل تعلم أن المبادرات التطوعية تسهم في تعزيز التعاون والتكافل بين أفراد المجتمع؟",
+wisdom:"الأوطان تبنى بسواعد أبنائها وإخلاصهم.",
+message:"كن جزءاً من الحل، وابدأ بخطوة نافعة في محيطك."
+},
+"التقنية والمستقبل":{
+intro:"نعيش في زمن تتسارع فيه التقنية وتتجدد فيه المعرفة، وأصبح الوعي الرقمي ضرورة لكل طالب. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوعنا اليوم هو: ",
+word:"أصبحت التقنية جزءاً من حياتنا اليومية، وهي فرصة عظيمة للتعلم والإبداع إذا أحسنا استخدامها. لكن الاستفادة منها تحتاج إلى وعي، والتحقق من المعلومات، واحترام الخصوصية، وعدم مشاركة البيانات الشخصية. المستخدم الواعي هو من يستفيد من التقنية بمسؤولية.",
+fact:"هل تعلم أن التحقق من مصدر المعلومة قبل نشرها يساعد في الحد من انتشار الأخبار المضللة؟",
+wisdom:"التقنية أداة، وقيمة استخدامها تعتمد على وعي الإنسان.",
+message:"استخدم التقنية فيما ينفعك، واجعل معرفتك أقوى من مجرد تصفحك."
+},
+"البيئة والطبيعة":{
+intro:"الحمد لله الذي أنعم علينا بالأرض وما فيها من خيرات، وجعل المحافظة على النعم مسؤولية علينا. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا بعنوان: ",
+word:"البيئة مسؤولية مشتركة، والمحافظة عليها تبدأ من سلوك الفرد في منزله ومدرسته وشارعه. ومن صور ذلك عدم رمي النفايات، وترشيد استهلاك الماء، والعناية بالأشجار والمرافق العامة. حماية البيئة عمل يومي يشارك فيه الجميع.",
+fact:"هل تعلم أن ترشيد استهلاك الماء والطاقة يقلل الهدر ويحافظ على الموارد؟",
+wisdom:"الأرض أمانة، والمحافظة عليها مسؤولية.",
+message:"اترك المكان أفضل مما وجدته، وابدأ بنفسك."
+},
+"الشخصية والطموح":{
+intro:"لكل إنسان طموح يسعى إليه، ولكل نجاح بداية تحتاج إلى قرار وعمل. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. موضوع إذاعتنا اليوم هو: ",
+word:"الإنجاز لا يأتي في يوم واحد، بل تصنعه خطوات صغيرة متتابعة. والإنسان الطموح يعرف هدفه، ويتعلم من تجاربه، ولا يجعل العقبات سبباً للتوقف. النجاح يحتاج إلى تخطيط وصبر واستمرار.",
+fact:"هل تعلم أن تقسيم الهدف الكبير إلى خطوات صغيرة يجعل العمل عليه أوضح وأسهل متابعة؟",
+wisdom:"رحلة الألف ميل تبدأ بخطوة.",
+message:"حدد هدفك، واكتب أول خطوة، ثم ابدأ بتنفيذها اليوم."
+},
+"المدرسة والطلاب":{
+intro:"المدرسة بيت العلم، وفيها نتعلم المعرفة والمسؤولية والتعاون. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. نقدم لكم إذاعتنا بعنوان: ",
+word:"تقوم الحياة المدرسية الناجحة على الاحترام والانضباط والتعاون، فالطالب مسؤول عن وقته وأدواته ومرافق مدرسته. وكل تصرف إيجابي يساهم في جعل البيئة المدرسية مكاناً أفضل للجميع. المدرسة مساحة لبناء الشخصية واكتشاف القدرات.",
+fact:"هل تعلم أن المشاركة في الأنشطة المدرسية تساعد الطلاب على اكتشاف مهاراتهم وتنميتها؟",
+wisdom:"المدرسة بداية الطريق، والاجتهاد يصنع الفرق.",
+message:"احترم مدرستك، وقدر معلمك، وكن قدوة في سلوكك."
+},
+"موضوعات متنوعة":{
+intro:"الحمد لله الذي وهب الإنسان العقل والقدرة على التعلم والعمل، والصلاة والسلام على نبينا محمد. مديرنا الفاضل، معلمينا الكرام، زملاءنا الطلاب، السلام عليكم ورحمة الله وبركاته. إذاعتنا لهذا اليوم تتناول موضوع: ",
+word:"في حياتنا موضوعات كثيرة تستحق أن نتوقف عندها ونتأمل أثرها في سلوكنا ومستقبلنا. والإنسان الواعي هو من يحول ما يتعلمه إلى عمل نافع، ويبحث دائماً عن فرص التحسن والتقدم. فلنجعل من كل يوم فرصة جديدة للتعلم والعمل.",
+fact:"هل تعلم أن المعرفة تزداد قيمتها عندما تتحول إلى سلوك وعمل؟",
+wisdom:"خير الكلام ما نفع، وخير العمل ما أتقن.",
+message:"اجعل يومك فرصة للتعلم، ولا تمر عليك فكرة نافعة دون أن تستفيد منها."
+}
+};
 
-  const d=data[category]||data["موضوعات متنوعة"];
+function buildBroadcast(title,category){
+  const t=templates[category]||templates["موضوعات متنوعة"];
   return {
     title,
-    category,
     sections:[
-      ["المقدمة",d.intro],
+      ["المقدمة",t.intro+title+"."],
       ["القرآن الكريم","قال الله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114]."],
-      ["الحديث الشريف","قال رسول 
+      ["الحديث الشريف","قال رسول الله ﷺ: «من سلك طريقًا يلتمس فيه علمًا، سهّل الله له به طريقًا إلى الجنة». رواه مسلم."],
+      ["كلمة الصباح",t.word],
+      ["هل تعلم؟",t.fact],
+      ["حكمة اليوم",t.wisdom],
+      ["رسالة صباحية",t.message],
+      ["الخاتمة","وبهذا نصل إلى ختام إذاعتنا المدرسية، سائلين الله أن يجعل يومنا مليئاً بالعلم والعمل والإنجاز. كان معكم في إعداد وتقديم الإذاعة الطالب سعد بجاد، تحت إشراف إدارة ثانوية الشقيقة. والسلام عليكم ورحمة الله وبركاته."]
+    ]
+  };
+}
+
+function showBroadcast(title,category){
+  currentBroadcast=buildBroadcast(title,category);
+  const body=$("radioBody");
+  body.innerHTML="";
+
+  const cover=document.createElement("div");
+  cover.className="radio-cover";
+
+  const school=document.createElement("small");
+  school.textContent="إذاعة مدرسية · ثانوية الشقيقة";
+
+  const headin
