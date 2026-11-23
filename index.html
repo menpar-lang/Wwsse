@@ -1,277 +1,529 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>منبر التحصيلي</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f4f8fb;--card:#fff;--tx:#0f2744;--mut:#5b7189;--line:#dce6ef;--sky:#1a8fc0;--navy:#0b2a55;--soft:#e8f3fa;--on:#fff;color-scheme:light}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07111f;--card:#0e1c30;--tx:#e6f1fb;--mut:#93a9bf;--line:#1c2f47;--soft:#0f2238;color-scheme:dark}}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:"Tajawal","Segoe UI",Tahoma,Arial,sans-serif;font-size:17px;line-height:1.7}
-.wrap{max-width:900px;margin:auto;padding:0 16px}
-.top{background:var(--card);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
-.top .wrap{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:46px;height:46px;flex:none;background:var(--navy);border-radius:13px;padding:7px}
-.brand h1{margin:0;font-size:1.25rem;line-height:1.3}
-.brand small{color:var(--mut);font-size:.82rem}
-.free{background:var(--soft);color:var(--sky);font-weight:800;padding:6px 16px;border-radius:99px;border:1px solid var(--line);font-size:.95rem}
-.hero{background:var(--soft);border-bottom:1px solid var(--line);padding:38px 0 34px;text-align:center}
-.hero h2{margin:0 0 6px;font-size:clamp(1.5rem,5vw,2.2rem);line-height:1.4}
-.hero p{margin:0;color:var(--mut)}
-.lbl{margin:26px 0 12px;font-weight:700;color:var(--navy)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .lbl{color:var(--tx)}}
-.count{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:560px;margin:auto}
-.count div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 4px}
-.count b{display:block;font-size:clamp(1.5rem,6vw,2.2rem);line-height:1.2;font-variant-numeric:tabular-nums}
-.count span{font-size:.82rem;color:var(--mut)}
-.dateset{margin-top:14px;font-size:.85rem;color:var(--mut)}
-.dateset input{width:auto;padding:4px 8px}
-nav{display:flex;margin:26px 0 18px;border-bottom:2px solid var(--line)}
-nav button{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 6px 14px;border:0;border-bottom:4px solid transparent;margin-bottom:-2px;background:transparent;color:var(--mut);font:inherit;font-weight:800;font-size:1.05rem;cursor:pointer;transition:color .2s,border-color .2s}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إذاعة ثانوية الشقيقة</title>
 
-nav button small{font-weight:400;color:var(--mut);font-size:.78rem}
-nav button:hover{color:var(--tx)}
-nav button.on{color:var(--tx);border-bottom-color:var(--sky)}
-nav button.on small{color:var(--sky)}
-section{display:none;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 18px}
-section.on{display:block}
-h3{margin:0 0 12px;font-size:1.2rem}
-.sub{display:flex;gap:6px;margin-bottom:18px;background:var(--soft);padding:5px;border-radius:12px}
-.sub button{flex:1;padding:9px;border-radius:9px;border:0;background:transparent;color:var(--mut);font:inherit;font-weight:700;cursor:pointer}
-.sub button.on{background:var(--card);color:var(--tx);box-shadow:0 1px 4px rgba(0,0,0,.12)}
-.row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:12px}
-label{display:flex;flex-direction:column;font-size:.88rem;color:var(--mut);gap:5px;flex:1;min-width:120px;font-weight:500}
-input,select{background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;width:100%}
-input:focus,select:focus{outline:0;border-color:var(--sky);box-shadow:0 0 0 3px rgba(26,143,192,.2)}
-input.bad{border-color:#dc2626}
-.btn{background:var(--sky);color:#fff;border:0;border-radius:10px;padding:11px 22px;font:inherit;font-weight:700;cursor:pointer;transition:filter .2s}
-.btn:hover{filter:brightness(1.1)}
-.btn.g{background:transparent;color:var(--mut);border:1px solid var(--line)}
-.err{color:#dc2626;font-size:.88rem;min-height:1.3em}
-.bar{height:8px;background:var(--soft);border-radius:9px;overflow:hidden;margin:6px 0 16px}
-.bar i{display:block;height:100%;width:0;background:var(--sky);transition:width .4s}
-.days{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.day{display:flex;gap:10px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px;cursor:pointer;transition:border-color .2s,background .2s}
-.day:hover{border-color:var(--sky)}
-.day.done{background:var(--soft);border-color:var(--sky)}
-.day input{width:20px;height:20px;accent-color:#1a8fc0;flex:none;padding:0}
-.day small{color:var(--mut);display:block;line-height:1.3}
-.timer{text-align:center}
-.clock{font-size:clamp(3.6rem,16vw,6rem);font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2;margin:8px 0}
-.phase{display:inline-block;padding:3px 18px;border-radius:99px;background:var(--sky);color:#fff;font-weight:700;font-size:.95rem}
-.phase.rest{background:var(--soft);color:var(--sky);border:1px solid var(--line)}
-.dots{display:flex;justify-content:center;gap:9px;margin:10px}
-.dots i{width:12px;height:12px;border-radius:50%;background:var(--line)}
-.dots i.on{background:var(--sky)}
-.res{text-align:center;margin-top:16px;font-size:2.6rem;font-weight:800;color:var(--sky)}
-.w{display:grid;grid-template-columns:1fr 100px;gap:10px;align-items:end;margin-bottom:12px}
-footer{margin-top:34px;background:var(--navy);color:#e6f1fb;padding:30px 0 calc(30px + env(safe-area-inset-bottom,0px));text-align:center}
-footer p{margin:0 0 14px;padding:14px 16px;background:rgba(255,255,255,.07);border-radius:14px;font-size:.96rem}
-.ch{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:18px}
-.ch a{background:#fff;color:var(--navy);border-radius:12px;padding:11px;text-decoration:none;font-weight:700;transition:filter .2s}
-.ch a:hover{filter:brightness(.92)}
-button,.btn{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-section.on{animation:fade .4s ease both}
-#fout>*,#tout>*{animation:fade .45s ease both}
-.btn{transition:box-shadow .3s ease,transform .25s ease,background .3s ease}
-.btn:hover{filter:none;box-shadow:0 6px 18px rgba(26,143,192,.28)}
-.btn:active{transform:scale(.98)}
-.btn.g:hover{background:var(--soft);box-shadow:none}
-.sub button{transition:background .3s ease,color .3s ease,box-shadow .3s ease}
-nav button{transition:color .3s ease,border-color .3s ease,opacity .2s}
-nav button:active{opacity:.7}
-.day{transition:background .35s ease,border-color .35s ease,transform .25s ease}
-.day:active{transform:scale(.98)}
-.bar i{transition:width .6s cubic-bezier(.4,0,.2,1)}
-.phase{transition:background .4s ease,color .4s ease}
-.dots i{transition:background .4s ease}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
-.ch a{transition:transform .25s ease,box-shadow .25s ease}
-.ch a:hover{filter:none;transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
-@media(prefers-reduced-motion:reduce){*{animation:none!important}}
-@media(max-width:520px){.brand h1{font-size:1.05rem}.brand small{font-size:.75rem}.logo{width:40px;height:40px}nav button small{display:none}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --sky:#54caff;
+ --blue:#168ed0;
+ --navy:#071a30;
+ --dark:#050d19;
+ --card:rgba(15,39,65,.85);
+ --text:#f2f8ff;
+ --muted:#a8bfd4;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:'Alexandria',sans-serif;
+ color:var(--text);
+ min-height:100vh;
+ background:
+ radial-gradient(ellipse at 85% 0%,#145d86 0%,transparent 42%),
+ radial-gradient(ellipse at 5% 45%,#102c4b 0%,transparent 45%),
+ linear-gradient(155deg,#0b3151,#071a30 50%,#040b15);
+}
+button,input{font-family:inherit}
+.container{
+ width:min(950px,92%);
+ margin:auto;
+ padding:25px 0 50px;
+}
+header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:12px;
+ padding:14px 0 25px;
+ border-bottom:1px solid #ffffff20;
+}
+.logo{
+ display:flex;
+ align-items:center;
+ gap:12px;
+}
+.logo-icon{
+ width:48px;height:48px;
+ display:grid;place-items:center;
+ border-radius:15px;
+ background:linear-gradient(135deg,#79d9ff,#168ed0);
+ color:#06233b;
+ font-size:24px;
+ box-shadow:0 5px 25px #38bdf855;
+}
+.logo h2{font-size:17px;margin:0;font-weight:800}
+.logo p{margin:4px 0 0;color:var(--muted);font-size:10px}
+.free{
+ border:1px solid #6dd4ff66;
+ color:#8cddff;
+ padding:8px 12px;
+ border-radius:30px;
+ font-size:10px;
+ white-space:nowrap;
+}
+.hero{
+ text-align:center;
+ padding:45px 10px 30px;
+}
+.hero .small{
+ color:#71d4ff;
+ font-size:12px;
+ letter-spacing:2px;
+}
+.hero h1{
+ font-size:clamp(27px,6vw,43px);
+ margin:13px 0;
+ font-weight:800;
+ background:linear-gradient(90deg,#fff,#83d9ff);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+.hero p{
+ color:var(--muted);
+ font-size:13px;
+ line-height:2;
+ margin:0;
+}
+.panel{
+ background:linear-gradient(145deg,#153b5bdf,#091a2cfa);
+ border:1px solid #8bdcff30;
+ border-radius:23px;
+ padding:24px;
+ box-shadow:0 18px 50px #0003;
+ margin-bottom:22px;
+}
+.panel-title{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ margin-bottom:20px;
+}
+.panel-title span{
+ width:35px;height:35px;
+ display:grid;place-items:center;
+ border-radius:11px;
+ background:#48bdf52a;
+ color:#77d6ff;
+}
+.panel-title h3{margin:0;font-size:15px}
+label{
+ display:block;
+ font-size:12px;
+ color:#c4d9e9;
+ margin-bottom:10px;
+}
+input{
+ width:100%;
+ padding:17px;
+ border:1px solid #8acffb35;
+ background:#06172a;
+ border-radius:13px;
+ color:white;
+ font-size:14px;
+ outline:none;
+ transition:.2s;
+}
+input:focus{
+ border-color:#5acbff;
+ box-shadow:0 0 0 3px #5acbff18;
+}
+input::placeholder{color:#728ba1}
+.hint{
+ color:#91abc0;
+ font-size:10px;
+ margin-top:10px;
+ line-height:2;
+}
+.generate{
+ width:100%;
+ border:0;
+ margin-top:20px;
+ padding:16px;
+ border-radius:13px;
+ color:#06243b;
+ font-size:14px;
+ font-weight:800;
+ cursor:pointer;
+ background:linear-gradient(100deg,#8de1ff,#36b4ed);
+ box-shadow:0 8px 25px #39b9f333;
+ transition:.2s;
+}
+.generate:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.details{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:10px;
+ margin-top:22px;
+}
+.detail{
+ text-align:center;
+ padding:15px 7px;
+ border:1px solid #ffffff13;
+ background:#ffffff08;
+ border-radius:14px;
+}
+.detail small{display:block;color:#91abc0;font-size:9px;margin-bottom:7px}
+.detail strong{font-size:11px}
+#result{display:none}
+.result-head{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-bottom:18px;
+}
+.result-head h3{font-size:16px;margin:0}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.actions button{
+ border:1px solid #69caff55;
+ background:#143b5b;
+ color:#c9edff;
+ padding:10px 13px;
+ border-radius:10px;
+ cursor:pointer;
+ font-size:10px;
+}
+.actions button:hover{background:#1b527a}
+.radio-paper{
+ background:#f7fbff;
+ color:#172d42;
+ border-radius:17px;
+ padding:clamp(18px,5vw,38px);
+}
+.paper-header{
+ text-align:center;
+ border-bottom:2px solid #b7dff1;
+ padding-bottom:20px;
+}
+.paper-header .school{font-size:13px;color:#347fa9;font-weight:700}
+.paper-header h2{
+ font-family:'Amiri',serif;
+ font-size:29px;
+ color:#17496b;
+ margin:13px 0 5px;
+}
+.paper-header .topic{
+ font-size:16px;
+ color:#1679af;
+ font-weight:700;
+}
+.paper-meta{
+ display:flex;
+ justify-content:space-between;
+ gap:10px;
+ flex-wrap:wrap;
+ font-size:10px;
+ color:#668197;
+ margin-top:15px;
+}
+.section{
+ margin-top:22px;
+ padding:16px;
+ border-right:4px solid #42a9dc;
+ background:#edf6fb;
+ border-radius:9px;
+}
+.section h3{
+ color:#12618f;
+ font-size:14px;
+ margin:0 0 12px;
+}
+.section p{
+ font-family:'Amiri',serif;
+ font-size:18px;
+ line-height:2.1;
+ margin:0;
+ white-space:pre-line;
+}
+.section .quote{
+ text-align:center;
+ font-size:21px;
+ font-weight:700;
+ color:#164f70;
+}
+.section .verse{
+ text-align:center;
+ color:#175b3b;
+ font-size:23px;
+}
+.paper-footer{
+ margin-top:30px;
+ border-top:1px solid #c9dce8;
+ padding-top:17px;
+ text-align:center;
+ font-size:11px;
+ line-height:2.2;
+ color:#53738b;
+}
+.empty{
+ text-align:center;
+ color:#9bb1c4;
+ padding:25px;
+ font-size:12px;
+}
+footer{
+ text-align:center;
+ color:#68869e;
+ font-size:10px;
+ padding:25px 0 5px;
+}
+@media(max-width:550px){
+ .details{grid-template-columns:1fr}
+ .detail{display:flex;justify-content:space-between;align-items:center;padding:13px}
+ .detail small{margin:0}
+ .panel{padding:18px}
+ .paper-meta{flex-direction:column}
+}
+@media print{
+ body{background:white!important;color:#111!important}
+ header,.hero,.panel:not(#result),footer,
+ .result-head,.no-print{display:none!important}
+ .container{width:100%;padding:0;margin:0}
+ #result{display:block!important}
+ .radio-paper{padding:15mm;background:white!important;color:#111}
+ .section{break-inside:avoid;background:#f4f8fa!important}
+ .section p{color:#172d42}
+ .paper-header h2,.paper-header .topic{color:#17496b}
+}
 </style>
 </head>
+
 <body>
-<header class="top"><div class="wrap">
- <div class="brand">
-  <svg class="logo" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
-   <path d="M32 3l3.1 6.4 7 1-5.1 4.9 1.2 7L32 19l-6.2 3.3 1.2-7-5.1-4.9 7-1z" fill="#fff"/>
-   <path d="M6 30c8-3 17-2 26 3 9-5 18-6 26-3v24c-8-3-17-2-26 3-9-5-18-6-26-3z" fill="#ffffff22"/>
-   <path d="M32 33v24"/>
-  </svg>
-  <div><h1>منبر التحصيلي</h1><small>«علم يتقن وهدف يدرك»</small></div>
- </div>
- <span class="free">مجاني 100%</span>
-</div></header>
+<div class="container">
 
-<div class="hero"><div class="wrap">
- <h2>خطتك، وقتك، موزونتك… كلها في مكان واحد</h2>
- <p>ابدأ اليوم، والتحصيلي يجي وانت جاهز بإذن الله</p>
- <div class="lbl">باقي على التحصيلي · الفترة الأولى</div>
- <div class="count" id="count">
-  <div><b id="cd">0</b><span>يوم</span></div><div><b id="ch">0</b><span>ساعة</span></div><div><b id="cm">0</b><span>دقيقة</span></div><div><b id="cs">0</b><span>ثانية</span></div>
- </div>
- <div class="dateset">موعد التحصيلي: <input type="date" id="exam"></div>
-</div></div>
-
-<main class="wrap">
-<nav>
- <button data-t="plans" class="on">الجداول<small>تأسيس وتدريب</small></button>
- <button data-t="study">مساحة المذاكرة<small>25 دقيقة تركيز</small></button>
- <button data-t="calc">الموزونة<small>احسب نسبتك</small></button>
-</nav>
-
-<section id="plans" class="on">
- <div class="sub"><button data-p="found" class="on">تأسيس</button><button data-p="train">تدريب</button></div>
- <div id="found">
-  <div class="row">
-   <label>المادة<select id="fsub"><option>رياضيات</option><option>فيزياء</option><option>كيمياء</option><option>أحياء</option></select></label>
-   <label>عدد الدروس<input id="fles" type="number" min="1" max="500" inputmode="numeric"></label>
-   <label>عدد الأيام<input id="fdays" type="number" min="1" max="365" inputmode="numeric"></label>
-   <button class="btn" id="fgo">أنشئ الجدول</button>
+<header>
+ <div class="logo">
+  <div class="logo-icon">✦</div>
+  <div>
+   <h2>ثانوية الشقيقة</h2>
+   <p>منصة الإذاعة المدرسية</p>
   </div>
-  <div class="err" id="ferr"></div>
-  <div id="fout"></div>
  </div>
- <div id="train" hidden>
-  <div class="row">
-   <label>عدد الأسئلة<input id="tq" type="number" min="1" max="100000" inputmode="numeric"></label>
-   <label>عدد الأيام<input id="tdays" type="number" min="1" max="365" inputmode="numeric"></label>
-   <button class="btn" id="tgo">أنشئ الجدول</button>
+ <div class="free">مجاني بالكامل</div>
+</header>
+
+<div class="hero">
+ <div class="small">SCHOOL RADIO GENERATOR</div>
+ <h1>إذاعتك المدرسية، بإبداع</h1>
+ <p>اكتب عنوان إذاعتك ودع الموقع يرتب لك إذاعة متكاملة<br>بفقراتها وتنسيقها، جاهزة للتقديم.</p>
+</div>
+
+<div class="panel">
+ <div class="panel-title">
+  <span>✎</span>
+  <h3>إنشاء إذاعة جديدة</h3>
+ </div>
+
+ <label for="topic">عنوان الإذاعة المدرسية</label>
+ <input id="topic" type="text" placeholder="مثال: أهمية العلم في بناء المستقبل">
+
+ <div class="hint">
+  اكتب موضوع الإذاعة الذي تريده، وسيتم إعداد فقراتها وترتيبها تلقائياً.
+ </div>
+
+ <button class="generate" onclick="generateRadio()">
+  ✦ إنشاء الإذاعة كاملة
+ </button>
+
+ <div class="details">
+  <div class="detail">
+   <small>المدرسة</small>
+   <strong>ثانوية الشقيقة</strong>
   </div>
-  <div class="err" id="terr"></div>
-  <div id="tout"></div>
+  <div class="detail">
+   <small>مدير المدرسة</small>
+   <strong>عيد حرمل</strong>
+  </div>
+  <div class="detail">
+   <small>إعداد وتقديم</small>
+   <strong>سعد بجاد</strong>
+  </div>
  </div>
-</section>
+</div>
 
-<section id="study">
- <div class="timer">
-  <h3>مساحة المذاكرة</h3>
-  <span class="phase" id="ph">مذاكرة</span>
-  <div class="clock" id="clk">25:00</div>
-  <div class="dots" id="dots"><i></i><i></i><i></i><i></i></div>
-  <p style="color:var(--mut);margin:0 0 14px" id="info">25 دقيقة مذاكرة · 5 دقايق راحة · 4 جولات ثم راحة نص ساعة</p>
-  <button class="btn" id="sgo">ابدأ</button> <button class="btn g" id="srs">إعادة</button>
+<div class="panel" id="result">
+ <div class="result-head">
+  <h3>✦ الإذاعة المدرسية</h3>
+  <div class="actions no-print">
+   <button onclick="copyRadio()">نسخ الإذاعة</button>
+   <button onclick="window.print()">طباعة / PDF</button>
+  </div>
  </div>
-</section>
+ <div class="radio-paper" id="paper"></div>
+</div>
 
-<section id="calc">
- <h3>حاسبة النسبة الموزونة</h3>
- <div class="w"><label>درجة التحصيلي (من 100)<input id="c1" type="number" inputmode="decimal"></label><label>الوزن %<input id="w1" type="number" value="40" inputmode="decimal"></label></div>
- <div class="w"><label>درجة القدرات (من 100)<input id="c2" type="number" inputmode="decimal"></label><label>الوزن %<input id="w2" type="number" value="30" inputmode="decimal"></label></div>
- <div class="w"><label>نسبة الثانوية (من 100)<input id="c3" type="number" inputmode="decimal"></label><label>الوزن %<input id="w3" type="number" value="30" inputmode="decimal"></label></div>
- <div class="err" id="cerr"></div>
- <button class="btn" id="cgo">احسب</button>
- <div class="res" id="cres"></div>
- <p style="color:var(--mut);font-size:.85rem;text-align:center">الأوزان تختلف من جامعة لأخرى، عدّلها حسب شروط الجامعة (مجموعها لازم 100).</p>
-</section>
-</main>
+<footer>
+ ثانوية الشقيقة © 2026
+ <br>
+ إعداد وتطوير: سعد بجاد
+</footer>
 
-<footer><div class="wrap">
- <p>🤲 اللهم وفّق طلاب التحصيلي، وافتح عليهم فتح العارفين، وارزقهم الفهم والحفظ والتوفيق والسداد، واجعل النجاح حليفهم.</p>
- <p>🤍 اللهم اجزِ مالك منبر التحصيلي والأدمن الذي معه خير الجزاء، وبارك في جهدهم وعلمهم وأجرهم، واجعل هذا العمل في ميزان حسناتهم.</p>
- <div class="ch" id="chs"></div>
-</div></footer>
+</div>
 
 <script>
-const CHANNELS=[["القناة الرئيسية","https://t.me/uloost"],["قناة الكويزات","https://t.me/w_9lr"],["الملفات والملخصات","https://t.me/w_1lr"],["المناقشة","https://t.me/w_2lr"]];
-const $=id=>document.getElementById(id);
-const S={get(k,d){try{const v=localStorage.getItem('mn_'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('mn_'+k,JSON.stringify(v))}catch(e){}}};
-const nf=n=>n.toLocaleString('ar-SA-u-nu-latn');
-$('chs').innerHTML=CHANNELS.map(c=>`<a href="${c[1]}" target="_blank" rel="noopener">📢 ${c[0]}</a>`).join('');
+const sections = [];
 
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
- document.querySelectorAll('nav button,section').forEach(x=>x.classList.remove('on'));
- b.classList.add('on');$(b.dataset.t).classList.add('on');
+function makeSections(topic){
+ return [
+ {
+  title:"المقدمة",
+  text:`بسم الله الرحمن الرحيم، والحمد لله رب العالمين، والصلاة والسلام على أشرف الأنبياء والمرسلين.
+
+مدير مدرستنا الفاضل الأستاذ عيد حرمل، معلمينا الكرام، زملائي الطلاب، السلام عليكم ورحمة الله وبركاته.
+
+يسعدنا في هذا الصباح أن نقدم لكم إذاعتنا المدرسية بعنوان: "${topic}".
+
+إن موضوعنا اليوم يحمل بين طياته معاني عظيمة ودروساً تستحق التأمل، فالحياة مليئة بالقيم والمواقف التي تصنع الفرق في مستقبل الإنسان، ومن هنا نبدأ رحلتنا مع فقرات إذاعتنا، سائلين الله أن تكون نافعة وممتعة للجميع.`
+ },
+ {
+  title:"القرآن الكريم",
+  text:"خير ما نبدأ به إذاعتنا آيات عطرة من كتاب الله الكريم، فالقرآن نور للقلوب وهداية للعقول. قال الله تعالى:\n\n﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾\n\n[طه: 114]"
+ },
+ {
+  title:"الحديث الشريف",
+  text:"وبعد أن استمعنا إلى كلام الله، ننتقل إلى هدي نبينا الكريم صلى الله عليه وسلم.\n\nقال رسول الله صلى الله عليه وسلم: «مَن سَلَكَ طَرِيقًا يَلْتَمِسُ فيه عِلْمًا، سَهَّلَ اللَّهُ له به طَرِيقًا إلى الجَنَّةِ».\n\nرواه مسلم."
+ },
+ {
+  title:"كلمة الصباح",
+  text:`والآن مع كلمة الصباح بعنوان "${topic}":
+
+إن موضوع "${topic}" ليس مجرد كلمات نرددها، بل هو معنى ينبغي أن يظهر في سلوكنا وأعمالنا اليومية.
+
+فالإنسان الناجح هو من يحول ما يتعلمه إلى عمل، ويجعل من أهدافه دافعاً للتقدم، ومن أخطائه دروساً يستفيد منها.
+
+علينا أن ندرك أن التغيير يبدأ بخطوة، وأن الإنجازات الكبيرة لا تتحقق دفعة واحدة، بل تصنعها العزيمة والاستمرار والعمل الصادق.
+
+فلنجعل من يومنا فرصة جديدة للتعلم والتطور، ولنحرص على أن نكون أفضل مما كنا عليه بالأمس.`
+ },
+ {
+  title:"هل تعلم؟",
+  text:`والآن مع فقرة هل تعلم:
+
+• هل تعلم أن القراءة توسع مدارك الإنسان وتزيد من معارفه؟
+• هل تعلم أن تنظيم الوقت يساعد على إنجاز المهام بصورة أفضل؟
+• هل تعلم أن الاستمرار في التعلم من أهم أسباب النجاح؟
+• هل تعلم أن الكلمة الطيبة تترك أثراً جميلاً في النفوس؟
+• هل تعلم أن الأهداف الواضحة تساعد الإنسان على معرفة طريقه؟`
+ },
+ {
+  title:"حكمة اليوم",
+  text:"والآن مع حكمة اليوم:\n\n«من جدّ وجد، ومن زرع حصد، ومن سار على الدرب وصل».\n\nواجعل هذه الحكمة مبدأً تسير عليه في دراستك وحياتك."
+ },
+ {
+  title:"رسالة الصباح",
+  text:`رسالتنا إليكم اليوم:
+
+لا تنتظر الظروف المثالية حتى تبدأ، ولا تجعل الصعوبات سبباً للتوقف. امنح أهدافك وقتاً وجهداً، وابدأ بما تستطيع، فكل خطوة صادقة تقربك من النجاح.
+
+وتذكر دائماً أن العلم والعمل والأخلاق من أعظم ما يبني الإنسان.`
+ },
+ {
+  title:"الخاتمة",
+  text:`وفي ختام إذاعتنا لهذا اليوم، نأمل أن نكون قد وفقنا في تقديم ما ينفع ويضيف إلى يومكم شيئاً جميلاً.
+
+نسأل الله أن يوفقنا وإياكم للعلم النافع والعمل الصالح، وأن يجعل أيامنا مليئة بالإنجاز والتوفيق.
+
+كان معكم في إعداد وتقديم هذه الإذاعة الطالب سعد بجاد، تحت إشراف إدارة ثانوية الشقيقة.
+
+والسلام عليكم ورحمة الله وبركاته.`
+ }
+ ];
+}
+
+function escapeHTML(str){
+ return String(str).replace(/[&<>"']/g, c => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;',
+  '"':'&quot;',"'":'&#39;'
+ }[c]));
+}
+
+function generateRadio(){
+ const input=document.getElementById("topic");
+ const topic=input.value.trim();
+
+ if(!topic){
+  input.focus();
+  alert("فضلاً اكتب عنوان الإذاعة أولاً.");
+  return;
+ }
+
+ const data=makeSections(topic);
+ const paper=document.getElementById("paper");
+
+ let html=`
+ <div class="paper-header">
+  <div class="school">المملكة العربية السعودية</div>
+  <div class="school">ثانوية الشقيقة</div>
+  <h2>إذاعة الصباح المدرسية</h2>
+  <div class="topic">${escapeHTML(topic)}</div>
+  <div class="paper-meta">
+   <span>مدير المدرسة: عيد حرمل</span>
+   <span>إعداد وتقديم: سعد بجاد</span>
+  </div>
+ </div>`;
+
+ data.forEach((item,index)=>{
+  html+=`
+  <div class="section">
+   <h3>${index+1}. ${item.title}</h3>
+   <p>${escapeHTML(item.text)}</p>
+  </div>`;
+ });
+
+ html+=`
+ <div class="paper-footer">
+  مدير المدرسة: عيد حرمل
+  <br>
+  إعداد وتقديم الطالب: سعد بجاد
+  <br>
+  ثانوية الشقيقة
+ </div>`;
+
+ paper.innerHTML=html;
+ document.getElementById("result").style.display="block";
+ document.getElementById("result").scrollIntoView({
+  behavior:"smooth",block:"start"
+ });
+}
+
+function copyRadio(){
+ const paper=document.getElementById("paper");
+ const text=paper.innerText;
+
+ if(navigator.clipboard && window.isSecureContext){
+  navigator.clipboard.writeText(text).then(()=>{
+   alert("تم نسخ الإذاعة كاملة بنجاح");
+  }).catch(()=>fallbackCopy(text));
+ }else{
+  fallbackCopy(text);
+ }
+}
+
+function fallbackCopy(text){
+ const area=document.createElement("textarea");
+ area.value=text;
+ document.body.appendChild(area);
+ area.select();
+ try{
+  document.execCommand("copy");
+  alert("تم نسخ الإذاعة");
+ }catch(e){
+  alert("تعذر النسخ، حاول مرة أخرى");
+ }
+ area.remove();
+}
+
+document.getElementById("topic").addEventListener("keydown",e=>{
+ if(e.key==="Enter")generateRadio();
 });
-document.querySelectorAll('.sub button').forEach(b=>b.onclick=()=>{
- document.querySelectorAll('.sub button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
- $('found').hidden=b.dataset.p!=='found';$('train').hidden=b.dataset.p!=='train';
-});
-
-let exam=S.get('exam2','2027-05-27');
-$('exam').value=exam;
-$('exam').onchange=e=>{exam=e.target.value;S.set('exam2',exam);tick()};
-function tick(){
- const t=new Date(exam+'T00:00:00')-new Date();
- const s=Math.floor((t>0?t:0)/1000);
- $('cd').textContent=Math.floor(s/86400);$('ch').textContent=Math.floor(s%86400/3600);
- $('cm').textContent=Math.floor(s%3600/60);$('cs').textContent=s%60;
-}
-tick();setInterval(tick,1000);
-
-function split(total,days){const b=Math.floor(total/days),r=total%days;return Array.from({length:days},(_,i)=>b+(i<r?1:0))}
-function plan(key,outId,unit){
- const p=S.get(key,null),o=$(outId);
- if(!p){o.innerHTML='';return}
- const done=p.done.filter(Boolean).length,pc=Math.round(done/p.parts.length*100);
- o.innerHTML=`<h3>${p.title}</h3><div class="st">تم إنجاز ${nf(done)} من ${nf(p.parts.length)} يوم (${nf(pc)}%)</div><div class="bar"><i style="width:${pc}%"></i></div><div class="days">`+
- p.parts.map((n,i)=>`<label class="day ${p.done[i]?'done':''}"><input type="checkbox" data-i="${i}" ${p.done[i]?'checked':''}><span>اليوم ${nf(i+1)}<small>${nf(n)} ${unit}</small></span></label>`).join('')+
- `</div><p><button class="btn g" data-reset="1">حذف الجدول</button></p>`;
- o.querySelectorAll('input').forEach(c=>c.onchange=()=>{p.done[c.dataset.i]=c.checked;S.set(key,p);c.closest('.day').classList.toggle('done',c.checked);const d=p.done.filter(Boolean).length,q=Math.round(d/p.parts.length*100);o.querySelector('.bar i').style.width=q+'%';o.querySelector('.st').textContent='تم إنجاز '+nf(d)+' من '+nf(p.parts.length)+' يوم ('+nf(q)+'%)'});
- o.querySelector('[data-reset]').onclick=()=>{if(confirm('تحذف الجدول؟')){try{localStorage.removeItem('mn_'+key)}catch(e){}plan(key,outId,unit)}};
-}
-function build(inp,max,errId){
- const v=inp.map(i=>Number(i.value)),e=$(errId);
- inp.forEach(i=>i.classList.remove('bad'));
- const bad=inp.filter((i,k)=>!Number.isInteger(v[k])||v[k]<1||v[k]>(k?365:max));
- if(bad.length){bad.forEach(i=>i.classList.add('bad'));e.textContent='دخّل أرقام صحيحة موجبة وضمن الحد المسموح.';return null}
- e.textContent='';return v;
-}
-$('fgo').onclick=()=>{const v=build([$('fles'),$('fdays')],500,'ferr');if(!v)return;
- if(v[1]>v[0]){$('ferr').textContent='عدد الأيام أكبر من عدد الدروس، قلّل الأيام أو زد الدروس.';return}
- const parts=split(v[0],v[1]);S.set('found',{title:`تأسيس ${$('fsub').value} · ${nf(v[0])} درس في ${nf(v[1])} يوم`,parts,done:parts.map(()=>false)});plan('found','fout','درس')};
-$('tgo').onclick=()=>{const v=build([$('tq'),$('tdays')],100000,'terr');if(!v)return;
- if(v[1]>v[0]){$('terr').textContent='عدد الأيام أكبر من عدد الأسئلة.';return}
- const parts=split(v[0],v[1]);S.set('train',{title:`تدريب · ${nf(v[0])} سؤال في ${nf(v[1])} يوم`,parts,done:parts.map(()=>false)});plan('train','tout','سؤال')};
-plan('found','fout','درس');plan('train','tout','سؤال');
-
-const seq=[];for(let i=0;i<4;i++){seq.push(['مذاكرة',25*60,i]);if(i<3)seq.push(['راحة',5*60,i])}seq.push(['راحة طويلة',30*60,3]);
-let si=0,left=seq[0][1],run=false,iv=null;
-function beep(){try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();o.connect(a.destination);o.frequency.value=880;o.start();o.stop(a.currentTime+.4)}catch(e){}if(navigator.vibrate)navigator.vibrate([200,100,200])}
-function draw(){
- const m=Math.floor(left/60),s=left%60,ph=seq[si];
- $('clk').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
- $('ph').textContent=ph[0];$('ph').className='phase'+(ph[0]=='مذاكرة'?'':' rest');
- document.querySelectorAll('#dots i').forEach((d,i)=>d.classList.toggle('on',i<=ph[2]));
- document.title=(run?$('clk').textContent+' · ':'')+'منبر التحصيلي';
-}
-function step(){
- left--;
- if(left<=0){beep();si++;if(si>=seq.length){si=0;left=seq[0][1];run=false;clearInterval(iv);$('sgo').textContent='ابدأ';$('info').textContent='ما شاء الله خلصت الدورة كاملة 🎉';draw();return}left=seq[si][1]}
- draw();
-}
-$('sgo').onclick=()=>{
- if(run){run=false;clearInterval(iv);$('sgo').textContent='متابعة'}
- else{run=true;iv=setInterval(step,1000);$('sgo').textContent='إيقاف مؤقت'}
-};
-$('srs').onclick=()=>{run=false;clearInterval(iv);si=0;left=seq[0][1];$('sgo').textContent='ابدأ';draw()};
-draw();
-
-const cin=['c1','c2','c3'].map($),win=['w1','w2','w3'].map($);
-$('cgo').onclick=()=>{
- [...cin,...win].forEach(i=>i.classList.remove('bad'));
- const c=cin.map(i=>i.value===''?NaN:Number(i.value)),w=win.map(i=>i.value===''?NaN:Number(i.value));
- let e='';
- c.forEach((x,i)=>{if(!(x>=0&&x<=100)){cin[i].classList.add('bad');e='الدرجات لازم تكون من 0 إلى 100.'}});
- w.forEach((x,i)=>{if(!(x>=0&&x<=100)){win[i].classList.add('bad');e='الأوزان لازم تكون من 0 إلى 100.'}});
- if(!e&&Math.abs(w[0]+w[1]+w[2]-100)>0.001)e='مجموع الأوزان لازم يساوي 100 (الحين '+(w[0]+w[1]+w[2])+').';
- $('cerr').textContent=e;
- if(e){$('cres').textContent='';return}
- $('cres').textContent=((c[0]*w[0]+c[1]*w[1]+c[2]*w[2])/100).toFixed(2)+'%';
- S.set('calc',{c:cin.map(i=>i.value),w:win.map(i=>i.value)});
-};
-const sv=S.get('calc',null);if(sv){cin.forEach((i,k)=>i.value=sv.c[k]);win.forEach((i,k)=>i.value=sv.w[k])}
-['fles','fdays','tq','tdays'].forEach(id=>{const k='in_'+id;$(id).value=S.get(k,'');$(id).oninput=()=>S.set(k,$(id).value)});
 </script>
 </body>
 </html>
