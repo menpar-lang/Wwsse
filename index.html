@@ -3,710 +3,228 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>إذاعة ثانوية الشقيقة</title>
-
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800;900&display=swap');
-
-:root {
-  --sky:#38bdf8;
-  --navy:#09233e;
-  --dark:#050d19;
-  --card:#10263c;
-  --text:#edf7ff;
-  --muted:#9eb5ca;
-}
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body {
-  font-family:'Tajawal',sans-serif;
-  background:linear-gradient(145deg,#0b3455,#07182c 48%,#030812);
-  color:var(--text);
-  min-height:100vh;
-}
-
-header {
-  padding:25px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #ffffff18;
-  background:#06182a80;
-  backdrop-filter:blur(12px);
-}
-
-.logo {
-  font-size:22px;
-  font-weight:900;
-  color:#7dd3fc;
-}
-
-.school-label {
-  color:#b5c8d9;
-  font-size:14px;
-}
-
-.hero {
-  text-align:center;
-  padding:75px 20px 55px;
-  background:radial-gradient(ellipse at top,#17618a55,transparent 70%);
-}
-
-.hero .small {
-  color:#7dd3fc;
-  font-weight:700;
-  letter-spacing:2px;
-  margin-bottom:15px;
-}
-
-.hero h1 {
-  font-size:clamp(32px,6vw,58px);
-  font-weight:900;
-  margin-bottom:15px;
-}
-
-.hero h1 span {
-  color:#7dd3fc;
-}
-
-.hero p {
-  color:#b5c9da;
-  font-size:17px;
-  line-height:2;
-}
-
-.credits {
-  margin:28px auto 0;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:12px;
-}
-
-.credit {
-  padding:11px 20px;
-  border:1px solid #7dd3fc40;
-  background:#ffffff09;
-  border-radius:12px;
-  color:#d8efff;
-  font-size:14px;
-}
-
-.credit b {
-  color:#7dd3fc;
-}
-
-.stats {
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  flex-wrap:wrap;
-  padding:10px 20px 35px;
-}
-
-.stat {
-  background:#ffffff0b;
-  border:1px solid #ffffff17;
-  border-radius:15px;
-  padding:18px 35px;
-  text-align:center;
-  min-width:130px;
-}
-
-.stat strong {
-  display:block;
-  font-size:28px;
-  color:#7dd3fc;
-}
-
-.stat span {
-  color:#a9bfd1;
-  font-size:13px;
-}
-
-.container {
-  max-width:1150px;
-  margin:auto;
-  padding:25px 20px 80px;
-}
-
-.section-heading {
-  margin-bottom:25px;
-}
-
-.section-heading h2 {
-  font-size:27px;
-  margin-bottom:8px;
-}
-
-.section-heading p {
-  color:var(--muted);
-  line-height:1.8;
-}
-
-.search {
-  width:100%;
-  padding:17px 20px;
-  border-radius:14px;
-  border:1px solid #7dd3fc40;
-  background:#102940;
-  color:white;
-  outline:none;
-  font-family:inherit;
-  font-size:16px;
-  margin:20px 0 30px;
-}
-
-.search:focus {
-  border-color:#38bdf8;
-  box-shadow:0 0 0 3px #38bdf822;
-}
-
-.categories {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px;
-}
-
-.category {
-  background:linear-gradient(140deg,#12334e,#0a1c30);
-  border:1px solid #ffffff17;
-  border-radius:18px;
-  overflow:hidden;
-  transition:.25s;
-}
-
-.category:hover {
-  border-color:#38bdf866;
-  transform:translateY(-3px);
-}
-
-.category-head {
-  padding:21px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  cursor:pointer;
-  gap:10px;
-}
-
-.category-title {
-  display:flex;
-  align-items:center;
-  gap:13px;
-}
-
-.number {
-  width:43px;
-  height:43px;
-  border-radius:12px;
-  background:#38bdf820;
-  color:#7dd3fc;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-  font-size:18px;
-  flex-shrink:0;
-}
-
-.category h3 {
-  font-size:18px;
-}
-
-.category small {
-  display:block;
-  color:#9cb4c8;
-  margin-top:5px;
-}
-
-.arrow {
-  color:#7dd3fc;
-  font-size:22px;
-  transition:.2s;
-}
-
-.category.open .arrow {
-  transform:rotate(180deg);
-}
-
-.broadcasts {
-  display:none;
-  padding:0 17px 17px;
-}
-
-.category.open .broadcasts {
-  display:block;
-}
-
-.broadcast {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  padding:13px 14px;
-  border-radius:10px;
-  margin-top:8px;
-  background:#ffffff08;
-  border:1px solid #ffffff0b;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.broadcast:hover {
-  background:#38bdf819;
-  border-color:#38bdf855;
-}
-
-.broadcast span {
-  font-size:14px;
-  line-height:1.7;
-}
-
-.broadcast em {
-  color:#7dd3fc;
-  font-size:12px;
-  font-style:normal;
-  white-space:nowrap;
-}
-
-.empty {
-  display:none;
-  text-align:center;
-  padding:35px;
-  color:#a9bfd1;
-}
-
-footer {
-  border-top:1px solid #ffffff17;
-  padding:30px 15px;
-  text-align:center;
-  color:#8da8bf;
-  line-height:2;
-}
-
-footer strong {
-  color:#7dd3fc;
-}
-
-.modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:10;
-  background:#000b;
-  backdrop-filter:blur(7px);
-  justify-content:center;
-  align-items:center;
-  padding:18px;
-}
-
-.modal.show {
-  display:flex;
-}
-
-.modal-content {
-  background:linear-gradient(145deg,#123650,#081829);
-  border:1px solid #38bdf855;
-  border-radius:20px;
-  width:100%;
-  max-width:520px;
-  padding:30px;
-  position:relative;
-}
-
-.modal-content h2 {
-  color:#7dd3fc;
-  font-size:25px;
-  margin-bottom:15px;
-}
-
-.modal-content p {
-  color:#c4d8e8;
-  line-height:2;
-}
-
-.close {
-  position:absolute;
-  left:18px;
-  top:15px;
-  background:#ffffff15;
-  color:white;
-  border:0;
-  padding:8px 12px;
-  border-radius:9px;
-  cursor:pointer;
-  font-family:inherit;
-}
-
-@media(max-width:700px) {
-  .categories {
-    grid-template-columns:1fr;
-  }
-  header {
-    padding:20px;
-  }
-  .hero {
-    padding-top:55px;
-  }
-  .stat {
-    min-width:105px;
-    padding:15px 20px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+*{box-sizing:border-box}
+body{margin:0;font-family:Tajawal,Arial;background:linear-gradient(145deg,#10476b,#071b30 60%,#030812);color:#edf7ff}
+header{padding:20px 6%;background:#06182acc;border-bottom:1px solid #ffffff20;display:flex;justify-content:space-between}
+.logo{font-size:22px;color:#80d5ff;font-weight:900}
+.hero{text-align:center;padding:45px 15px;background:radial-gradient(ellipse at top,#17618a66,transparent 70%)}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:10px}
+.hero h1 span{color:#80d5ff}
+.hero p{color:#bfd0df;line-height:2}
+.credits{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.credit{border:1px solid #7dd3fc55;padding:10px 17px;border-radius:12px}
+.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;padding:10px}
+.stat{background:#ffffff0d;border:1px solid #ffffff20;padding:13px 25px;border-radius:12px;text-align:center}
+.stat b{display:block;color:#80d5ff;font-size:24px}
+main{max-width:1100px;margin:auto;padding:25px 18px 60px}
+.search{width:100%;padding:15px;border:1px solid #7dd3fc55;border-radius:12px;background:#102940;color:white;font:inherit;font-size:16px;outline:none;margin:15px 0 25px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.category{background:linear-gradient(140deg,#12334e,#0a1c30);border:1px solid #ffffff20;border-radius:15px;overflow:hidden}
+.cathead{padding:18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.cathead h3{margin:0;font-size:18px}
+.cathead small{display:block;color:#a9bfd1;margin-top:5px}
+.num{background:#38bdf822;color:#80d5ff;padding:10px;border-radius:9px;margin-left:10px}
+.items{display:none;padding:0 14px 14px}
+.category.open .items{display:block}
+.topic{width:100%;text-align:right;display:flex;justify-content:space-between;gap:8px;align-items:center;padding:12px;margin-top:7px;border:1px solid #ffffff15;border-radius:9px;background:#ffffff09;color:white;font:inherit;cursor:pointer}
+.topic:hover{border-color:#65cafa}
+.topic small{color:#80d5ff;white-space:nowrap}
+.viewer{display:none;max-width:900px;margin:20px auto 60px;padding:0 16px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.btn{border:0;border-radius:10px;padding:12px 18px;font:700 15px Tajawal;cursor:pointer}
+.primary{background:#55c2f2;color:#062039}
+.back{background:#ffffff20;color:white}
+.paper{background:white;color:#172b3d;border-radius:15px;padding:30px 35px}
+.paperhead{text-align:center;border-bottom:2px solid #b9dff2;padding-bottom:15px}
+.paperhead h2{color:#07547e}
+.paperhead p{margin:5px;color:#52697b}
+.paper h3{color:#07547e;border-right:4px solid #55bce9;padding-right:10px;margin:23px 0 8px}
+.paper p{line-height:2.1;font-size:16px}
+.quran{background:#f0f8fc;padding:13px;border-radius:9px;color:#174c6b;font-weight:700}
+.note{color:#b7cbdc;line-height:1.8;margin-top:15px}
+footer{text-align:center;padding:25px;border-top:1px solid #ffffff20;color:#a9bfd1;line-height:2}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.paper{padding:20px 16px}}
+@page{size:A4;margin:17mm}
+@media print{
+ body{background:white!important;color:black!important}
+ header,.hero,.stats,main,footer,.actions,.note{display:none!important}
+ .viewer{display:block!important;max-width:none;margin:0;padding:0}
+ .paper{box-shadow:none;padding:0;border-radius:0}
+ .paperhead h2,.paper h3{color:#123f59}
+ .paper h3{break-after:avoid}
+ .paper p{orphans:3;widows:3}
+ .quran{print-color-adjust:exact}
 }
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">إذاعة الشقيقة</div>
-  <div class="school-label">المكتبة الإذاعية المدرسية</div>
+<div class="logo">إذاعة ثانوية الشقيقة</div>
+<div>المكتبة الإذاعية المدرسية</div>
 </header>
 
 <section class="hero">
-  <div class="small">ثانوية الشقيقة</div>
-  <h1>منصة <span>الإذاعة المدرسية</span></h1>
-  <p>
-    مكتبة متجددة من الموضوعات الإذاعية الهادفة<br>
-    أفكار متنوعة، ومعارف تثري يومك الدراسي
-  </p>
-
-  <div class="credits">
-    <div class="credit">مدير المدرسة: <b>عيد حرمل</b></div>
-    <div class="credit">إعداد وتقديم: <b>الطالب سعد بجاد</b></div>
-  </div>
+<div style="color:#80d5ff">منصة الإذاعة الصباحية</div>
+<h1>مكتبة <span>الإذاعات المدرسية</span></h1>
+<p>مئة موضوع إذاعي ضمن عشرة مجالات<br>فقرات منظمة وجاهزة للإلقاء والطباعة</p>
+<div class="credits">
+<div class="credit">مدير المدرسة: <b>عيد حرمل</b></div>
+<div class="credit">إعداد وتقديم: <b>الطالب سعد بجاد</b></div>
+</div>
 </section>
 
 <div class="stats">
-  <div class="stat">
-    <strong>10</strong>
-    <span>أقسام رئيسية</span>
-  </div>
-  <div class="stat">
-    <strong>100</strong>
-    <span>عنوان إذاعي</span>
-  </div>
-  <div class="stat">
-    <strong>متنوعة</strong>
-    <span>موضوعات هادفة</span>
-  </div>
+<div class="stat"><b>10</b>أقسام</div>
+<div class="stat"><b>100</b>عنوان</div>
+<div class="stat"><b>8</b>فقرات</div>
 </div>
 
-<main class="container">
-
-  <div class="section-heading">
-    <h2>مكتبة الإذاعات</h2>
-    <p>اختر القسم المناسب، وستظهر لك عشرة موضوعات إذاعية مختلفة تندرج تحته.</p>
-  </div>
-
-  <input
-    class="search"
-    id="search"
-    type="text"
-    placeholder="ابحث عن قسم أو عنوان إذاعي..."
-    oninput="searchTopics()"
-  >
-
-  <div class="categories" id="categories"></div>
-  <div class="empty" id="empty">لا توجد نتائج مطابقة لبحثك.</div>
-
+<main id="library">
+<h2>مكتبة الإذاعات</h2>
+<input id="search" class="search" placeholder="ابحث عن قسم أو عنوان إذاعي..." oninput="filterTopics()">
+<div id="grid" class="grid"></div>
+<p class="note">اختر عنواناً لفتح الإذاعة كاملة، ثم اطبعها أو احفظها PDF.</p>
 </main>
 
-<div class="modal" id="modal" onclick="closeOutside(event)">
-  <div class="modal-content">
-    <button class="close" onclick="closeModal()">إغلاق ✕</button>
-    <div style="color:#7dd3fc;margin-bottom:12px">مكتبة إذاعة ثانوية الشقيقة</div>
-    <h2 id="modalTitle"></h2>
-    <p id="modalDescription"></p>
-    <div style="margin-top:22px;color:#7dd3fc;font-size:13px">
-      إعداد وتقديم الطالب سعد بجاد
-    </div>
-  </div>
+<section id="viewer" class="viewer">
+<div class="actions">
+<button class="btn back" onclick="backToLibrary()">العودة للمكتبة</button>
+<button class="btn primary" onclick="window.print()">طباعة / حفظ PDF</button>
 </div>
+<article class="paper" id="paper"></article>
+<p class="note">اختر «حفظ بصيغة PDF» من خيارات الطباعة.</p>
+</section>
 
 <footer>
-  <strong>ثانوية الشقيقة</strong><br>
-  بإشراف مدير المدرسة عيد حرمل<br>
-  إعداد وتقديم الطالب سعد بجاد<br>
-  جميع الحقوق محفوظة للمدرسة
+<b style="color:#80d5ff">ثانوية الشقيقة</b><br>
+مدير المدرسة: عيد حرمل<br>
+إعداد وتقديم الطالب سعد بجاد
 </footer>
 
 <script>
-
-const data = [
-
-{
-title:"الدين والقيم الإسلامية",
-icon:"☪",
-topics:[
-"فضل الصلاة وأثرها في حياة المسلم",
-"القرآن الكريم نور القلوب",
-"بر الوالدين طريق الجنة",
-"الصدق أساس النجاة",
-"الأمانة مسؤولية عظيمة",
-"التسامح والعفو في الإسلام",
-"حفظ اللسان من صفات المؤمن",
-"الإحسان إلى الجار",
-"الرفق في التعامل مع الآخرين",
-"شكر النعم والمحافظة عليها"
-]
-},
-
-{
-title:"العلم والتعليم",
-icon:"📚",
-topics:[
-"العلم طريق الأمم نحو التقدم",
-"مكانة المعلم ودوره في بناء الأجيال",
-"القراءة غذاء العقل",
-"الاختبارات فرصة لإظهار الاجتهاد",
-"كيف تصنع لنفسك هدفاً تعليمياً؟",
-"التعلم الذاتي وبناء المستقبل",
-"أهمية البحث والاستكشاف",
-"الفضول العلمي مفتاح المعرفة",
-"التميز الدراسي يبدأ من الانضباط",
-"من مقاعد الدراسة إلى صناعة المستقبل"
-]
-},
-
-{
-title:"الوطن والمواطنة",
-icon:"🇸🇦",
-topics:[
-"حب الوطن مسؤولية وعطاء",
-"المحافظة على الممتلكات العامة",
-"المواطنة الصالحة تبدأ من المدرسة",
-"المملكة العربية السعودية مسيرة إنجاز",
-"دور الشباب في نهضة الوطن",
-"الاعتزاز بالهوية الوطنية",
-"الوحدة الوطنية قوة المجتمع",
-"خدمة الوطن شرف ومسؤولية",
-"التطوع لخدمة المجتمع والوطن",
-"رؤية السعودية 2030 وطموح المستقبل"
-]
-},
-
-{
-title:"الصحة والسلامة",
-icon:"🏥",
-topics:[
-"الصحة تاج على رؤوس الأصحاء",
-"أهمية النوم المنتظم للطالب",
-"الغذاء المتوازن وأثره في النشاط",
-"النشاط البدني وأهميته للجسم",
-"الصحة النفسية وأثرها في النجاح",
-"النظافة الشخصية عنوان الوعي",
-"السلامة المرورية مسؤولية الجميع",
-"الوقاية من الأمراض تبدأ بالوعي",
-"الإسعافات الأولية وأهميتها",
-"التوازن بين الدراسة والراحة"
-]
-},
-
-{
-title:"التقنية والعالم الرقمي",
-icon:"💻",
-topics:[
-"الذكاء الاصطناعي ومستقبل التعليم",
-"الأمن السيبراني مسؤولية الجميع",
-"الاستخدام الواعي لوسائل التواصل",
-"التنمر الإلكتروني وآثاره",
-"الخصوصية الرقمية وحماية البيانات",
-"التقنية بين الفائدة والإدمان",
-"المواطنة الرقمية وأخلاقيات الإنترنت",
-"كيف نتحقق من صحة المعلومات؟",
-"التقنية في خدمة المجتمع",
-"مستقبل المهن في العصر الرقمي"
-]
-},
-
-{
-title:"البيئة والاستدامة",
-icon:"🌱",
-topics:[
-"المحافظة على البيئة مسؤولية مشتركة",
-"التشجير وأثره في جودة الحياة",
-"ترشيد استهلاك الماء",
-"الطاقة المتجددة ومستقبل العالم",
-"الحد من النفايات وإعادة التدوير",
-"نظافة المدرسة تعكس وعي طلابها",
-"حماية الحياة الفطرية",
-"التلوث وآثاره على الإنسان",
-"الاستدامة أسلوب حياة",
-"دور الطالب في حماية البيئة"
-]
-},
-
-{
-title:"المهارات الشخصية",
-icon:"🎯",
-topics:[
-"إدارة الوقت سر الإنجاز",
-"الثقة بالنفس وبناء الشخصية",
-"فن الحوار واحترام الرأي الآخر",
-"التفكير الإيجابي وأثره في الحياة",
-"كيف تتغلب على التسويف؟",
-"اتخاذ القرار وتحمل المسؤولية",
-"القيادة والعمل الجماعي",
-"التخطيط للمستقبل وصناعة الأهداف",
-"مهارة حل المشكلات",
-"الانضباط الذاتي طريق التميز"
-]
-},
-
-{
-title:"المجتمع والعلاقات",
-icon:"🤝",
-topics:[
-"الاحترام المتبادل أساس العلاقات",
-"صلة الرحم وأثرها في المجتمع",
-"التعاون سر نجاح الجماعات",
-"حقوق الجار وواجباته",
-"الكلمة الطيبة تصنع الفرق",
-"دور الأسرة في بناء شخصية الطالب",
-"احترام الكبير والعطف على الصغير",
-"التطوع وأثره في ترابط المجتمع",
-"قبول الاختلاف وثقافة الحوار",
-"المسؤولية الاجتماعية تبدأ من الفرد"
-]
-},
-
-{
-title:"الثقافة والمعرفة",
-icon:"🌍",
-topics:[
-"اللغة العربية هويتنا ولغتنا",
-"القراءة تصنع إنساناً واعياً",
-"تاريخ الحضارة الإسلامية وإنجازاتها",
-"العلماء المسلمون وأثرهم في البشرية",
-"الاختراعات التي غيرت العالم",
-"الفضاء وأسرار الكون",
-"عجائب الطبيعة من حولنا",
-"السفر وأثره في توسيع المدارك",
-"الثقافة المالية وأهمية الادخار",
-"المتاحف والآثار ذاكرة الحضارات"
-]
-},
-
-{
-title:"الطموح والمناسبات",
-icon:"🏆",
-topics:[
-"الطموح لا يعرف المستحيل",
-"النجاح يبدأ بخطوة",
-"اليوم العالمي للمعلم",
-"اليوم الوطني السعودي",
-"يوم التأسيس السعودي",
-"اليوم العالمي للغة العربية",
-"اليوم العالمي للتطوع",
-"يوم العلم السعودي",
-"الاستعداد للاختبارات بثقة",
-"قصص نجاح تلهم الأجيال"
-]
-}
-
+const groups=[
+["الدين والقيم الإسلامية","☪",[
+"فضل الصلاة وأثرها في حياة المسلم","القرآن الكريم نور القلوب","بر الوالدين طريق الجنة","الصدق أساس النجاة","الأمانة مسؤولية عظيمة","التسامح والعفو في الإسلام","حفظ اللسان من صفات المؤمن","الإحسان إلى الجار","الرفق في التعامل مع الآخرين","شكر النعم والمحافظة عليها"]],
+["العلم والتعليم","📚",[
+"العلم طريق الأمم نحو التقدم","مكانة المعلم ودوره في بناء الأجيال","القراءة غذاء العقل","الاختبارات فرصة لإظهار الاجتهاد","كيف تصنع لنفسك هدفاً تعليمياً؟","التعلم الذاتي وبناء المستقبل","أهمية البحث والاستكشاف","الفضول العلمي مفتاح المعرفة","التميز الدراسي يبدأ من الانضباط","من مقاعد الدراسة إلى صناعة المستقبل"]],
+["الوطن والمواطنة","🇸🇦",[
+"حب الوطن مسؤولية وعطاء","المحافظة على الممتلكات العامة","المواطنة الصالحة تبدأ من المدرسة","المملكة العربية السعودية مسيرة إنجاز","دور الشباب في نهضة الوطن","الاعتزاز بالهوية الوطنية","الوحدة الوطنية قوة المجتمع","خدمة الوطن شرف ومسؤولية","التطوع لخدمة المجتمع والوطن","رؤية السعودية 2030 وطموح المستقبل"]],
+["الصحة والسلامة","🏥",[
+"الصحة تاج على رؤوس الأصحاء","أهمية النوم المنتظم للطالب","الغذاء المتوازن وأثره في النشاط","النشاط البدني وأهميته للجسم","الصحة النفسية وأثرها في النجاح","النظافة الشخصية عنوان الوعي","السلامة المرورية مسؤولية الجميع","الوقاية من الأمراض تبدأ بالوعي","الإسعافات الأولية وأهميتها","التوازن بين الدراسة والراحة"]],
+["التقنية والعالم الرقمي","💻",[
+"الذكاء الاصطناعي ومستقبل التعليم","الأمن السيبراني مسؤولية الجميع","الاستخدام الواعي لوسائل التواصل","التنمر الإلكتروني وآثاره","الخصوصية الرقمية وحماية البيانات","التقنية بين الفائدة والإفراط","المواطنة الرقمية وأخلاقيات الإنترنت","كيف نتحقق من صحة المعلومات؟","التقنية في خدمة المجتمع","مستقبل المهن في العصر الرقمي"]],
+["البيئة والاستدامة","🌱",[
+"المحافظة على البيئة مسؤولية مشتركة","التشجير وأثره في جودة الحياة","ترشيد استهلاك الماء","الطاقة المتجددة ومستقبل العالم","الحد من النفايات وإعادة التدوير","نظافة المدرسة تعكس وعي طلابها","حماية الحياة الفطرية","التلوث وآثاره على الإنسان","الاستدامة أسلوب حياة","دور الطالب في حماية البيئة"]],
+["المهارات الشخصية","🎯",[
+"إدارة الوقت سر الإنجاز","الثقة بالنفس وبناء الشخصية","فن الحوار واحترام الرأي الآخر","التفكير الإيجابي وأثره في الحياة","كيف تتغلب على التسويف؟","اتخاذ القرار وتحمل المسؤولية","القيادة والعمل الجماعي","التخطيط للمستقبل وصناعة الأهداف","مهارة حل المشكلات","الانضباط الذاتي طريق التميز"]],
+["المجتمع والعلاقات","🤝",[
+"الاحترام المتبادل أساس العلاقات","صلة الرحم وأثرها في المجتمع","التعاون سر نجاح الجماعات","حقوق الجار وواجباته","الكلمة الطيبة تصنع الفرق","دور الأسرة في بناء شخصية الطالب","احترام الكبير والعطف على الصغير","التطوع وأثره في ترابط المجتمع","قبول الاختلاف وثقافة الحوار","المسؤولية الاجتماعية تبدأ من الفرد"]],
+["الثقافة والمعرفة","🌍",[
+"اللغة العربية هويتنا ولغتنا","القراءة تصنع إنساناً واعياً","تاريخ الحضارة الإسلامية وإنجازاتها","العلماء المسلمون وأثرهم في البشرية","الاختراعات التي غيرت العالم","الفضاء وأسرار الكون","عجائب الطبيعة من حولنا","السفر وأثره في توسيع المدارك","الثقافة المالية وأهمية الادخار","المتاحف والآثار ذاكرة الحضارات"]],
+["الطموح والمناسبات","🏆",[
+"الطموح لا يعرف المستحيل","النجاح يبدأ بخطوة","اليوم العالمي للمعلم","اليوم الوطني السعودي","يوم التأسيس السعودي","اليوم العالمي للغة العربية","اليوم العالمي للتطوع","يوم العلم السعودي","الاستعداد للاختبارات بثقة","قصص نجاح تلهم الأجيال"]]
 ];
 
-const container = document.getElementById("categories");
+const intro=t=>`الحمد لله الذي جعل العلم نوراً، والعمل الصالح أثراً، وجعل لكل يوم فرصة جديدة نتعلم فيها ونرتقي. أما بعد، فموضوع إذاعتنا لهذا اليوم هو «${t}»، وهو موضوع يمس حياتنا ويذكرنا بأن المعرفة لا تكتمل إلا حين تتحول إلى سلوك وعمل.`;
 
-function render(items) {
-  container.innerHTML = "";
+const speech=t=>`إن الحديث عن «${t}» ليس حديثاً نظرياً فحسب، بل هو دعوة إلى أن نراجع ممارساتنا اليومية. فالقيمة الحقيقية لأي معرفة تظهر في أثرها على الإنسان ومن حوله. وكل واحد منا يستطيع أن يبدأ بخطوة بسيطة: أن يفهم الموضوع، ويختار التصرف الصحيح، ثم يداوم عليه. وفي مدرستنا تتاح لنا فرص كثيرة لنتعلم ونتعاون ونكون قدوة حسنة. فلنجعل هذا الموضوع حاضراً في قراراتنا، ولنحوّل ما نسمعه اليوم إلى عمل نراه في سلوكنا غداً.`;
 
-  items.forEach((cat,index) => {
+const endings=[
+"أن نكون واعين في أقوالنا وأفعالنا، وأن نجعل أثرنا طيباً أينما كنا.",
+"أن نبدأ بأنفسنا، فالتغيير الكبير يبدأ بخطوة صغيرة صادقة.",
+"أن نتعاون ونتعلم ونحترم بعضنا، فالمجتمع القوي يبدأ بأفراده.",
+"أن نجعل المعرفة سلوكاً يومياً، لا كلمات نسمعها ثم ننساها."
+];
 
-    const originalIndex = data.indexOf(cat);
-
-    const card = document.createElement("div");
-    card.className = "category";
-
-    const head = document.createElement("div");
-    head.className = "category-head";
-
-    head.innerHTML = `
-      <div class="category-title">
-        <div class="number">${String(originalIndex+1).padStart(2,"0")}</div>
-        <div>
-          <h3>${cat.icon} ${cat.title}</h3>
-          <small>10 موضوعات إذاعية متنوعة</small>
-        </div>
-      </div>
-      <div class="arrow">⌄</div>
-    `;
-
-    const list = document.createElement("div");
-    list.className = "broadcasts";
-
-    cat.topics.forEach((topic,i) => {
-      const item = document.createElement("div");
-      item.className = "broadcast";
-
-      const name = document.createElement("span");
-      name.textContent = topic;
-
-      const label = document.createElement("em");
-      label.textContent = "إذاعة " + (i+1);
-
-      item.append(name,label);
-
-      item.onclick = () => openModal(topic,cat.title);
-
-      list.appendChild(item);
-    });
-
-    head.onclick = () => card.classList.toggle("open");
-
-    card.append(head,list);
-    container.appendChild(card);
-
-  });
-
-  document.getElementById("empty").style.display =
-    items.length ? "none" : "block";
+function esc(s){
+return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-function searchTopics() {
-  const q = document.getElementById("search").value.trim().toLowerCase();
+function render(list=groups){
+const grid=document.getElementById('grid');
+grid.innerHTML='';
+list.forEach(g=>{
+const idx=groups.indexOf(g);
+const box=document.createElement('section');
+box.className='category';
 
-  const filtered = data.filter(cat =>
-    cat.title.toLowerCase().includes(q) ||
-    cat.topics.some(t => t.toLowerCase().includes(q))
-  );
+const head=document.createElement('div');
+head.className='cathead';
+head.innerHTML=`
+<div style="display:flex;align-items:center">
+<span class="num">${idx+1}</span>
+<div><h3>${g[1]} ${g[0]}</h3><small>10 إذاعات</small></div>
+</div><span>⌄</span>`;
 
-  render(filtered);
+const items=document.createElement('div');
+items.className='items';
 
-  if(q) {
-    document.querySelectorAll(".category").forEach(card => {
-      card.classList.add("open");
-    });
-  }
+g[2].forEach((t,i)=>{
+const b=document.createElement('button');
+b.className='topic';
+b.innerHTML=`<span>${i+1}. ${esc(t)}</span><small>عرض الإذاعة ←</small>`;
+b.onclick=()=>openBroadcast(g[0],t,i);
+items.appendChild(b);
+});
+
+head.onclick=()=>box.classList.toggle('open');
+box.append(head,items);
+grid.appendChild(box);
+});
 }
 
-function openModal(topic,category) {
-  document.getElementById("modalTitle").textContent = topic;
-
-  document.getElementById("modalDescription").textContent =
-    "يندرج هذا الموضوع ضمن قسم " + category +
-    ". يمكن تخصيصه لإعداد إذاعة مدرسية متكاملة تشمل المقدمة والقرآن الكريم والحديث الشريف والفقرة الرئيسية والحكمة والخاتمة.";
-
-  document.getElementById("modal").classList.add("show");
+function filterTopics(){
+const q=document.getElementById('search').value.trim().toLowerCase();
+const filtered=groups.filter(g=>
+g[0].toLowerCase().includes(q)||
+g[2].some(t=>t.toLowerCase().includes(q))
+);
+render(filtered);
+if(q)document.querySelectorAll('.category').forEach(x=>x.classList.add('open'));
 }
 
-function closeModal() {
-  document.getElementById("modal").classList.remove("show");
+function openBroadcast(group,title,index){
+const n=index%endings.length;
+
+const blocks=[
+["المقدمة",intro(title)],
+["القرآن الكريم","وخير ما نبدأ به إذاعتنا آيات من الذكر الحكيم، قال الله تعالى: ﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ [طه: 114]."],
+["الحديث الشريف","قال رسول الله ﷺ: «من سلك طريقًا يلتمس فيه علمًا سهّل الله له به طريقًا إلى الجنة» رواه مسلم. وفي الحديث تذكير بفضل طلب العلم والسعي النافع."],
+["كلمة الصباح",speech(title)+" "+endings[n]],
+["هل تعلم","هل تعلم أن العادات الصغيرة المتكررة تصنع فرقاً كبيراً مع مرور الوقت؟<br>هل تعلم أن الاستماع الجيد يساعد على فهم الآخرين واحترام آرائهم؟<br>هل تعلم أن تطبيق معلومة واحدة أفضل من الاكتفاء بسماع معلومات كثيرة دون عمل؟"],
+["حكمة اليوم","«العلم بلا عمل كشجرة بلا ثمر». فلنجعل ما نتعلمه سبباً في تحسين سلوكنا وخدمة من حولنا."],
+["سؤال وجواب",`س: ما أول خطوة عملية للاستفادة من موضوع «${title}»؟<br>ج: أن نفهم معناه، ثم نختار سلوكاً واحداً نطبقه اليوم ونستمر عليه.`],
+["الخاتمة",`إلى هنا نصل إلى ختام إذاعتنا عن «${title}». نشكركم على حسن الاستماع، ونسأل الله أن يجعل يومنا مليئاً بالعلم والعمل النافع. كان معكم الطالب سعد بجاد، من ثانوية الشقيقة. والسلام عليكم ورحمة الله وبركاته.`]
+];
+
+document.getElementById('paper').innerHTML=`
+<div class="paperhead">
+<h2>إذاعة مدرسية: ${esc(title)}</h2>
+<p>ثانوية الشقيقة</p>
+<p>مدير المدرسة: عيد حرمل | إعداد وتقديم: الطالب سعد بجاد</p>
+<p>القسم: ${esc(group)}</p>
+</div>`+
+blocks.map(([h,p])=>`
+<section><h3>${h}</h3>
+<p class="${h==='القرآن الكريم'?'quran':''}">${p}</p></section>
+`).join('');
+
+document.getElementById('library').style.display='none';
+document.getElementById('viewer').style.display='block';
+window.scrollTo(0,0);
 }
 
-function closeOutside(event) {
-  if(event.target.id === "modal") closeModal();
+function backToLibrary(){
+document.getElementById('viewer').style.display='none';
+document.getElementById('library').style.display='block';
+window.scrollTo(0,0);
 }
-
-render(data);
-
+render();
 </script>
 </body>
 </html>
